@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController
 import java.lang.IllegalStateException
 
 @RestController
-@RequestMapping("/teste")
-class Controller(
+@RequestMapping("/test")
+class UnsecureTestController(
     private val animalRepository: AnimalRepository
 ) {
     @GetMapping("/helloworld")

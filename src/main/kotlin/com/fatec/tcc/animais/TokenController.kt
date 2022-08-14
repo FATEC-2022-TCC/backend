@@ -18,7 +18,7 @@ class TokenController(
     fun generateToken(): String {
         val now = Instant.now()
         val expiry = 3600L
-        val scope = ""
+        val scope = arrayListOf("admin", "user", "manager").joinToString(" ")
 
         val claims = JwtClaimsSet.builder()
             .issuer("self")

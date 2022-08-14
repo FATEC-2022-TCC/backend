@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer
 import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.core.userdetails.User
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.oauth2.jwt.JwtDecoder
 import org.springframework.security.oauth2.jwt.JwtEncoder
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
@@ -47,7 +50,7 @@ class SecurityConfig(
                 )
             }
             .authorizeHttpRequests()
-            .antMatchers("/token/**", "/teste/**")
+            .antMatchers("/token/**", "/test/**")
             .permitAll()
             .and()
             .authorizeHttpRequests()
@@ -65,5 +68,12 @@ class SecurityConfig(
         val jwk: JWK = RSAKey.Builder(pub).privateKey(priv).build()
         val jwks: JWKSource<SecurityContext> = ImmutableJWKSet(JWKSet(jwk))
         return NimbusJwtEncoder(jwks)
+    }
+
+    @Bean
+    fun userDetailsService(): UserDetailsService {
+        return UserDetailsService {
+            User.builder().build()
+        }
     }
 }
