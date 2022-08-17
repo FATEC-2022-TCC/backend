@@ -1,7 +1,7 @@
-package com.fatec.tcc.animais
+package com.fatec.tcc.animais.roles.data
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface AnimalRepository : JpaRepository<AnimalEntity, Long>
+interface RoleEntityRepository : JpaRepository<RoleEntity, Long>

@@ -1,7 +1,7 @@
-package com.fatec.tcc.animais.user.data
+package com.fatec.tcc.animais.animal.data
 
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserJpaRepository : JpaRepository<UserEntity, Long>
+interface AnimalRepository : JpaRepository<AnimalEntity, Long>

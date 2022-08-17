@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais
+package com.fatec.tcc.animais.tests
 
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.GetMapping

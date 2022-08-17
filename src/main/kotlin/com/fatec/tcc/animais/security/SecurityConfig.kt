@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais
+package com.fatec.tcc.animais.security
 
 import com.nimbusds.jose.jwk.JWK
 import com.nimbusds.jose.jwk.JWKSet

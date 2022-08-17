@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais
+package com.fatec.tcc.animais.animal.data
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -6,10 +6,10 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity(name = "animals")
-data class AnimalEntity(
+class AnimalEntity(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     val id: Long,
-    val especie: String,
+    val type: String,
     val age: Int
 )

@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais
+package com.fatec.tcc.animais.security
 
 import org.springframework.security.oauth2.jwt.JwtClaimsSet
 import org.springframework.security.oauth2.jwt.JwtEncoder

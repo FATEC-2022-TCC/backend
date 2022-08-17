@@ -1,18 +1,26 @@
 package com.fatec.tcc.animais.user.data
 
+import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.user.domain.User
 import com.fatec.tcc.animais.user.domain.UserRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
 class UserRepositoryImpl(
-    private val userJpaRepository: UserJpaRepository
+    private val userEntityRepository: UserEntityRepository,
+    private val mapper: Mapper<UserEntity, User>
 ) : UserRepository {
-    override fun all(): List<User> =
-        userJpaRepository.findAll().map(UserMapper::toDomain)
+    override fun all(): List<User> = userEntityRepository
+        .findAll()
+        .map(mapper::toDomain)
 
     override fun insert(user: User) = user
-        .run(UserMapper::toEntity)
-        .run(userJpaRepository::save)
-        .run(UserMapper::toDomain)
+        .run(mapper::toEntity)
+        .run(userEntityRepository::save)
+        .run(mapper::toDomain)
+
+    override fun find(id: Long): User? = userEntityRepository
+        .findByIdOrNull(id)
+        ?.run(mapper::toDomain)
 }
