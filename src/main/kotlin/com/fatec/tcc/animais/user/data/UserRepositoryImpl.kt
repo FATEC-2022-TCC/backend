@@ -11,7 +11,7 @@ class UserRepositoryImpl(
     private val userEntityRepository: UserEntityRepository,
     private val mapper: Mapper<UserEntity, User>
 ) : UserRepository {
-    override fun all(): List<User> = userEntityRepository
+    override fun all() = userEntityRepository
         .findAll()
         .map(mapper::toDomain)
 
@@ -20,7 +20,12 @@ class UserRepositoryImpl(
         .run(userEntityRepository::save)
         .run(mapper::toDomain)
 
-    override fun find(id: Long): User? = userEntityRepository
+    override fun find(id: Long) = userEntityRepository
         .findByIdOrNull(id)
         ?.run(mapper::toDomain)
+
+    override fun update(user: User) = user
+        .run(mapper::toEntity)
+        .run(userEntityRepository::save)
+        .run(mapper::toDomain)
 }

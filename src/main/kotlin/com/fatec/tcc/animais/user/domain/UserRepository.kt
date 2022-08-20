@@ -4,4 +4,5 @@ interface UserRepository {
     fun all(): List<User>
     fun insert(user: User): User
     fun find(id: Long): User?
+    fun update(user: User): User
 }

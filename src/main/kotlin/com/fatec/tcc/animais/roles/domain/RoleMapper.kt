@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component
 @Component
 class RoleMapper : Mapper<RoleEntity, Role> {
     override fun toEntity(domain: Role) = domain.run {
-        RoleEntity(id, roleNumber)
+        RoleEntity(id, number)
     }
 
     override fun toDomain(entity: RoleEntity) = entity.run {
-        Role(id, roleNumber)
+        Role(id, number)
     }
 }

@@ -3,6 +3,7 @@ package com.fatec.tcc.animais.tests
 import com.fatec.tcc.animais.animal.data.AnimalEntity
 import com.fatec.tcc.animais.animal.data.AnimalRepository
 import com.fatec.tcc.animais.animal.domain.Animal
+import com.fatec.tcc.animais.roles.domain.Role
 import com.fatec.tcc.animais.user.domain.User
 import com.fatec.tcc.animais.user.domain.UserRepository
 import org.springframework.web.bind.annotation.GetMapping
@@ -40,4 +41,17 @@ class UnsecureTestController(
     @GetMapping("/user")
     fun getUser(@RequestParam userId: Long) =
         userRepository.find(userId)
+
+    @PostMapping("/role")
+    fun postRole(
+        @RequestParam userId: Long,
+        @RequestBody role: Role
+    ): User? {
+        val user = userRepository.find(userId) ?: return null
+        val roles = user.roles.toMutableList().apply {
+            add(role)
+        }
+        val new = user.copy(roles = roles)
+        return userRepository.update(new)
+    }
 }
