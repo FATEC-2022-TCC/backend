@@ -6,12 +6,15 @@ import com.fatec.tcc.animais.animal.domain.Animal
 import com.fatec.tcc.animais.roles.domain.Role
 import com.fatec.tcc.animais.user.domain.User
 import com.fatec.tcc.animais.user.domain.UserRepository
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.server.ResponseStatusException
 import java.lang.IllegalStateException
 
 @RestController
@@ -46,12 +49,12 @@ class UnsecureTestController(
     fun postRole(
         @RequestParam userId: Long,
         @RequestBody role: Role
-    ): User? {
-        val user = userRepository.find(userId) ?: return null
+    ): ResponseEntity<User> {
+        val user = userRepository.find(userId) ?: return ResponseEntity.notFound().build()
         val roles = user.roles.toMutableList().apply {
             add(role)
         }
         val new = user.copy(roles = roles)
-        return userRepository.update(new)
+        return ResponseEntity.ok(userRepository.update(new))
     }
 }
