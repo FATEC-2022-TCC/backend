@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*
 class UserController(
     private val userRepository: UserRepository
 ) {
-    @GetMapping("/all")
-    fun all(): List<User> = userRepository.all()
+    @GetMapping
+    fun get(): List<User> = userRepository.all()
 
     @PostMapping
-    fun insert(@RequestBody user: User) = userRepository.insert(user)
+    fun post(@RequestBody user: User) = userRepository.insert(user)
 
-    @GetMapping
-    fun get(@RequestParam userId: Long) = userRepository.find(userId).asResponse()
+    @GetMapping("/{id}")
+    fun get(id: Long) = userRepository.find(id).asResponse()
 }
