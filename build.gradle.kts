@@ -23,6 +23,8 @@ repositories {
 }
 
 dependencies {
+	implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -32,6 +34,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 
+	//swagger
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.10")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
