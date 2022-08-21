@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.user.domain
 
+import com.fatec.tcc.animais.extensions.asResponse
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
@@ -9,11 +10,12 @@ import org.springframework.web.bind.annotation.*
 class UserController(
     private val userRepository: UserRepository
 ) {
-    @GetMapping
-    fun all(): List<User> =
-        userRepository.all()
+    @GetMapping("/all")
+    fun all(): List<User> = userRepository.all()
 
     @PostMapping
-    fun insert(@RequestBody user: User): User =
-        userRepository.insert(user)
+    fun insert(@RequestBody user: User) = userRepository.insert(user)
+
+    @GetMapping
+    fun get(@RequestParam userId: Long) = userRepository.find(userId).asResponse()
 }
