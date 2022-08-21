@@ -50,7 +50,7 @@ class SecurityConfig(
                 )
             }
             .authorizeHttpRequests()
-            .antMatchers("/token/**", "/test/**")
+            .antMatchers("/token/**", "/test/**", "/swagger**/**", "/v3/api-docs**/**")
             .permitAll()
             .and()
             .authorizeHttpRequests()
