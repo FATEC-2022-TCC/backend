@@ -20,11 +20,10 @@ class UserEntity(
     @JoinColumn(name = "user_id")
     val roles: List<RoleEntity>,
     @OneToMany(
-    fetch = FetchType.LAZY,
-    cascade = [CascadeType.ALL],
-    orphanRemoval = true
+        fetch = FetchType.LAZY,
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
     )
     @JoinColumn(name = "animal_id")
     val animals: List<AnimalEntity>
-
 )
