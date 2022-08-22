@@ -10,14 +10,26 @@ import org.springframework.stereotype.Component
 
 @Component
 class UserMapper(
-    private val mapper: Mapper<RoleEntity, Role> ,
-    private val mapperA: Mapper<AnimalEntity, Animal>
+    private val roleMapper: Mapper<RoleEntity, Role>,
+    private val animalMapper: Mapper<AnimalEntity, Animal>
 ) : Mapper<UserEntity, User> {
     override fun toEntity(domain: User) = domain.run {
-        UserEntity(id, name, email, roles.map(mapper::toEntity) , animals.map(mapperA::toEntity) )
+        UserEntity(
+            id,
+            name,
+            email,
+            roles.map(roleMapper::toEntity),
+            animals.map(animalMapper::toEntity)
+        )
     }
 
     override fun toDomain(entity: UserEntity) = entity.run {
-        User(id, name, email, roles.map(mapper::toDomain), animals.map(mapperA::toDomain))
+        User(
+            id,
+            name,
+            email,
+            roles.map(roleMapper::toDomain),
+            animals.map(animalMapper::toDomain)
+        )
     }
 }
