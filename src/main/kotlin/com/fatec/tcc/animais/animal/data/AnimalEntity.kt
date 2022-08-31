@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.animal.data
 
+import java.util.Date
 import javax.persistence.*
 
 @Entity
@@ -11,5 +12,5 @@ class AnimalEntity(
     val name: String,
     val description: String,
     val type: String,
-    val age: Int
+    val dataNascimento: Date
 )
