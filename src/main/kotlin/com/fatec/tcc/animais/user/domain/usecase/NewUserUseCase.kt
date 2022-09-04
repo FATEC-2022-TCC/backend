@@ -15,16 +15,13 @@ class NewUserUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
-    @Throws(IllegalStateException::class)
     operator fun invoke(user: User): ResponseEntity<Result<User>> {
         if (user.id != -1L) {
-            val messageCode = "User's id must be -1. It was ${user.id}" to ErrorCode.INVALID_LOGIC
-            return messageCode.error()
+            return "User's id must be -1. It was ${user.id}" error ErrorCode.INVALID_LOGIC
         }
         val databaseUser = userRepository.find(user.username)
         if (databaseUser != null) {
-            val messageCode = "Username ${user.username} already exists" to ErrorCode.ALREADY_EXISTS
-            return messageCode.error()
+            return "Username ${user.username} already exists" error ErrorCode.ALREADY_EXISTS
         }
         val password = passwordEncoder.encode(user.password)
 

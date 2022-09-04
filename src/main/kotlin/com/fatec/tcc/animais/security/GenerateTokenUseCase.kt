@@ -1,30 +1,27 @@
 package com.fatec.tcc.animais.security
 
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.oauth2.jwt.JwtClaimsSet
 import org.springframework.security.oauth2.jwt.JwtEncoder
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.stereotype.Component
 import java.time.Instant
 
-@RestController
-@RequestMapping("/token")
-class TokenController(
+@Component
+class GenerateTokenUseCase(
     private val jwtEncoder: JwtEncoder
 ) {
-
-    @GetMapping("/generate")
-    fun generateToken(): String {
+    operator fun invoke(userDetails: UserDetails): String {
         val now = Instant.now()
         val expiry = 3600L
-        val scope = arrayListOf("admin", "user", "manager").joinToString(" ")
+        val scope = userDetails.authorities.joinToString(" ", transform = GrantedAuthority::getAuthority)
 
         val claims = JwtClaimsSet.builder()
-            .issuer("self")
+            .issuer(userDetails.username)
+            .subject(userDetails.username)
             .issuedAt(now)
             .expiresAt(now.plusSeconds(expiry))
-            .subject("user")
             .claim("scope", scope)
             .build()
 

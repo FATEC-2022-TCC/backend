@@ -9,6 +9,7 @@ import com.nimbusds.jose.proc.SecurityContext
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -52,7 +53,11 @@ class SecurityConfig(
                 )
             }
             .authorizeHttpRequests()
-            .antMatchers("/token/**", "/test/**", "/swagger**/**", "/v3/api-docs**/**")
+            //swagger route
+            .antMatchers("/swagger**/**", "/v3/api-docs**/**")
+            .permitAll()
+            //create and generate token route
+            .antMatchers(HttpMethod.POST,  "/user", "/user/login")
             .permitAll()
             .and()
             .authorizeHttpRequests()
