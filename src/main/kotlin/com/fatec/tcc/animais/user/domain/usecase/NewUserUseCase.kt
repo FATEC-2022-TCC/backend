@@ -7,11 +7,13 @@ import com.fatec.tcc.animais.base.success
 import com.fatec.tcc.animais.user.domain.model.User
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.http.ResponseEntity
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
 class NewUserUseCase(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder
 ) {
     @Throws(IllegalStateException::class)
     operator fun invoke(user: User): ResponseEntity<Result<User>> {
@@ -24,6 +26,12 @@ class NewUserUseCase(
             val messageCode = "Username ${user.username} already exists" to ErrorCode.ALREADY_EXISTS
             return messageCode.error()
         }
-        return userRepository.insert(user).success()
+        val password = passwordEncoder.encode(user.password)
+
+        return userRepository.insert(
+            user.copy(
+                password = password
+            )
+        ).success()
     }
 }

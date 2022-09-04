@@ -19,6 +19,7 @@ class UserMapper(
             id,
             name,
             username,
+            password,
             email,
             roles.map(roleMapper::toEntity),
             animals.map(animalMapper::toEntity)
@@ -30,6 +31,7 @@ class UserMapper(
             id,
             name,
             username,
+            password,
             email,
             roles.map(roleMapper::toDomain),
             animals.map(animalMapper::toDomain)
