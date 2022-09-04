@@ -1,7 +1,7 @@
 package com.fatec.tcc.animais.roles.domain
 
-import com.fatec.tcc.animais.user.domain.User
-import com.fatec.tcc.animais.user.domain.UserRepository
+import com.fatec.tcc.animais.user.domain.model.User
+import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping

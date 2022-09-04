@@ -1,8 +1,10 @@
-package com.fatec.tcc.animais.user.data
+package com.fatec.tcc.animais.user.data.repository
 
 import com.fatec.tcc.animais.base.Mapper
-import com.fatec.tcc.animais.user.domain.User
-import com.fatec.tcc.animais.user.domain.UserRepository
+import com.fatec.tcc.animais.user.data.entity.UserEntity
+import com.fatec.tcc.animais.user.data.entity.UserEntityRepository
+import com.fatec.tcc.animais.user.domain.model.User
+import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

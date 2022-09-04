@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais.user.data
+package com.fatec.tcc.animais.user.data.entity
 
 import com.fatec.tcc.animais.animal.data.AnimalEntity
 import com.fatec.tcc.animais.roles.data.RoleEntity

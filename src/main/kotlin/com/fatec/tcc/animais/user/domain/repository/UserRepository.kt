@@ -1,4 +1,6 @@
-package com.fatec.tcc.animais.user.domain
+package com.fatec.tcc.animais.user.domain.repository
+
+import com.fatec.tcc.animais.user.domain.model.User
 
 interface UserRepository {
     fun all(): List<User>

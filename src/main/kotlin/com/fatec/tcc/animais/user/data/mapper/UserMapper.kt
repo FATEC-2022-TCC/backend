@@ -1,11 +1,12 @@
-package com.fatec.tcc.animais.user.data
+package com.fatec.tcc.animais.user.data.mapper
 
 import com.fatec.tcc.animais.animal.data.AnimalEntity
 import com.fatec.tcc.animais.animal.domain.Animal
 import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.roles.data.RoleEntity
 import com.fatec.tcc.animais.roles.domain.Role
-import com.fatec.tcc.animais.user.domain.User
+import com.fatec.tcc.animais.user.data.entity.UserEntity
+import com.fatec.tcc.animais.user.domain.model.User
 import org.springframework.stereotype.Component
 
 @Component
