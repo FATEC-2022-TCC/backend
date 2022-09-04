@@ -7,7 +7,10 @@ import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import com.fatec.tcc.animais.user.domain.usecase.LoginUserUseCase
 import com.fatec.tcc.animais.user.domain.usecase.NewUserUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import org.springframework.context.annotation.Role
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
+import javax.annotation.security.RolesAllowed
 
 @RestController
 @SecurityRequirement(name = "jwt")
@@ -17,8 +20,10 @@ class UserController(
     private val newUserUseCase: NewUserUseCase,
     private val loginUseCase: LoginUserUseCase
 ) {
+    @RolesAllowed("admin")
     @GetMapping
-    fun get(): List<User> = userRepository.all()
+    fun get(authentication: Authentication): List<User> =
+        userRepository.all()
 
     @PostMapping
     fun post(@RequestBody user: User) = newUserUseCase(user)
