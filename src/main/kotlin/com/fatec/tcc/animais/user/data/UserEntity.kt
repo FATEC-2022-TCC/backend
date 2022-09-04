@@ -11,6 +11,7 @@ class UserEntity(
     @GeneratedValue
     val id: Long,
     val name: String,
+    val username: String,
     val email: String,
     @OneToMany(
         fetch = FetchType.LAZY,

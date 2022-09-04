@@ -18,4 +18,6 @@ class UserController(
 
     @GetMapping("/{id}")
     fun get(id: Long) = userRepository.find(id).asResponse()
+
+
 }

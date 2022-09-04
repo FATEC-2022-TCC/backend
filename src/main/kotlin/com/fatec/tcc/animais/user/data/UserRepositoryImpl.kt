@@ -24,6 +24,10 @@ class UserRepositoryImpl(
         .findByIdOrNull(id)
         ?.run(mapper::toDomain)
 
+    override fun find(username: String) = userEntityRepository
+        .findByUsername(username)
+        ?.run(mapper::toDomain)
+
     override fun update(user: User) = user
         .run(mapper::toEntity)
         .run(userEntityRepository::save)

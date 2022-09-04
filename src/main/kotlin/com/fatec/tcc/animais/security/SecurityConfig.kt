@@ -15,6 +15,8 @@ import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.oauth2.jwt.JwtDecoder
 import org.springframework.security.oauth2.jwt.JwtEncoder
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
@@ -70,10 +72,8 @@ class SecurityConfig(
         return NimbusJwtEncoder(jwks)
     }
 
+    //it will use secure random internally and a 10 strength value by default
     @Bean
-    fun userDetailsService(): UserDetailsService {
-        return UserDetailsService {
-            User.builder().build()
-        }
-    }
+    fun passwordEncoder(): PasswordEncoder =
+        BCryptPasswordEncoder()
 }
