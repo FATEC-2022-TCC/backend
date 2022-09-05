@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.7.2"
+	id("org.springframework.boot") version "2.7.3"
 	id("io.spring.dependency-management") version "1.0.12.RELEASE"
 	kotlin("jvm") version "1.7.10"
 	kotlin("plugin.spring") version "1.7.10"
@@ -26,13 +26,13 @@ dependencies {
 	implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
 	implementation("org.springframework.boot:spring-boot-starter-web")
-
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	//runtimeOnly("com.h2database:h2")
-	runtimeOnly("mysql:mysql-connector-java")
-
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+	implementation("org.springframework.boot:spring-boot-starter-websocket")
+
+	//runtimeOnly("com.h2database:h2")
+	runtimeOnly("mysql:mysql-connector-java")
 
 	//swagger
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.11")
