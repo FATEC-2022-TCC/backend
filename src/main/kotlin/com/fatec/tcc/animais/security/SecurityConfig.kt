@@ -59,6 +59,8 @@ class SecurityConfig(
             //create and generate token route
             .antMatchers(HttpMethod.POST,  "/user", "/user/login")
             .permitAll()
+            .antMatchers("/ws/**")
+            .permitAll()
             .and()
             .authorizeHttpRequests()
             .anyRequest()

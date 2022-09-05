@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller
 
 @Controller
 class ChatbotController {
+
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     fun greetings(message: String): String {
