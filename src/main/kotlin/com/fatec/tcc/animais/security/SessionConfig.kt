@@ -14,7 +14,6 @@ import org.springframework.session.config.annotation.web.http.EnableSpringHttpSe
 import org.springframework.session.data.redis.RedisSessionRepository
 import java.time.Duration
 
-
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(RedisSessionProperties::class)
 @EnableSpringHttpSession

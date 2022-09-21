@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
 
+@CrossOrigin
 @RestController
 @SecurityRequirement(name = "jwt")
 @RequestMapping("/user")
