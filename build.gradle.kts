@@ -30,11 +30,11 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
-	implementation("org.springframework.boot:spring-boot-starter-data-redis")
-	implementation("org.springframework.session:spring-session-core")
-	implementation("org.springframework.session:spring-session-data-redis")
+//	implementation("org.springframework.boot:spring-boot-starter-data-redis")
+//	implementation("org.springframework.session:spring-session-core")
+//	implementation("org.springframework.session:spring-session-data-redis")
 
-	//runtimeOnly("com.h2database:h2")
+//	runtimeOnly("com.h2database:h2")
 	runtimeOnly("mysql:mysql-connector-java")
 
 	//swagger

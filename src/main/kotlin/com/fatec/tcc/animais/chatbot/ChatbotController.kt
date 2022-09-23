@@ -10,7 +10,7 @@ class ChatbotController {
 
     @MessageMapping("/chatbot/{sessionId}")
     @SendTo("/topic/chatbot/{sessionId}")
-    fun greetings(@DestinationVariable sessionId: String, message: String): String {
+    fun onMessage(@DestinationVariable sessionId: String, message: String): String {
         return "I received your message: $message"
     }
 }
