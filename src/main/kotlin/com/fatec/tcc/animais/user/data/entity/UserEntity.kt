@@ -1,6 +1,6 @@
 package com.fatec.tcc.animais.user.data.entity
 
-import com.fatec.tcc.animais.animal.data.AnimalEntity
+import com.fatec.tcc.animais.animal.data.entity.AnimalEntity
 import com.fatec.tcc.animais.roles.data.RoleEntity
 import javax.persistence.*
 

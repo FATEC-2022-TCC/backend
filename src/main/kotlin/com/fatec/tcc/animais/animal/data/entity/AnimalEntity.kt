@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais.animal.data
+package com.fatec.tcc.animais.animal.data.entity
 
 import java.util.Date
 import javax.persistence.*

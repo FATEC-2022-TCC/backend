@@ -12,12 +12,13 @@ import java.time.Instant
 class GenerateTokenUseCase(
     private val jwtEncoder: JwtEncoder
 ) {
-    operator fun invoke(userDetails: UserDetails): String {
+    operator fun invoke(userDetails: UserDetails, id: Long): String {
         val now = Instant.now()
         val expiry = 3600L
         val scope = userDetails.authorities.joinToString(" ", transform = GrantedAuthority::getAuthority)
 
         val claims = JwtClaimsSet.builder()
+            .id(id.toString())
             .issuer(userDetails.username)
             .subject(userDetails.username)
             .issuedAt(now)

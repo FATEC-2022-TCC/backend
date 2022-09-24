@@ -31,7 +31,7 @@ class LoginUserUseCase(
             password(user.password)
             authorities(emptyList())
         }.build()
-        val token = generateTokenUseCase(userDetails)
+        val token = generateTokenUseCase(userDetails, user.id)
         return Token(token).success()
     }
 }

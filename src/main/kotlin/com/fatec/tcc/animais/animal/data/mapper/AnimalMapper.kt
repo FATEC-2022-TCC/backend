@@ -1,6 +1,7 @@
-package com.fatec.tcc.animais.animal.data
+package com.fatec.tcc.animais.animal.data.mapper
 
-import com.fatec.tcc.animais.animal.domain.Animal
+import com.fatec.tcc.animais.animal.data.entity.AnimalEntity
+import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.base.Mapper
 import org.springframework.stereotype.Component
 

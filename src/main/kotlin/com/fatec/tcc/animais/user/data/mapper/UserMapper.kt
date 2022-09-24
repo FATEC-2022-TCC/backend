@@ -1,7 +1,7 @@
 package com.fatec.tcc.animais.user.data.mapper
 
-import com.fatec.tcc.animais.animal.data.AnimalEntity
-import com.fatec.tcc.animais.animal.domain.Animal
+import com.fatec.tcc.animais.animal.data.entity.AnimalEntity
+import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.roles.data.RoleEntity
 import com.fatec.tcc.animais.roles.domain.Role

@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais.animal.domain
+package com.fatec.tcc.animais.animal.domain.model
 
 import java.util.Date
 
