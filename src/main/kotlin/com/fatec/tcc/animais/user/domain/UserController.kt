@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.user.domain
 
 import com.fatec.tcc.animais.animal.domain.model.Animal
+import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.user.domain.model.LoginRequest
 import com.fatec.tcc.animais.user.domain.model.NewUserRequest
 import com.fatec.tcc.animais.user.domain.usecase.LoginUserUseCase
@@ -26,5 +27,5 @@ class UserController(
     fun login(@RequestBody loginRequest: LoginRequest) = loginUseCase(loginRequest)
 
     @PostMapping("/animal")
-    fun newAnimal(authentication: Authentication, @RequestBody animal: Animal) = newAnimalUseCase(authentication, animal)
+    fun newAnimal(authentication: Authentication, @RequestBody newAnimalRequest: NewAnimalRequest) = newAnimalUseCase(authentication, newAnimalRequest)
 }
