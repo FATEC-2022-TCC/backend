@@ -3,15 +3,12 @@ package com.fatec.tcc.animais.user.data.mapper
 import com.fatec.tcc.animais.animal.data.entity.AnimalEntity
 import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.base.Mapper
-import com.fatec.tcc.animais.roles.data.RoleEntity
-import com.fatec.tcc.animais.roles.domain.Role
 import com.fatec.tcc.animais.user.data.entity.UserEntity
 import com.fatec.tcc.animais.user.domain.model.User
 import org.springframework.stereotype.Component
 
 @Component
 class UserMapper(
-    private val roleMapper: Mapper<RoleEntity, Role>,
     private val animalMapper: Mapper<AnimalEntity, Animal>
 ) : Mapper<UserEntity, User> {
     override fun toEntity(domain: User) = domain.run {
@@ -21,7 +18,7 @@ class UserMapper(
             username,
             password,
             email,
-            roles.map(roleMapper::toEntity),
+            authorities,
             animals.map(animalMapper::toEntity)
         )
     }
@@ -33,7 +30,7 @@ class UserMapper(
             username,
             password,
             email,
-            roles.map(roleMapper::toDomain),
+            authorities,
             animals.map(animalMapper::toDomain)
         )
     }

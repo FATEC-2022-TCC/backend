@@ -9,6 +9,7 @@ import com.fatec.tcc.animais.user.domain.model.LoginRequest
 import com.fatec.tcc.animais.user.domain.model.Token
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.authority.AuthorityUtils.createAuthorityList
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
@@ -27,7 +28,8 @@ class LoginUserUseCase(
         val userDetails = User.builder().apply {
             username(user.username)
             password(user.password)
-            authorities(emptyList())
+            val authorities = user.authorities.split(" ").toTypedArray()
+            authorities(createAuthorityList(*authorities))
         }.build()
         val token = generateTokenUseCase(userDetails, user.id)
         return Token(token).success()

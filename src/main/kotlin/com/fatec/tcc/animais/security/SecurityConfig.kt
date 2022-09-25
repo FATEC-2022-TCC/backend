@@ -32,11 +32,9 @@ import java.security.interfaces.RSAPublicKey
 class SecurityConfig(
     @Value("\${jwt.public.key}")
     private val pub: RSAPublicKey,
-
     @Value("\${jwt.private.key}")
     private val priv: RSAPrivateKey
 ) {
-
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http.cors().and().csrf().disable()
@@ -61,6 +59,8 @@ class SecurityConfig(
             .permitAll()
             .antMatchers("/ws/**")
             .permitAll()
+            .antMatchers("/admin/**")
+            .hasAuthority("SCOPE_ADMIN")
             .and()
             .authorizeHttpRequests()
             .anyRequest()
@@ -79,8 +79,6 @@ class SecurityConfig(
         return NimbusJwtEncoder(jwks)
     }
 
-    //it will use secure random internally and a 10 strength value by default
     @Bean
-    fun passwordEncoder(): PasswordEncoder =
-        BCryptPasswordEncoder()
+    fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 }

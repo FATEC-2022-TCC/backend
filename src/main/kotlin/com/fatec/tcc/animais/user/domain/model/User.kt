@@ -1,7 +1,6 @@
 package com.fatec.tcc.animais.user.domain.model
 
 import com.fatec.tcc.animais.animal.domain.model.Animal
-import com.fatec.tcc.animais.roles.domain.Role
 
 data class User(
     val id: Long = -1,
@@ -9,6 +8,6 @@ data class User(
     val username: String,
     val password: String,
     val email: String = "",
-    val roles: List<Role> = emptyList(),
+    val authorities: String = "",
     val animals: List<Animal> = emptyList()
 )
