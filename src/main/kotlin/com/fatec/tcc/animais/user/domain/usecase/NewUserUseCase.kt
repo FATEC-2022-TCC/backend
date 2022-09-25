@@ -5,6 +5,7 @@ import com.fatec.tcc.animais.base.Result
 import com.fatec.tcc.animais.base.error
 import com.fatec.tcc.animais.base.success
 import com.fatec.tcc.animais.user.domain.model.User
+import com.fatec.tcc.animais.user.domain.model.NewUserRequest
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -15,18 +16,16 @@ class NewUserUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
-    operator fun invoke(user: User): ResponseEntity<Result<User>> {
-        if (user.id != -1L) {
-            return "User's id must be -1. It was ${user.id}" error ErrorCode.INVALID_LOGIC
-        }
-        val databaseUser = userRepository.find(user.username)
+    operator fun invoke(newUserRequest: NewUserRequest): ResponseEntity<Result<User>> {
+        val databaseUser = userRepository.find(newUserRequest.username)
         if (databaseUser != null) {
-            return "Username ${user.username} already exists" error ErrorCode.ALREADY_EXISTS
+            return "Username ${newUserRequest.username} already exists" error ErrorCode.ALREADY_EXISTS
         }
-        val password = passwordEncoder.encode(user.password)
-
+        val password = passwordEncoder.encode(newUserRequest.password)
         return userRepository.insert(
-            user.copy(
+            User(
+                name = newUserRequest.name,
+                username = newUserRequest.username,
                 password = password
             )
         ).success()
