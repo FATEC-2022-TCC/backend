@@ -10,6 +10,7 @@ class UserEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     val name: String,
+    @Column(unique = true)
     val username: String,
     val password: String,
     val email: String,
@@ -19,6 +20,6 @@ class UserEntity(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "animal_id")
+    @JoinColumn(name = "user_id")
     val animals: List<AnimalEntity>
 )

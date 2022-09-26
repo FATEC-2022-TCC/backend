@@ -3,6 +3,9 @@ package com.fatec.tcc.animais.user.domain.usecase
 import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.animal.domain.repository.AnimalRepository
+import com.fatec.tcc.animais.base.ErrorCode
+import com.fatec.tcc.animais.base.Result
+import com.fatec.tcc.animais.base.error
 import com.fatec.tcc.animais.base.success
 import com.fatec.tcc.animais.user.domain.model.User
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
@@ -13,31 +16,29 @@ import org.springframework.stereotype.Component
 
 @Component
 class NewAnimalUseCase(
-    private val userRepository: UserRepository,
-    private val animalRepository: AnimalRepository
+    private val userRepository: UserRepository
 ) {
-
-    operator fun invoke(authentication: Authentication, newAnimalRequest: NewAnimalRequest): ResponseEntity<Result<User>> {
-        val jwt = authentication.credentials as? Jwt ?: return ResponseEntity.badRequest().build()
-        val id = jwt.claims["jti"] as? String ?: return  ResponseEntity.badRequest().build()
-        val user = userRepository.find(id)
-        val animal = animalRepository.insert(
-            Animal(
-                id = -1,
-                name = newAnimalRequest.name,
-                description = newAnimalRequest.description,
-                type = newAnimalRequest.type,
-                birth = newAnimalRequest.birth
+    operator fun invoke(
+        authentication: Authentication,
+        newAnimalRequest: NewAnimalRequest
+    ): ResponseEntity<Result<Unit>> {
+        val jwt = authentication.credentials as? Jwt
+        val idString = jwt?.claims?.get("jti") as? String ?: return "User id not found" error ErrorCode.NOT_FOUND
+        val user = userRepository.find(idString.toLong()) ?: return "User not found" error ErrorCode.NOT_FOUND
+        val animal = Animal(
+            name = newAnimalRequest.name,
+            description = newAnimalRequest.description,
+            type = newAnimalRequest.type,
+            birth = newAnimalRequest.birth
+        )
+        val animals = user.animals.toMutableList().apply {
+            add(animal)
+        }
+        userRepository.update(
+            user.copy(
+                animals = animals
             )
         )
-        if (user != null) {
-            val animals: MutableList<Animal> = user.animals as MutableList<Animal>
-            user.animals.add(animal)
-            userRepository.update(user).success()
-           return ResponseEntity.ok().build()
-        }
-
-        return ResponseEntity.notFound().build()
-
+        return ResponseEntity.ok().build()
     }
 }
