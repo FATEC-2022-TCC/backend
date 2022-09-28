@@ -1,6 +1,5 @@
 package com.fatec.tcc.animais.user.domain
 
-import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.user.domain.model.LoginRequest
 import com.fatec.tcc.animais.user.domain.model.NewUserRequest

@@ -2,12 +2,9 @@ package com.fatec.tcc.animais.user.domain.usecase
 
 import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
-import com.fatec.tcc.animais.animal.domain.repository.AnimalRepository
 import com.fatec.tcc.animais.base.ErrorCode
 import com.fatec.tcc.animais.base.Result
 import com.fatec.tcc.animais.base.error
-import com.fatec.tcc.animais.base.success
-import com.fatec.tcc.animais.user.domain.model.User
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.Authentication

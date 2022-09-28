@@ -8,6 +8,7 @@ import com.fatec.tcc.animais.base.Mapper
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
+
 @Service
 class AnimalRepositoryImpl(
     private val animalEntityRepository: AnimalEntityRepository,
@@ -34,4 +35,6 @@ class AnimalRepositoryImpl(
         .run(mapper::toEntity)
         .run(animalEntityRepository::save)
         .run(mapper::toDomain)
+
+    override fun delete(id: Long) = animalEntityRepository.deleteById(id)
 }

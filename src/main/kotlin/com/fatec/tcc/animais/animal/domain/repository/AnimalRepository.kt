@@ -8,4 +8,5 @@ interface AnimalRepository {
     fun find(id: Long): Animal?
     fun find(name: String): Animal?
     fun update(animal: Animal): Animal
+    fun delete(id: Long)
 }
