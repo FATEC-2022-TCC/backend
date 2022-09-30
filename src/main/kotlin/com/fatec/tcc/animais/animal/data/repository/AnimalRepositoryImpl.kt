@@ -36,5 +36,6 @@ class AnimalRepositoryImpl(
         .run(animalEntityRepository::save)
         .run(mapper::toDomain)
 
-    override fun delete(id: Long) = animalEntityRepository.deleteById(id)
+    override fun delete(id: Long) = animalEntityRepository
+        .deleteById(id)
 }
