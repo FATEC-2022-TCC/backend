@@ -19,7 +19,7 @@ class NewAnimalUseCase(
     operator fun invoke(
         authentication: Authentication,
         newAnimalRequest: NewAnimalRequest,
-        file: MultipartFile
+        files: Array<MultipartFile>
     ): ResponseEntity<Result<Unit>> {
         val jwt = authentication.credentials as? Jwt
         val idString = jwt?.claims?.get("jti") as? String ?: return "User id not found" error ErrorCode.NOT_FOUND
@@ -28,9 +28,7 @@ class NewAnimalUseCase(
             name = newAnimalRequest.name,
             description = newAnimalRequest.description,
             type = newAnimalRequest.type,
-            birth = newAnimalRequest.birth,
-            picture_name = file.originalFilename.toString(),
-            animalPicture =  file.bytes
+            birth = newAnimalRequest.birth
         )
         val animals = user.animals.toMutableList().apply {
             add(animal)

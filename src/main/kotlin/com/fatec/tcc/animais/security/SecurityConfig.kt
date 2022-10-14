@@ -19,8 +19,11 @@ import org.springframework.security.oauth2.jwt.*
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.web.multipart.MultipartResolver
+import org.springframework.web.multipart.support.StandardServletMultipartResolver
 import java.security.interfaces.RSAPrivateKey
 import java.security.interfaces.RSAPublicKey
+
 
 @Configuration
 class SecurityConfig(
@@ -75,6 +78,9 @@ class SecurityConfig(
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
+
+    @Bean
+    fun multipartResolver(): MultipartResolver = StandardServletMultipartResolver()
 
 //    @Bean
 //    fun currentUser(authentication: Authentication): CurrentUser {

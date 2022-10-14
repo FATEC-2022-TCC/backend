@@ -7,6 +7,7 @@ import com.fatec.tcc.animais.user.domain.usecase.LoginUserUseCase
 import com.fatec.tcc.animais.user.domain.usecase.NewAnimalUseCase
 import com.fatec.tcc.animais.user.domain.usecase.NewUserUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import org.springframework.http.MediaType
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
@@ -21,11 +22,22 @@ class UserController(
     private val newAnimalUseCase: NewAnimalUseCase
 ) {
     @PostMapping
-    fun post(@RequestBody newUserRequest: NewUserRequest) = newUserUseCase(newUserRequest)
+    fun post(@RequestBody newUserRequest: NewUserRequest) =
+        newUserUseCase(newUserRequest)
 
     @PostMapping("/login")
-    fun login(@RequestBody loginRequest: LoginRequest) = loginUseCase(loginRequest)
+    fun login(@RequestBody loginRequest: LoginRequest) =
+        loginUseCase(loginRequest)
 
-    @PostMapping("/animal")
-    fun newAnimal(authentication: Authentication, @RequestBody newAnimalRequest: NewAnimalRequest, file: MultipartFile) = newAnimalUseCase(authentication, newAnimalRequest, file)
+    @PostMapping(
+        "/animal",
+        consumes = [
+            MediaType.APPLICATION_FORM_URLENCODED_VALUE
+        ]
+    )
+    fun newAnimal(
+        authentication: Authentication,
+        @RequestPart("animal") newAnimalRequest: NewAnimalRequest,
+        @RequestPart("files", required = false) files: Array<MultipartFile>
+    ) = newAnimalUseCase(authentication, newAnimalRequest, files)
 }
