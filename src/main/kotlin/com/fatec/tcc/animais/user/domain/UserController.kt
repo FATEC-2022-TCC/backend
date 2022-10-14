@@ -9,6 +9,7 @@ import com.fatec.tcc.animais.user.domain.usecase.NewUserUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.multipart.MultipartFile
 
 @CrossOrigin
 @RestController
@@ -26,5 +27,5 @@ class UserController(
     fun login(@RequestBody loginRequest: LoginRequest) = loginUseCase(loginRequest)
 
     @PostMapping("/animal")
-    fun newAnimal(authentication: Authentication, @RequestBody newAnimalRequest: NewAnimalRequest) = newAnimalUseCase(authentication, newAnimalRequest)
+    fun newAnimal(authentication: Authentication, @RequestBody newAnimalRequest: NewAnimalRequest, file: MultipartFile) = newAnimalUseCase(authentication, newAnimalRequest, file)
 }

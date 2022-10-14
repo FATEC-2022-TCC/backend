@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component
 @Component
 class AnimalMapper : Mapper<AnimalEntity, Animal> {
     override fun toEntity(domain: Animal) = domain.run {
-        AnimalEntity(id, name, description, type, birth)
+        AnimalEntity(id, name, description, type, birth, picture_name,animalPicture)
     }
 
     override fun toDomain(entity: AnimalEntity) = entity.run {
-        Animal(id, name, description, type, birth)
+        Animal(id, name, description, type, birth, picture_name ,animalPicture)
     }
 }

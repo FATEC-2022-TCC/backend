@@ -12,5 +12,9 @@ class AnimalEntity(
     val name: String,
     val description: String,
     val type: String,
-    val birth: Date
+    val birth: Date,
+    val picture_name:String,
+    @Lob
+    @Column(name="animal_picture")
+    var animalPicture: ByteArray
 )

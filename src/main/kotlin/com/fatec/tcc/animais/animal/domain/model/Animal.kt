@@ -7,5 +7,7 @@ data class Animal(
     val name: String,
     val description: String,
     val type: String,
-    val birth: Date
+    val birth: Date,
+    val picture_name: String,
+    var animalPicture: ByteArray
 )
