@@ -56,6 +56,8 @@ class SecurityConfig(
             .permitAll()
             .antMatchers("/ws/**")
             .permitAll()
+            .antMatchers("/file")
+            .permitAll()
             .antMatchers("/admin/**")
             .hasAuthority("SCOPE_ADMIN")
             .and()
@@ -78,9 +80,6 @@ class SecurityConfig(
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
-
-    @Bean
-    fun multipartResolver(): MultipartResolver = StandardServletMultipartResolver()
 
 //    @Bean
 //    fun currentUser(authentication: Authentication): CurrentUser {
