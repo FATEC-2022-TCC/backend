@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 import java.io.File
+import java.io.FileInputStream
 
 @Component
 class PublicFileService : FileService {
@@ -27,8 +28,6 @@ class PublicFileService : FileService {
     override fun readFile(name: String): ByteArray {
         val file = File("$location${separator}$name")
         if (!file.exists()) throw ResponseStatusException(HttpStatus.NOT_FOUND)
-        return file.inputStream().use {
-            it.readAllBytes()
-        }
+        return file.inputStream().use(FileInputStream::readAllBytes)
     }
 }
