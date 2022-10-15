@@ -14,7 +14,7 @@ class UserEntity(
     val username: String,
     val password: String,
     val email: String,
-    val authorities: String,
+    val authority: String,
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],

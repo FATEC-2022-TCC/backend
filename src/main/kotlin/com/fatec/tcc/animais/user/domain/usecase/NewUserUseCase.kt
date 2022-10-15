@@ -23,7 +23,7 @@ class NewUserUseCase(
                 name = newUserRequest.name,
                 username = newUserRequest.username,
                 password = password,
-                authorities = Scope.NORMAL.toString()
+                authority = "${Scope.NORMAL}"
             )
         )
     }

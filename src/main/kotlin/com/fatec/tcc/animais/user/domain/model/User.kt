@@ -8,6 +8,6 @@ data class User(
     val username: String,
     val password: String,
     val email: String = "",
-    val authorities: String = "",
+    val authority: String = "",
     val animals: List<Animal> = emptyList()
 )

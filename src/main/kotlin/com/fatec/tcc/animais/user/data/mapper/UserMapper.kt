@@ -18,7 +18,7 @@ class UserMapper(
             username,
             password,
             email,
-            authorities,
+            authority,
             animals.map(animalMapper::toEntity)
         )
     }
@@ -30,7 +30,7 @@ class UserMapper(
             username,
             password,
             email,
-            authorities,
+            authority,
             animals.map(animalMapper::toDomain)
         )
     }

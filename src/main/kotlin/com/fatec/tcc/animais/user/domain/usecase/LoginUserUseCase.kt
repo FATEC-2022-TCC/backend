@@ -1,8 +1,9 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
 import com.fatec.tcc.animais.security.GenerateTokenUseCase
+import com.fatec.tcc.animais.security.Scope
 import com.fatec.tcc.animais.user.domain.model.LoginRequest
-import com.fatec.tcc.animais.user.domain.model.Token
+import com.fatec.tcc.animais.user.domain.model.LoginResponse
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.authority.AuthorityUtils.createAuthorityList
@@ -17,7 +18,7 @@ class LoginUserUseCase(
     private val passwordEncoder: PasswordEncoder,
     private val generateTokenUseCase: GenerateTokenUseCase
 ) {
-    operator fun invoke(request: LoginRequest): Token {
+    operator fun invoke(request: LoginRequest): LoginResponse {
         val (username, password) = request
         val user = userRepository.find(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         val match = passwordEncoder.matches(password, user.password)
@@ -25,9 +26,13 @@ class LoginUserUseCase(
         val userDetails = User.builder().apply {
             username(user.username)
             password(user.password)
-            val authorities = user.authorities.split(" ").toTypedArray()
-            authorities(createAuthorityList(*authorities))
+            authorities(createAuthorityList(user.authority))
         }.build()
-        return generateTokenUseCase(userDetails, user.id).run(::Token)
+        val token = generateTokenUseCase(userDetails, user.id)
+        val tokenType = user.authority
+        return LoginResponse(
+            token,
+            tokenType
+        )
     }
 }
