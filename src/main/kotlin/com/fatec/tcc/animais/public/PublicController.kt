@@ -35,8 +35,7 @@ class PublicController(
         for (f in files) {
             val extension = f.originalFilename?.substringAfterLast('.', "") ?: continue
             val name = "${UUID.randomUUID()}.$extension"
-            val public = fileService.saveFile(f, name, MultipartFile::transferTo)
-            println(public)
+            fileService.saveFile(f, name, MultipartFile::transferTo)
         }
     }
 }

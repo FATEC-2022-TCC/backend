@@ -3,27 +3,23 @@ package com.fatec.tcc.animais.animal.domain.usecase
 import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.animal.domain.model.UpdateAnimalRequest
 import com.fatec.tcc.animais.animal.domain.repository.AnimalRepository
-import com.fatec.tcc.animais.base.ErrorCode
-import com.fatec.tcc.animais.base.error
-import com.fatec.tcc.animais.base.Result
-import com.fatec.tcc.animais.base.success
-import org.springframework.http.ResponseEntity
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
+import org.springframework.web.server.ResponseStatusException
 
 @Component
 class UpdateAnimalUseCase(
     private val animalRepository: AnimalRepository
 ) {
-   operator fun invoke(id: Long, updateAnimalRequest: UpdateAnimalRequest): ResponseEntity<Result<Animal>>{
-       val animal = animalRepository.find(id)  ?: return "Animal id not found" error ErrorCode.NOT_FOUND
-       return animalRepository.update(
-           animal.copy(
-               name = updateAnimalRequest.name,
-               description = updateAnimalRequest.description,
-               type = updateAnimalRequest.type,
-               birth = updateAnimalRequest.birth
-           )
-       ).success()
-   }
-
+    operator fun invoke(id: Long, request: UpdateAnimalRequest): Animal {
+        val animal = animalRepository.find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        return animalRepository.update(
+            animal.copy(
+                name = request.name,
+                description = request.description,
+                type = request.type,
+                birth = request.birth
+            )
+        )
+    }
 }

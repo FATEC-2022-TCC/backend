@@ -80,17 +80,4 @@ class SecurityConfig(
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
-
-//    @Bean
-//    fun currentUser(authentication: Authentication): CurrentUser {
-//        val jwt = authentication.credentials as? Jwt
-//        val id = (jwt?.claims?.get("jti") as? String)?.toLong() ?: -1L
-//        val username = authentication.principal as? String ?: ""
-//        val authorities = authentication.authorities.toList()
-//        return CurrentUser(
-//            id,
-//            username,
-//            authorities
-//        )
-//    }
 }

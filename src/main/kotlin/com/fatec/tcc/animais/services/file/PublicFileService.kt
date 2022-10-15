@@ -20,9 +20,8 @@ class PublicFileService : FileService {
         File(location).mkdirs()
     }
 
-    override fun <T> saveFile(input: T, name: String, impl: (T, File) -> Unit): String {
+    override fun <T> saveFile(input: T, name: String, impl: (T, File) -> Unit) {
         impl(input, File("$location$separator$name"))
-        return "$public$separator$name"
     }
 
     override fun readFile(name: String): ByteArray {

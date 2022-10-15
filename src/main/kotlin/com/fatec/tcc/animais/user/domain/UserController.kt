@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.user.domain
 
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
+import com.fatec.tcc.animais.security.toCurrentUser
 import com.fatec.tcc.animais.user.domain.model.LoginRequest
 import com.fatec.tcc.animais.user.domain.model.NewUserRequest
 import com.fatec.tcc.animais.user.domain.usecase.LoginUserUseCase
@@ -39,5 +40,5 @@ class UserController(
         authentication: Authentication,
         @RequestPart("animal") newAnimalRequest: NewAnimalRequest,
         @RequestPart("files", required = false) files: Array<MultipartFile>
-    ) = newAnimalUseCase(authentication, newAnimalRequest, files)
+    ) = newAnimalUseCase(authentication.toCurrentUser(), newAnimalRequest, files)
 }

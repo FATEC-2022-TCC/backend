@@ -1,18 +1,15 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
-import com.fatec.tcc.animais.base.ErrorCode
-import com.fatec.tcc.animais.base.Result
-import com.fatec.tcc.animais.base.error
-import com.fatec.tcc.animais.base.success
 import com.fatec.tcc.animais.security.GenerateTokenUseCase
 import com.fatec.tcc.animais.user.domain.model.LoginRequest
 import com.fatec.tcc.animais.user.domain.model.Token
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
-import org.springframework.http.ResponseEntity
+import org.springframework.http.HttpStatus
 import org.springframework.security.core.authority.AuthorityUtils.createAuthorityList
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
+import org.springframework.web.server.ResponseStatusException
 
 @Component
 class LoginUserUseCase(
@@ -20,18 +17,17 @@ class LoginUserUseCase(
     private val passwordEncoder: PasswordEncoder,
     private val generateTokenUseCase: GenerateTokenUseCase
 ) {
-    operator fun invoke(loginRequest: LoginRequest): ResponseEntity<Result<Token>> {
-        val user = userRepository.find(loginRequest.username)
-            ?: return "User ${loginRequest.username} not found" error ErrorCode.NOT_FOUND
-        val match = passwordEncoder.matches(loginRequest.password, user.password)
-        if (!match) return "User's password is incorrect" error ErrorCode.NOT_FOUND
+    operator fun invoke(request: LoginRequest): Token {
+        val (username, password) = request
+        val user = userRepository.find(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        val match = passwordEncoder.matches(password, user.password)
+        if (!match) throw ResponseStatusException(HttpStatus.NOT_FOUND)
         val userDetails = User.builder().apply {
             username(user.username)
             password(user.password)
             val authorities = user.authorities.split(" ").toTypedArray()
             authorities(createAuthorityList(*authorities))
         }.build()
-        val token = generateTokenUseCase(userDetails, user.id)
-        return Token(token).success()
+        return generateTokenUseCase(userDetails, user.id).run(::Token)
     }
 }
