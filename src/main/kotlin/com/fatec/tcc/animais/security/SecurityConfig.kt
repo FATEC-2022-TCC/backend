@@ -56,7 +56,7 @@ class SecurityConfig(
             .permitAll()
             .antMatchers("/ws/**")
             .permitAll()
-            .antMatchers("/file")
+            .antMatchers("/public/**")
             .permitAll()
             .antMatchers("/admin/**")
             .hasAuthority("SCOPE_ADMIN")
