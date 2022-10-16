@@ -1,7 +1,5 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
-import com.fatec.tcc.animais.security.GenerateTokenUseCase
-import com.fatec.tcc.animais.security.Scope
 import com.fatec.tcc.animais.user.domain.model.LoginRequest
 import com.fatec.tcc.animais.user.domain.model.LoginResponse
 import com.fatec.tcc.animais.user.domain.repository.UserRepository

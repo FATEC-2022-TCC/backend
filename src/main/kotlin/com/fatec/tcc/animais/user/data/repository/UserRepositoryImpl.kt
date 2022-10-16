@@ -6,9 +6,9 @@ import com.fatec.tcc.animais.user.data.entity.UserEntityRepository
 import com.fatec.tcc.animais.user.domain.model.User
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Repository
 
-@Service
+@Repository
 class UserRepositoryImpl(
     private val userEntityRepository: UserEntityRepository,
     private val mapper: Mapper<UserEntity, User>

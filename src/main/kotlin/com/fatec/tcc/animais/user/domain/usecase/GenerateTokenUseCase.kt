@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais.security
+package com.fatec.tcc.animais.user.domain.usecase
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
