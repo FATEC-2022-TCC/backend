@@ -5,6 +5,7 @@ import com.fatec.tcc.animais.content.data.mapper.ContentMapper
 import com.fatec.tcc.animais.content.domain.model.Content
 import com.fatec.tcc.animais.content.domain.repository.ContentRepository
 import org.springframework.stereotype.Repository
+import java.util.*
 
 @Repository
 class ContentRepositoryImpl(
@@ -15,4 +16,12 @@ class ContentRepositoryImpl(
         .run(contentMapper::toEntity)
         .run(contentEntityRepository::save)
         .run(contentMapper::toDomain)
+
+    override fun until(date: Date) = contentEntityRepository
+        .findUntilDate(date)
+        .map(contentMapper::toDomain)
+
+    override fun all() = contentEntityRepository
+        .findAll()
+        .map(contentMapper::toDomain)
 }
