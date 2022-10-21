@@ -1,6 +1,5 @@
 package com.fatec.tcc.animais.content.data.entity
 
-import com.fatec.tcc.animais.content.domain.model.ContentProjection
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
@@ -15,5 +14,5 @@ interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
     ): List<ContentEntity>
 
     @Query("SELECT c FROM ContentEntity c")
-    fun findProjection(): List<ContentProjection>
+    fun findProjection(): List<ContentProjectionEntity>
 }
