@@ -7,7 +7,7 @@ data class User(
     val name: String,
     val username: String,
     val password: String,
-    val email: String = "",
+    val email: String,
     val authority: String = "",
     val animals: List<Animal> = emptyList()
 )

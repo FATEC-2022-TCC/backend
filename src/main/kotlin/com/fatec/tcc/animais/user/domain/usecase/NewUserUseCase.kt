@@ -22,6 +22,7 @@ class NewUserUseCase(
             User(
                 name = newUserRequest.name,
                 username = newUserRequest.username,
+                email = newUserRequest.email,
                 password = password,
                 authority = "${Scope.NORMAL}"
             )
