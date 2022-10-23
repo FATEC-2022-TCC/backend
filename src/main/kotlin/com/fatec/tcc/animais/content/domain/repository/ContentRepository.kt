@@ -7,4 +7,5 @@ interface ContentRepository {
     fun insert(content: Content): Content
     fun until(date: Date): List<Content>
     fun all(): List<Content>
+    fun delete(id: Long)
 }

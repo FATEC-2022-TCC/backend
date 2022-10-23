@@ -24,4 +24,7 @@ class ContentRepositoryImpl(
     override fun all() = contentEntityRepository
         .findAll()
         .map(contentMapper::toDomain)
+
+    override fun delete(id: Long) = contentEntityRepository
+        .deleteById(id)
 }
