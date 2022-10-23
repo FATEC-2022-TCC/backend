@@ -4,8 +4,8 @@ import com.fatec.tcc.animais.content.domain.repository.ContentRepository
 import org.springframework.stereotype.Component
 
 @Component
-class DeleteContentUseCase(
+class GetPaginatedContentUseCase(
     private val contentRepository: ContentRepository
 ) {
-    operator fun invoke(id: Long) = contentRepository.delete(id)
+    operator fun invoke() = contentRepository.all()
 }

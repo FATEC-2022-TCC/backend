@@ -1,10 +1,9 @@
 package com.fatec.tcc.animais.admin
 
+import com.fatec.tcc.animais.content.domain.model.Content
 import com.fatec.tcc.animais.content.domain.model.NewContentRequest
-import com.fatec.tcc.animais.content.domain.usecase.AddContentUseCase
-import com.fatec.tcc.animais.content.domain.usecase.DeleteContentUseCase
-import com.fatec.tcc.animais.content.domain.usecase.GetContentProjectionUseCase
-import com.fatec.tcc.animais.content.domain.usecase.GetContentUseCase
+import com.fatec.tcc.animais.content.domain.model.UpdateContentRequest
+import com.fatec.tcc.animais.content.domain.usecase.*
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
@@ -14,9 +13,11 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/admin")
 class AdminController(
     private val addContentUseCase: AddContentUseCase,
+    private val getPaginatedContentUseCase: GetPaginatedContentUseCase,
     private val getContentUseCase: GetContentUseCase,
-    private val getContentProjectionUseCase: GetContentProjectionUseCase,
-    private val deleteContentUseCase: DeleteContentUseCase
+    private val updateContentUseCase: UpdateContentUseCase,
+    private val removeContentUseCase: RemoveContentUseCase,
+    private val getPaginatedContentProjectionUseCase: GetPaginatedContentProjectionUseCase,
 ) {
     @PostMapping("/content")
     fun postContent(
@@ -25,13 +26,24 @@ class AdminController(
 
     @GetMapping("/content")
     fun getContent() =
-        getContentUseCase()
+        getPaginatedContentUseCase()
+
+    @GetMapping("/content/{id}")
+    fun getContent(
+        @PathVariable id: Long
+    ) = getContentUseCase(id)
+
+    @PutMapping("/content")
+    fun updateContent(
+        @RequestBody request: UpdateContentRequest
+    ) = updateContentUseCase(request)
+
+    @DeleteMapping("/content/{id}")
+    fun deleteContent(
+        @PathVariable id: Long
+    ) = removeContentUseCase(id)
 
     @GetMapping("/content/projection")
     fun getContentProjection() =
-        getContentProjectionUseCase()
-
-    @DeleteMapping("/content/{id}")
-    fun deleteContent(@PathVariable id: Long) =
-        deleteContentUseCase(id)
+        getPaginatedContentProjectionUseCase()
 }

@@ -4,7 +4,7 @@ import com.fatec.tcc.animais.content.domain.repository.ContentProjectionReposito
 import org.springframework.stereotype.Component
 
 @Component
-class GetContentProjectionUseCase(
+class GetPaginatedContentProjectionUseCase(
     private val contentProjectionRepository: ContentProjectionRepository
 ) {
     operator fun invoke() = contentProjectionRepository.all()

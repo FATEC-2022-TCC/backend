@@ -40,6 +40,7 @@ class PublicController(
         }
     }
 
-    @GetMapping("/content/evidence")
-    fun getContentProjectionInEvidence() = getContentProjectionInEvidenceUseCase()
+    @GetMapping("/content/projection/evidence")
+    fun getContentProjectionInEvidence() =
+        getContentProjectionInEvidenceUseCase()
 }

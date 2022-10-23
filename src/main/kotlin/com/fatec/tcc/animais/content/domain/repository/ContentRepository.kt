@@ -8,4 +8,6 @@ interface ContentRepository {
     fun until(date: Date): List<Content>
     fun all(): List<Content>
     fun delete(id: Long)
+    fun get(id: Long): Content?
+    fun update(content: Content): Content
 }
