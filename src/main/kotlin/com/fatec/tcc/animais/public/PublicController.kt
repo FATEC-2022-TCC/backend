@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.public
 
+import com.fatec.tcc.animais.content.domain.usecase.GetContentProjectionInEvidenceUseCase
 import com.fatec.tcc.animais.services.file.PublicFileService
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.http.MediaType
@@ -11,7 +12,8 @@ import java.util.*
 @SecurityRequirement(name = "jwt")
 @RequestMapping("/public")
 class PublicController(
-    private val fileService: PublicFileService
+    private val fileService: PublicFileService,
+    private val getContentProjectionInEvidenceUseCase: GetContentProjectionInEvidenceUseCase
 ) {
     @GetMapping(
         "/images/{name}",
@@ -38,4 +40,7 @@ class PublicController(
             fileService.saveFile(f, name, MultipartFile::transferTo)
         }
     }
+
+    @GetMapping("/content/evidence")
+    fun getContentProjectionInEvidence() = getContentProjectionInEvidenceUseCase()
 }
