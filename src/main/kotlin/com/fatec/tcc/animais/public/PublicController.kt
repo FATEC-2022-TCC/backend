@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.public
 
 import com.fatec.tcc.animais.content.domain.usecase.GetContentProjectionInEvidenceUseCase
+import com.fatec.tcc.animais.content.domain.usecase.GetContentUseCase
 import com.fatec.tcc.animais.services.file.PublicFileService
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -12,7 +13,8 @@ import java.util.*
 @RequestMapping("/public")
 class PublicController(
     private val fileService: PublicFileService,
-    private val getContentProjectionInEvidenceUseCase: GetContentProjectionInEvidenceUseCase
+    private val getContentProjectionInEvidenceUseCase: GetContentProjectionInEvidenceUseCase,
+    private val getContentUseCase: GetContentUseCase
 ) {
     @GetMapping(
         "/images/{name}",
@@ -43,4 +45,9 @@ class PublicController(
     @GetMapping("/content/projection/evidence")
     fun getContentProjectionInEvidence() =
         getContentProjectionInEvidenceUseCase()
+
+    @GetMapping("/content/{id}")
+    fun getContent(
+        @PathVariable id: Long
+    ) = getContentUseCase(id)
 }

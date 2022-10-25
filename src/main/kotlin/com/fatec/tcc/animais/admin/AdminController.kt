@@ -1,6 +1,5 @@
 package com.fatec.tcc.animais.admin
 
-import com.fatec.tcc.animais.content.domain.model.Content
 import com.fatec.tcc.animais.content.domain.model.NewContentRequest
 import com.fatec.tcc.animais.content.domain.model.UpdateContentRequest
 import com.fatec.tcc.animais.content.domain.usecase.*
