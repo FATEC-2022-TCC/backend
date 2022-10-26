@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoder
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters
 import org.springframework.stereotype.Component
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 
 @Component
 class GenerateTokenUseCase(
@@ -14,7 +15,6 @@ class GenerateTokenUseCase(
 ) {
     operator fun invoke(userDetails: UserDetails, id: Long): String {
         val now = Instant.now()
-        val expiry = 3600L
         val scope = userDetails.authorities.joinToString(" ", transform = GrantedAuthority::getAuthority)
 
         val claims = JwtClaimsSet.builder()
@@ -22,7 +22,7 @@ class GenerateTokenUseCase(
             .issuer(userDetails.username)
             .subject(userDetails.username)
             .issuedAt(now)
-            .expiresAt(now.plusSeconds(expiry))
+            .expiresAt(now.plus(24, ChronoUnit.HOURS))
             .claim("scope", scope)
             .build()
 
