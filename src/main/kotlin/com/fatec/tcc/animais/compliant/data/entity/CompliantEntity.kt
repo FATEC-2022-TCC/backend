@@ -11,6 +11,7 @@ class CompliantEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     val local: String,
+    @Lob
     val description: String,
     val created: Date,
     @OneToMany(

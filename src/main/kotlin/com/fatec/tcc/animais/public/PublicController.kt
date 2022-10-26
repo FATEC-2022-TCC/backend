@@ -1,11 +1,13 @@
 package com.fatec.tcc.animais.public
 
+import com.fatec.tcc.animais.compliant.domain.model.NewCompliantRequest
+import com.fatec.tcc.animais.compliant.domain.usecase.AddCompliantUseCase
 import com.fatec.tcc.animais.content.domain.usecase.GetContentProjectionInEvidenceUseCase
 import com.fatec.tcc.animais.content.domain.usecase.GetContentUseCase
 import com.fatec.tcc.animais.user.domain.model.SignInRequest
 import com.fatec.tcc.animais.user.domain.model.SignUpRequest
-import com.fatec.tcc.animais.user.domain.usecase.LoginUseCase
-import com.fatec.tcc.animais.user.domain.usecase.NewUserUseCase
+import com.fatec.tcc.animais.user.domain.usecase.SignInUseCase
+import com.fatec.tcc.animais.user.domain.usecase.SignUpUseCase
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -13,20 +15,21 @@ import java.util.*
 @RestController
 @RequestMapping("/public")
 class PublicController(
-    private val newUserUseCase: NewUserUseCase,
-    private val loginUseCase: LoginUseCase,
+    private val signUpUseCase: SignUpUseCase,
+    private val signInUseCase: SignInUseCase,
     private val getContentProjectionInEvidenceUseCase: GetContentProjectionInEvidenceUseCase,
-    private val getContentUseCase: GetContentUseCase
+    private val getContentUseCase: GetContentUseCase,
+    private val addCompliantUseCase: AddCompliantUseCase
 ) {
     @PostMapping("/signup")
-    fun newUser(
+    fun signUp(
         @RequestBody request: SignUpRequest
-    ) = newUserUseCase(request)
+    ) = signUpUseCase(request)
 
     @PostMapping("/signin")
-    fun login(
+    fun signIn(
         @RequestBody request: SignInRequest
-    ) = loginUseCase(request)
+    ) = signInUseCase(request)
 
     @GetMapping("/content/projection/evidence")
     fun getContentProjectionInEvidence() =
@@ -36,4 +39,9 @@ class PublicController(
     fun getContent(
         @PathVariable id: Long
     ) = getContentUseCase(id)
+
+    @PostMapping("/compliant")
+    fun compliant(
+        @RequestBody request: NewCompliantRequest
+    ) = addCompliantUseCase(request)
 }

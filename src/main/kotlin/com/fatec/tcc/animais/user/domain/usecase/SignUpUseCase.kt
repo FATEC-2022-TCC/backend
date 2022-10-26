@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 
 @Component
-class NewUserUseCase(
+class SignUpUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {

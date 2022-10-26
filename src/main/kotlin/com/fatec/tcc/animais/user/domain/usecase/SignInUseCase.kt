@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 
 @Component
-class LoginUseCase(
+class SignInUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
     private val generateTokenUseCase: GenerateTokenUseCase
