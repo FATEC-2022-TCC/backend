@@ -1,7 +1,7 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
-import com.fatec.tcc.animais.user.domain.model.LoginRequest
-import com.fatec.tcc.animais.user.domain.model.LoginResponse
+import com.fatec.tcc.animais.user.domain.model.SignInRequest
+import com.fatec.tcc.animais.user.domain.model.SignInResponse
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.authority.AuthorityUtils.createAuthorityList
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 
 @Component
-class LoginUserUseCase(
+class LoginUseCase(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
     private val generateTokenUseCase: GenerateTokenUseCase
 ) {
-    operator fun invoke(request: LoginRequest): LoginResponse {
+    operator fun invoke(request: SignInRequest): SignInResponse {
         val (username, password) = request
         val user = userRepository.find(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         val match = passwordEncoder.matches(password, user.password)
@@ -28,7 +28,7 @@ class LoginUserUseCase(
         }.build()
         val token = generateTokenUseCase(userDetails, user.id)
         val tokenType = user.authority
-        return LoginResponse(
+        return SignInResponse(
             token,
             tokenType
         )

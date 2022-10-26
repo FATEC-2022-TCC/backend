@@ -51,9 +51,6 @@ class SecurityConfig(
             //swagger route
             .antMatchers("/swagger**/**", "/v3/api-docs**/**")
             .permitAll()
-            //create and generate token route
-            .antMatchers(HttpMethod.POST,  "/user", "/user/login")
-            .permitAll()
             .antMatchers("/ws/**")
             .permitAll()
             .antMatchers("/public/**")
