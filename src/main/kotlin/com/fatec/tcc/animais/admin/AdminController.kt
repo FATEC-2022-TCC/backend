@@ -43,6 +43,8 @@ class AdminController(
     ) = removeContentUseCase(id)
 
     @GetMapping("/content/projection")
-    fun getContentProjection() =
-        getPaginatedContentProjectionUseCase()
+    fun getContentProjection(
+        @RequestParam(defaultValue = "") search: String,
+        @RequestParam(defaultValue = "1") page: Int,
+    ) = getPaginatedContentProjectionUseCase(search, page - 1)
 }

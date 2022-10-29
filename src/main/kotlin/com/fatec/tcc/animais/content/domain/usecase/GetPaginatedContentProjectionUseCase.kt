@@ -7,5 +7,12 @@ import org.springframework.stereotype.Component
 class GetPaginatedContentProjectionUseCase(
     private val contentProjectionRepository: ContentProjectionRepository
 ) {
-    operator fun invoke() = contentProjectionRepository.all()
+    operator fun invoke(
+        search: String,
+        page: Int,
+    ) = contentProjectionRepository.search(
+        search,
+        page,
+        1
+    )
 }
