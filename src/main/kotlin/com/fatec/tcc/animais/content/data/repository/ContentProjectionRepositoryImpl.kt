@@ -20,7 +20,7 @@ class ContentProjectionRepositoryImpl(
         .findProjectionUntilDate(date, Sort.by("until").descending())
         .map(contentProjectionMapper::toDomain)
 
-    override fun search(data: String, page: Int, perPage: Int) = contentEntityRepository
-        .searchProjection(data, PageRequest.of(page, perPage))
+    override fun search(data: String, page: Int, size: Int) = contentEntityRepository
+        .searchProjection(data, PageRequest.of(page, size))
         .toPage(contentProjectionMapper::toDomain)
 }
