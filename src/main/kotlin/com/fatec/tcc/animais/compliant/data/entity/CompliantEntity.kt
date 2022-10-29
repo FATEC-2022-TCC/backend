@@ -20,5 +20,10 @@ class CompliantEntity(
         orphanRemoval = true
     )
     @JoinColumn(name = "compliant_id")
-    val files: List<Base64Entity>
+    val files: List<Base64Entity>,
+    @Lob
+    val resolution: String,
+    val resolutionFiles: List<Base64Entity>,
+    val closed: Boolean,
+    val updated: Date
 )

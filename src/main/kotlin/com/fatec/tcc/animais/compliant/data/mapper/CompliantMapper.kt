@@ -16,7 +16,11 @@ class CompliantMapper(
             local,
             description,
             created,
-            files.map(base64Mapper::toEntity)
+            files.map(base64Mapper::toEntity),
+            resolution,
+            resolutionFiles.map(base64Mapper::toEntity),
+            closed,
+            updated
         )
     }
 
@@ -26,7 +30,11 @@ class CompliantMapper(
             local,
             description,
             created,
-            files.map(base64Mapper::toDomain)
+            files.map(base64Mapper::toDomain),
+            resolution,
+            resolutionFiles.map(base64Mapper::toDomain),
+            closed,
+            updated
         )
     }
 }

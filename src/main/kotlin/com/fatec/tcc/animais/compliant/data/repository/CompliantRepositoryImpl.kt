@@ -6,21 +6,16 @@ import com.fatec.tcc.animais.compliant.domain.model.Compliant
 import com.fatec.tcc.animais.compliant.domain.repository.CompliantRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
-import java.util.*
 
 @Repository
 class CompliantRepositoryImpl(
     private val contentEntityRepository: CompliantEntityRepository,
     private val compliantMapper: CompliantMapper
 ) : CompliantRepository {
-    override fun insert(compliant: Compliant) = compliant
+    override fun insert(type: Compliant) = type
         .run(compliantMapper::toEntity)
         .run(contentEntityRepository::save)
         .run(compliantMapper::toDomain)
-
-    override fun until(date: Date) = contentEntityRepository
-        .findAll()
-        .map(compliantMapper::toDomain)
 
     override fun all() = contentEntityRepository
         .findAll()
@@ -29,11 +24,11 @@ class CompliantRepositoryImpl(
     override fun delete(id: Long) = contentEntityRepository
         .deleteById(id)
 
-    override fun get(id: Long): Compliant? = contentEntityRepository
+    override fun find(id: Long) = contentEntityRepository
         .findByIdOrNull(id)
         ?.run(compliantMapper::toDomain)
 
-    override fun update(compliant: Compliant) = compliant
+    override fun update(type: Compliant) = type
         .run(compliantMapper::toEntity)
         .run(contentEntityRepository::save)
         .run(compliantMapper::toDomain)

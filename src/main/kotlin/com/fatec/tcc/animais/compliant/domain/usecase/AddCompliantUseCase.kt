@@ -18,7 +18,11 @@ class AddCompliantUseCase(
             local,
             description,
             Date.from(Instant.now()),
-            files.map(::Base64)
+            files.map(::Base64),
+            "",
+            emptyList(),
+            false,
+            Date.from(Instant.now())
         )
     }.run(compliantRepository::insert)
 }
