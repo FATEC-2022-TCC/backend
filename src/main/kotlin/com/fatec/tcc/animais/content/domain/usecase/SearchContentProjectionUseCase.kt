@@ -4,14 +4,14 @@ import com.fatec.tcc.animais.content.domain.repository.ContentProjectionReposito
 import org.springframework.stereotype.Component
 
 @Component
-class GetPaginatedContentProjectionUseCase(
+class SearchContentProjectionUseCase(
     private val contentProjectionRepository: ContentProjectionRepository
 ) {
     operator fun invoke(
-        search: String,
+        data: String,
         page: Int,
     ) = contentProjectionRepository.search(
-        search,
+        data,
         page,
         1
     )

@@ -19,10 +19,16 @@ class CompliantEntity(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "compliant_id")
+    @JoinColumn(name = "compliant_files_id")
     val files: List<Base64Entity>,
     @Lob
     val resolution: String,
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "compliant_resolution_files_id")
     val resolutionFiles: List<Base64Entity>,
     val closed: Boolean,
     val updated: Date

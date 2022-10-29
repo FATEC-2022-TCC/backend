@@ -1,5 +1,7 @@
 package com.fatec.tcc.animais.admin
 
+import com.fatec.tcc.animais.compliant.domain.repository.CompliantProjectionRepositoryData
+import com.fatec.tcc.animais.compliant.domain.usecase.SearchCompliantProjectionUseCase
 import com.fatec.tcc.animais.content.domain.model.NewContentRequest
 import com.fatec.tcc.animais.content.domain.model.UpdateContentRequest
 import com.fatec.tcc.animais.content.domain.usecase.*
@@ -16,7 +18,8 @@ class AdminController(
     private val getContentUseCase: GetContentUseCase,
     private val updateContentUseCase: UpdateContentUseCase,
     private val removeContentUseCase: RemoveContentUseCase,
-    private val getPaginatedContentProjectionUseCase: GetPaginatedContentProjectionUseCase,
+    private val searchContentProjectionUseCase: SearchContentProjectionUseCase,
+    private val searchCompliantProjectionUseCase: SearchCompliantProjectionUseCase
 ) {
     @PostMapping("/content")
     fun postContent(
@@ -46,5 +49,17 @@ class AdminController(
     fun getContentProjection(
         @RequestParam(defaultValue = "") search: String,
         @RequestParam(defaultValue = "1") page: Int,
-    ) = getPaginatedContentProjectionUseCase(search, page - 1)
+    ) = searchContentProjectionUseCase(search, page - 1)
+
+    @GetMapping("/compliant/projection")
+    fun getCompliantProjection(
+        @RequestParam(defaultValue = "") text: String,
+        @RequestParam(defaultValue = "false") closed: Boolean,
+        @RequestParam(defaultValue = "1") page: Int
+    ) = searchCompliantProjectionUseCase(
+        CompliantProjectionRepositoryData(
+            text, closed
+        ),
+        page - 1
+    )
 }
