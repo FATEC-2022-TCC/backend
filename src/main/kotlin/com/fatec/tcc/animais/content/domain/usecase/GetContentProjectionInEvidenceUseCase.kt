@@ -9,6 +9,5 @@ import java.util.*
 class GetContentProjectionInEvidenceUseCase(
     private val contentProjectionRepository: ContentProjectionRepository
 ) {
-    operator fun invoke() = contentProjectionRepository
-        .all(Date.from(Instant.now()), "until")
+    operator fun invoke() = contentProjectionRepository.until(Date.from(Instant.now()))
 }

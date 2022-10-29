@@ -1,5 +1,7 @@
 package com.fatec.tcc.animais.content.data.entity
 
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.PagingAndSortingRepository
@@ -14,12 +16,15 @@ interface ContentEntityRepository : PagingAndSortingRepository<ContentEntity, Lo
         @Param("date") date: Date
     ): List<ContentEntity>
 
-    @Query("SELECT c FROM ContentEntity c")
-    fun findProjection(): List<ContentProjectionEntity>
-
     @Query("SELECT c FROM ContentEntity c WHERE c.until >= :date")
     fun findProjectionUntilDate(
         @Param("date") date: Date,
         sort: Sort
-    ): List<ContentProjectionEntity>
+    ): List<ContentEntityProjection>
+
+    @Query("SELECT c FROM ContentEntity c WHERE c.title LIKE %:search% OR c.description LIKE %:search% OR c.data LIKE %:search%")
+    fun searchProjection(
+        @Param("search") search: String,
+        page: Pageable
+    ): Page<ContentEntityProjection>
 }
