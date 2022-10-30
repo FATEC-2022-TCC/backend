@@ -20,11 +20,12 @@ class SignUpUseCase(
         val databaseUser = userRepository.findByUsername(signUpRequest.username)
         if (databaseUser != null) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val password = passwordEncoder.encode(signUpRequest.password)
+        val (name, username, email) = signUpRequest
         return userBaseRepository.insert(
             User(
-                name = signUpRequest.name,
-                username = signUpRequest.username,
-                email = signUpRequest.email,
+                name = name,
+                username = username,
+                email = email,
                 password = password,
                 authority = "${Scope.NORMAL}"
             )
