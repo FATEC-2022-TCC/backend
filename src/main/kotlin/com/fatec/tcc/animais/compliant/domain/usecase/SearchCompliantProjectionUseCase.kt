@@ -1,19 +1,18 @@
 package com.fatec.tcc.animais.compliant.domain.usecase
 
-import com.fatec.tcc.animais.compliant.domain.repository.CompliantProjectionRepository
+import com.fatec.tcc.animais.base.SearchableRepository
+import com.fatec.tcc.animais.compliant.domain.model.CompliantProjection
 import com.fatec.tcc.animais.compliant.domain.repository.CompliantProjectionRepositoryData
 import org.springframework.stereotype.Component
 
 @Component
 class SearchCompliantProjectionUseCase(
-    private val compliantProjectionRepository: CompliantProjectionRepository
+    private val repository: SearchableRepository<CompliantProjection, CompliantProjectionRepositoryData>
 ) {
     operator fun invoke(
         data: CompliantProjectionRepositoryData,
         page: Int
-    ) = compliantProjectionRepository.search(
-        data,
-        page,
-        1
+    ) = repository.search(
+        data, page, 1
     )
 }

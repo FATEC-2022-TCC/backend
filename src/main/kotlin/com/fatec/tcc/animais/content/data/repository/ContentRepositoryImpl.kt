@@ -12,6 +12,6 @@ class ContentRepositoryImpl(
     contentEntityRepository: ContentEntityRepository,
     contentMapper: ContentMapper,
 ) : DefaultRepository<Content, ContentEntity, ContentEntityRepository>(
-    jpaRepository = contentEntityRepository,
-    jpaRepositoryMapper = contentMapper
+    repository = contentEntityRepository,
+    repositoryMapper = contentMapper
 )

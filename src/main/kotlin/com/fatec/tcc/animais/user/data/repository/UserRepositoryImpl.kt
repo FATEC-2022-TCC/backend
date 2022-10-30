@@ -13,8 +13,8 @@ class UserRepositoryImpl(
     private val userEntityRepository: UserEntityRepository,
     private val userEntityRepositoryMapper: UserMapper
 ) : DefaultRepository<User, UserEntity, UserEntityRepository>(
-    jpaRepository = userEntityRepository,
-    jpaRepositoryMapper = userEntityRepositoryMapper
+    repository = userEntityRepository,
+    repositoryMapper = userEntityRepositoryMapper
 ), UserRepository {
     override fun findByUsername(username: String) = userEntityRepository
         .findByUsername(username)
