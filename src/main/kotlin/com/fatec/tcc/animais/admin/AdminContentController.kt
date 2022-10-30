@@ -1,7 +1,5 @@
 package com.fatec.tcc.animais.admin
 
-import com.fatec.tcc.animais.compliant.domain.repository.CompliantProjectionRepositoryData
-import com.fatec.tcc.animais.compliant.domain.usecase.SearchCompliantProjectionUseCase
 import com.fatec.tcc.animais.content.domain.model.NewContentRequest
 import com.fatec.tcc.animais.content.domain.model.UpdateContentRequest
 import com.fatec.tcc.animais.content.domain.usecase.*
@@ -11,55 +9,42 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 @SecurityRequirement(name = "jwt")
-@RequestMapping("/admin")
-class AdminController(
+@RequestMapping("/admin/content")
+class AdminContentController(
     private val addContentUseCase: AddContentUseCase,
     private val getPaginatedContentUseCase: GetPaginatedContentUseCase,
     private val getContentUseCase: GetContentUseCase,
     private val updateContentUseCase: UpdateContentUseCase,
     private val removeContentUseCase: RemoveContentUseCase,
     private val searchContentProjectionUseCase: SearchContentProjectionUseCase,
-    private val searchCompliantProjectionUseCase: SearchCompliantProjectionUseCase
 ) {
-    @PostMapping("/content")
-    fun postContent(
+    @PostMapping
+    fun post(
         @RequestBody request: NewContentRequest
     ) = addContentUseCase(request)
 
-    @GetMapping("/content")
-    fun getContent() =
+    @GetMapping
+    fun get() =
         getPaginatedContentUseCase()
 
-    @GetMapping("/content/{id}")
-    fun getContent(
+    @GetMapping("/{id}")
+    fun get(
         @PathVariable id: Long
     ) = getContentUseCase(id)
 
-    @PutMapping("/content")
-    fun updateContent(
+    @PutMapping
+    fun put(
         @RequestBody request: UpdateContentRequest
     ) = updateContentUseCase(request)
 
-    @DeleteMapping("/content/{id}")
-    fun deleteContent(
+    @DeleteMapping("/{id}")
+    fun delete(
         @PathVariable id: Long
     ) = removeContentUseCase(id)
 
-    @GetMapping("/content/projection")
-    fun getContentProjection(
+    @GetMapping("/projection")
+    fun project(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int,
     ) = searchContentProjectionUseCase(text, page - 1)
-
-    @GetMapping("/compliant/projection")
-    fun getCompliantProjection(
-        @RequestParam(defaultValue = "") text: String,
-        @RequestParam(defaultValue = "false") closed: Boolean,
-        @RequestParam(defaultValue = "1") page: Int
-    ) = searchCompliantProjectionUseCase(
-        CompliantProjectionRepositoryData(
-            text, closed
-        ),
-        page - 1
-    )
 }
