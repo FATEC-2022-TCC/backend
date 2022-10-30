@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
+import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.user.domain.model.Scope
 import com.fatec.tcc.animais.user.domain.model.SignUpRequest
 import com.fatec.tcc.animais.user.domain.model.User
@@ -12,13 +13,14 @@ import org.springframework.web.server.ResponseStatusException
 @Component
 class SignUpUseCase(
     private val userRepository: UserRepository,
+    private val userBaseRepository: BaseRepository<User>,
     private val passwordEncoder: PasswordEncoder
 ) {
     operator fun invoke(signUpRequest: SignUpRequest): User {
-        val databaseUser = userRepository.find(signUpRequest.username)
+        val databaseUser = userRepository.findByUsername(signUpRequest.username)
         if (databaseUser != null) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val password = passwordEncoder.encode(signUpRequest.password)
-        return userRepository.insert(
+        return userBaseRepository.insert(
             User(
                 name = signUpRequest.name,
                 username = signUpRequest.username,

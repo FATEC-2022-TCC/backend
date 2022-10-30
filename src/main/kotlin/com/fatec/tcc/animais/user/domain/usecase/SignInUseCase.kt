@@ -12,13 +12,13 @@ import org.springframework.web.server.ResponseStatusException
 
 @Component
 class SignInUseCase(
-    private val userRepository: UserRepository,
+    private val repository: UserRepository,
     private val passwordEncoder: PasswordEncoder,
     private val generateTokenUseCase: GenerateTokenUseCase
 ) {
     operator fun invoke(request: SignInRequest): SignInResponse {
         val (username, password) = request
-        val user = userRepository.find(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        val user = repository.findByUsername(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         val match = passwordEncoder.matches(password, user.password)
         if (!match) throw ResponseStatusException(HttpStatus.NOT_FOUND)
         val userDetails = User.builder().apply {
