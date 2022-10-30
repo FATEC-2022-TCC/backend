@@ -1,16 +1,17 @@
 package com.fatec.tcc.animais.content.domain.usecase
 
-import com.fatec.tcc.animais.content.domain.repository.ContentProjectionRepository
+import com.fatec.tcc.animais.base.SearchableRepository
+import com.fatec.tcc.animais.content.domain.model.ContentProjection
 import org.springframework.stereotype.Component
 
 @Component
 class SearchContentProjectionUseCase(
-    private val contentProjectionRepository: ContentProjectionRepository
+    private val repository: SearchableRepository<ContentProjection, String>
 ) {
     operator fun invoke(
         data: String,
         page: Int,
-    ) = contentProjectionRepository.search(
+    ) = repository.search(
         data,
         page,
         1

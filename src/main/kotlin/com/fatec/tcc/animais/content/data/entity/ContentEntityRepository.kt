@@ -11,11 +11,6 @@ import java.util.*
 
 @Repository
 interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
-    @Query("SELECT c FROM ContentEntity c WHERE c.until <= :date")
-    fun findUntilDate(
-        @Param("date") date: Date
-    ): List<ContentEntity>
-
     @Query("SELECT c FROM ContentEntity c WHERE c.until >= :date")
     fun findProjectionUntilDate(
         @Param("date") date: Date,

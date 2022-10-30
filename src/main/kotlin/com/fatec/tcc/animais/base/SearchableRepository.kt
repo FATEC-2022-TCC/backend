@@ -1,5 +1,5 @@
 package com.fatec.tcc.animais.base
 
-interface SearchableRepository<T, D> {
-    fun search(data: D, page: Int, size: Int): Page<T>
+interface SearchableRepository<Projection, Data> {
+    fun search(data: Data, page: Int, size: Int): Page<Projection>
 }
