@@ -3,14 +3,14 @@ package com.fatec.tcc.animais.content.data.entity
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
-import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface ContentEntityRepository : PagingAndSortingRepository<ContentEntity, Long> {
+interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
     @Query("SELECT c FROM ContentEntity c WHERE c.until <= :date")
     fun findUntilDate(
         @Param("date") date: Date

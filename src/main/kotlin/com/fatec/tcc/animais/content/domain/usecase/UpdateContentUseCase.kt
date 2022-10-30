@@ -12,7 +12,7 @@ class UpdateContentUseCase(
     private val contentRepository: ContentRepository
 ) {
     operator fun invoke(request: UpdateContentRequest) = contentRepository
-        .get(request.id)
+        .find(request.id)
         ?.run {
             Content(
                 request.id,

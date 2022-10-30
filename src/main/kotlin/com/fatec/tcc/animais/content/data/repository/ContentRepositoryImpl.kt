@@ -6,21 +6,16 @@ import com.fatec.tcc.animais.content.domain.model.Content
 import com.fatec.tcc.animais.content.domain.repository.ContentRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
-import java.util.*
 
 @Repository
 class ContentRepositoryImpl(
     private val contentEntityRepository: ContentEntityRepository,
     private val contentMapper: ContentMapper
 ) : ContentRepository {
-    override fun insert(content: Content) = content
+    override fun insert(type: Content) = type
         .run(contentMapper::toEntity)
         .run(contentEntityRepository::save)
         .run(contentMapper::toDomain)
-
-    override fun until(date: Date) = contentEntityRepository
-        .findUntilDate(date)
-        .map(contentMapper::toDomain)
 
     override fun all() = contentEntityRepository
         .findAll()
@@ -29,11 +24,11 @@ class ContentRepositoryImpl(
     override fun delete(id: Long) = contentEntityRepository
         .deleteById(id)
 
-    override fun get(id: Long): Content? = contentEntityRepository
+    override fun find(id: Long): Content? = contentEntityRepository
         .findByIdOrNull(id)
         ?.run(contentMapper::toDomain)
 
-    override fun update(content: Content) = content
+    override fun update(type: Content) = type
         .run(contentMapper::toEntity)
         .run(contentEntityRepository::save)
         .run(contentMapper::toDomain)
