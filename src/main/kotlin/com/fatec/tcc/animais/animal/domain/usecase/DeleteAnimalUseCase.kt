@@ -1,13 +1,12 @@
 package com.fatec.tcc.animais.animal.domain.usecase
 
-import com.fatec.tcc.animais.animal.domain.repository.AnimalRepository
+import com.fatec.tcc.animais.animal.domain.model.Animal
+import com.fatec.tcc.animais.base.BaseRepository
 import org.springframework.stereotype.Component
 
 @Component
 class DeleteAnimalUseCase(
-    private val animalRepository: AnimalRepository
+    private val repository: BaseRepository<Animal>
 ) {
-    operator fun invoke(id: Long) {
-        animalRepository.delete(id)
-    }
+    operator fun invoke(id: Long) = repository.delete(id)
 }
