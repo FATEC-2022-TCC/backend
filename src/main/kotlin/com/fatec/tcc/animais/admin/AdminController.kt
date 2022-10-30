@@ -47,9 +47,9 @@ class AdminController(
 
     @GetMapping("/content/projection")
     fun getContentProjection(
-        @RequestParam(defaultValue = "") search: String,
+        @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int,
-    ) = searchContentProjectionUseCase(search, page - 1)
+    ) = searchContentProjectionUseCase(text, page - 1)
 
     @GetMapping("/compliant/projection")
     fun getCompliantProjection(
