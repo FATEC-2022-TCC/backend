@@ -1,14 +1,15 @@
 package com.fatec.tcc.animais.content.domain.usecase
 
-import com.fatec.tcc.animais.content.domain.repository.ContentRepository
+import com.fatec.tcc.animais.base.BaseRepository
+import com.fatec.tcc.animais.content.domain.model.Content
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 
 @Component
 class GetContentUseCase(
-    private val contentRepository: ContentRepository
+    private val repository: BaseRepository<Content>
 ) {
-    operator fun invoke(id: Long) = contentRepository
+    operator fun invoke(id: Long) = repository
         .find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 }
