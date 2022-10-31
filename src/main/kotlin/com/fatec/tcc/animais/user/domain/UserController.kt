@@ -2,6 +2,7 @@ package com.fatec.tcc.animais.user.domain
 
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.animal.domain.usecase.AddAnimalUseCase
+import com.fatec.tcc.animais.animal.domain.usecase.GetAnimalProjectionUseCase
 import com.fatec.tcc.animais.security.toCurrentUser
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.security.core.Authentication
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*
 @SecurityRequirement(name = "jwt")
 @RequestMapping("/user")
 class UserController(
-    private val addAnimalUseCase: AddAnimalUseCase
+    private val addAnimalUseCase: AddAnimalUseCase,
+    private val getAnimalProjectionUseCase: GetAnimalProjectionUseCase
 ) {
     @PostMapping("/animal")
     fun postAnimal(
@@ -21,5 +23,16 @@ class UserController(
     ) = addAnimalUseCase(
         authentication.toCurrentUser(),
         request
+    )
+
+    @GetMapping("/animal/projection")
+    fun getAnimalProjection(
+        authentication: Authentication,
+        @RequestParam(defaultValue = "") name: String,
+        @RequestParam(defaultValue = "1") page: Int
+    ) = getAnimalProjectionUseCase(
+        authentication.toCurrentUser(),
+        name,
+        page - 1
     )
 }
