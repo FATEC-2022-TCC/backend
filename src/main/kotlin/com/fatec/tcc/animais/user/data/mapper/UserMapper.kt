@@ -31,7 +31,7 @@ class UserMapper(
             password,
             email,
             authority,
-            animals.map(animalMapper::toDomain)
+            animals.map(animalMapper::toDomain) as ArrayList<Animal>
         )
     }
 }

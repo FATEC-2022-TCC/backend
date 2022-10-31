@@ -1,10 +1,11 @@
 package com.fatec.tcc.animais.animal.domain.model
 
-import java.util.*
-
 data class NewAnimalRequest(
+    val picture: String,
     val name: String,
-    val description: String,
-    val type: String,
-    val birth: Date
+    val specie: String,
+    val gender: String,
+    val age: String,
+    val size: String,
+    val about: String
 )

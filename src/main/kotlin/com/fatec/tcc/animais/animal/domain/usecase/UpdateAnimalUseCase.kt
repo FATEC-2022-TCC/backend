@@ -11,15 +11,18 @@ import org.springframework.web.server.ResponseStatusException
 class UpdateAnimalUseCase(
     private val repository: BaseRepository<Animal>
 ) {
-    operator fun invoke(id: Long, request: UpdateAnimalRequest): Animal {
-        val animal = repository.find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
-        return repository.update(
-            animal.copy(
+    operator fun invoke(request: UpdateAnimalRequest) = repository
+        .find(request.id)
+        ?.run {
+            copy(
+                picture = request.picture,
                 name = request.name,
-                description = request.description,
-                type = request.type,
-                birth = request.birth
+                specie = request.specie,
+                gender = request.gender,
+                age = request.age,
+                size = request.size,
+                about = request.about
             )
-        )
-    }
+        }
+        ?.run(repository::update) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 }

@@ -9,5 +9,5 @@ data class User(
     val password: String,
     val email: String,
     val authority: String = "",
-    val animals: List<Animal> = emptyList()
+    val animals: ArrayList<Animal> = arrayListOf()
 )

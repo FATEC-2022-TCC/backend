@@ -1,30 +1,25 @@
 package com.fatec.tcc.animais.user.domain
 
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
+import com.fatec.tcc.animais.animal.domain.usecase.AddAnimalUseCase
 import com.fatec.tcc.animais.security.toCurrentUser
-import com.fatec.tcc.animais.user.domain.usecase.NewAnimalUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
-import org.springframework.http.MediaType
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.multipart.MultipartFile
 
 @CrossOrigin
 @RestController
 @SecurityRequirement(name = "jwt")
 @RequestMapping("/user")
 class UserController(
-    private val newAnimalUseCase: NewAnimalUseCase
+    private val addAnimalUseCase: AddAnimalUseCase
 ) {
-    @PostMapping(
-        "/animal",
-        consumes = [
-            MediaType.APPLICATION_FORM_URLENCODED_VALUE
-        ]
-    )
-    fun newAnimal(
+    @PostMapping("/animal")
+    fun postAnimal(
         authentication: Authentication,
-        @RequestPart("animal") newAnimalRequest: NewAnimalRequest,
-        @RequestPart("files", required = false) files: Array<MultipartFile>
-    ) = newAnimalUseCase(authentication.toCurrentUser(), newAnimalRequest, files)
+        @RequestBody request: NewAnimalRequest
+    ) = addAnimalUseCase(
+        authentication.toCurrentUser(),
+        request
+    )
 }
