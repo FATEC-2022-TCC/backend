@@ -28,11 +28,11 @@ class UserController(
     @GetMapping("/animal/projection")
     fun getAnimalProjection(
         authentication: Authentication,
-        @RequestParam(defaultValue = "") name: String,
+        @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int
     ) = getAnimalProjectionUseCase(
         authentication.toCurrentUser(),
-        name,
+        text,
         page - 1
     )
 }

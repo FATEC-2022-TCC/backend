@@ -15,5 +15,5 @@ class AnimalProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<AnimalProjection, AnimalEntityProjection, AnimalEntityRepository, AnimalProjectionRepositoryData>(
     repository = repository,
     projectionMapper = projectionMapper,
-    searchableMapper = { data, page -> findByName(data.name, data.userId, page) }
+    searchableMapper = { data, page -> findByName(data.text, data.userId, page) }
 )

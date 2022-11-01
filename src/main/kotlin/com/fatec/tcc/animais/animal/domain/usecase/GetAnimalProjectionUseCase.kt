@@ -13,11 +13,11 @@ class GetAnimalProjectionUseCase(
     @Value("\${custom.pagination.counter}")
     private val paginationCounter: Int
 ) {
-    operator fun invoke(currentUser: CurrentUser, name: String, page: Int) = repository
+    operator fun invoke(currentUser: CurrentUser, text: String, page: Int) = repository
         .search(
             AnimalProjectionRepositoryData(
                 currentUser.id,
-                name
+                text
             ),
             page,
             paginationCounter
