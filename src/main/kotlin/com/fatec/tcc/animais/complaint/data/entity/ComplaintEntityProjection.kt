@@ -1,8 +1,8 @@
-package com.fatec.tcc.animais.compliant.data.entity
+package com.fatec.tcc.animais.complaint.data.entity
 
 import java.util.Date
 
-interface CompliantEntityProjection {
+interface ComplaintEntityProjection {
     val id: Long
     val local: String
     val description: String

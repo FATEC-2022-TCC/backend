@@ -5,7 +5,6 @@ import com.fatec.tcc.animais.content.domain.model.Content
 import com.fatec.tcc.animais.content.domain.model.NewContentRequest
 import org.springframework.stereotype.Component
 import java.time.Instant
-import java.util.*
 
 @Component
 class AddContentUseCase(
@@ -19,8 +18,9 @@ class AddContentUseCase(
                 background,
                 title,
                 description,
-                created = Date.from(Instant.now()),
-                until
+                until,
+                Instant.now(),
+                Instant.now()
             )
         }
     )

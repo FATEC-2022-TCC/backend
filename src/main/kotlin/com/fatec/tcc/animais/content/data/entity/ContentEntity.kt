@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.content.data.entity
 
-import java.util.Date
+import com.fatec.tcc.animais.base.BaseEntity
+import java.time.Instant
 import javax.persistence.*
 
 @Entity
@@ -16,6 +17,5 @@ class ContentEntity(
     @Column(length = 255)
     val title: String,
     val description: String,
-    val created: Date,
-    val until: Date
-)
+    val until: Instant
+) : BaseEntity()

@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.user.data.entity
 
 import com.fatec.tcc.animais.animal.data.entity.AnimalEntity
+import com.fatec.tcc.animais.base.BaseEntity
 import javax.persistence.*
 
 @Entity
@@ -22,4 +23,4 @@ class UserEntity(
     )
     @JoinColumn(name = "user_id")
     val animals: List<AnimalEntity>
-)
+) : BaseEntity()

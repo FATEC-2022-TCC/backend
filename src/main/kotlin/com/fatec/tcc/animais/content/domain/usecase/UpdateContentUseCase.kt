@@ -6,6 +6,8 @@ import com.fatec.tcc.animais.content.domain.model.UpdateContentRequest
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
+import java.time.Instant
+import java.util.*
 
 @Component
 class UpdateContentUseCase(
@@ -20,8 +22,9 @@ class UpdateContentUseCase(
                 request.background,
                 request.title,
                 request.description,
-                created,
-                request.until
+                request.until,
+                Instant.now(),
+                Instant.now()
             )
         }
         ?.run(repository::update)

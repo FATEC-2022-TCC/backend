@@ -16,9 +16,7 @@ class AnimalMapper : Mapper<AnimalEntity, Animal> {
             gender,
             age,
             size,
-            about,
-            created,
-            updated,
+            about
         )
     }
 

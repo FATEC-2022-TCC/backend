@@ -1,6 +1,6 @@
 package com.fatec.tcc.animais.animal.data.entity
 
-import java.util.*
+import com.fatec.tcc.animais.base.BaseEntity
 import javax.persistence.*
 
 @Entity
@@ -17,7 +17,5 @@ class AnimalEntity(
     val age: String,
     val size: String,
     @Lob
-    val about: String,
-    val created: Date,
-    val updated: Date
-)
+    val about: String
+) : BaseEntity()

@@ -1,10 +1,10 @@
 package com.fatec.tcc.animais.admin
 
-import com.fatec.tcc.animais.compliant.domain.model.UpdateCompliantRequest
-import com.fatec.tcc.animais.compliant.domain.repository.CompliantProjectionRepositoryData
-import com.fatec.tcc.animais.compliant.domain.usecase.GetCompliantUseCase
-import com.fatec.tcc.animais.compliant.domain.usecase.SearchCompliantProjectionUseCase
-import com.fatec.tcc.animais.compliant.domain.usecase.UpdateCompliantUseCase
+import com.fatec.tcc.animais.complaint.domain.model.UpdateComplaintRequest
+import com.fatec.tcc.animais.complaint.domain.repository.ComplaintProjectionRepositoryData
+import com.fatec.tcc.animais.complaint.domain.usecase.GetComplaintUseCase
+import com.fatec.tcc.animais.complaint.domain.usecase.SearchComplaintProjectionUseCase
+import com.fatec.tcc.animais.complaint.domain.usecase.UpdateComplaintUseCase
 import com.fatec.tcc.animais.content.domain.usecase.*
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.*
 @SecurityRequirement(name = "jwt")
 @RequestMapping("/admin/compliant")
 class AdminCompliantController(
-    private val getCompliantUseCase: GetCompliantUseCase,
-    private val updateCompliantUseCase: UpdateCompliantUseCase,
-    private val searchCompliantProjectionUseCase: SearchCompliantProjectionUseCase
+    private val getComplaintUseCase: GetComplaintUseCase,
+    private val updateComplaintUseCase: UpdateComplaintUseCase,
+    private val searchComplaintProjectionUseCase: SearchComplaintProjectionUseCase
 ) {
     @GetMapping("/{id}")
     fun get(
         @PathVariable id: Long
-    ) = getCompliantUseCase(id)
+    ) = getComplaintUseCase(id)
 
     @PutMapping
     fun put(
-        @RequestBody request: UpdateCompliantRequest
-    ) = updateCompliantUseCase(request)
+        @RequestBody request: UpdateComplaintRequest
+    ) = updateComplaintUseCase(request)
 
     @GetMapping("/projection")
     fun project(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int
-    ) = searchCompliantProjectionUseCase(
-        CompliantProjectionRepositoryData(
+    ) = searchComplaintProjectionUseCase(
+        ComplaintProjectionRepositoryData(
             text
         ),
         page - 1

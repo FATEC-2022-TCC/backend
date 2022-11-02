@@ -1,7 +1,7 @@
 package com.fatec.tcc.animais.public
 
-import com.fatec.tcc.animais.compliant.domain.model.NewCompliantRequest
-import com.fatec.tcc.animais.compliant.domain.usecase.AddCompliantUseCase
+import com.fatec.tcc.animais.complaint.domain.model.NewComplaintRequest
+import com.fatec.tcc.animais.complaint.domain.usecase.AddAnonymousComplaintUseCase
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -9,10 +9,10 @@ import java.util.*
 @RestController
 @RequestMapping("/public/compliant")
 class PublicCompliantController(
-    private val addCompliantUseCase: AddCompliantUseCase
+    private val addAnonymousComplaintUseCase: AddAnonymousComplaintUseCase
 ) {
     @PostMapping
     fun post(
-        @RequestBody request: NewCompliantRequest
-    ) = addCompliantUseCase(request)
+        @RequestBody request: NewComplaintRequest
+    ) = addAnonymousComplaintUseCase(request)
 }

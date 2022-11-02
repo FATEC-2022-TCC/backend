@@ -8,6 +8,7 @@ import com.fatec.tcc.animais.content.domain.model.ContentProjection
 import com.fatec.tcc.animais.content.domain.repository.ContentProjectionRepository
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Repository
+import java.time.Instant
 import java.util.*
 
 @Repository
@@ -19,7 +20,7 @@ class ContentProjectionRepositoryImpl(
     projectionMapper = contentProjectionMapper,
     searchableMapper = { data, pageable -> searchProjection(data, pageable) }
 ), ContentProjectionRepository {
-    override fun until(date: Date) = contentEntityRepository
-        .findProjectionUntilDate(date, Sort.by("until").descending())
+    override fun until(instant: Instant) = contentEntityRepository
+        .findProjectionUntilDate(instant, Sort.by("until").descending())
         .map(contentProjectionMapper::toDomain)
 }

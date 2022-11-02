@@ -1,6 +1,6 @@
 package com.fatec.tcc.animais.content.domain.model
 
-import java.util.*
+import java.time.Instant
 
 data class Content(
     val id: Long = -1,
@@ -8,6 +8,7 @@ data class Content(
     val background: String,
     val title: String,
     val description: String,
-    val created: Date,
-    val until: Date
+    val until: Instant,
+    val created: Instant,
+    val updated: Instant
 )

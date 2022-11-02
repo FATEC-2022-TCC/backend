@@ -1,38 +1,36 @@
-package com.fatec.tcc.animais.compliant.data.mapper
+package com.fatec.tcc.animais.complaint.data.mapper
 
 import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.base64.data.mapper.Base64Mapper
-import com.fatec.tcc.animais.compliant.data.entity.CompliantEntity
-import com.fatec.tcc.animais.compliant.domain.model.Compliant
+import com.fatec.tcc.animais.complaint.data.entity.ComplaintEntity
+import com.fatec.tcc.animais.complaint.domain.model.Complaint
 import com.fatec.tcc.animais.status.data.mapper.StatusMapper
 import org.springframework.stereotype.Component
 
 @Component
-class CompliantMapper(
+class ComplaintMapper(
     private val base64Mapper: Base64Mapper,
     private val statusMapper: StatusMapper
-) : Mapper<CompliantEntity, Compliant> {
-    override fun toEntity(domain: Compliant) = domain.run {
-        CompliantEntity(
+) : Mapper<ComplaintEntity, Complaint> {
+    override fun toEntity(domain: Complaint) = domain.run {
+        ComplaintEntity(
             id,
             local,
             description,
             files.map(base64Mapper::toEntity),
-            created,
-            updated,
             statuses.map(statusMapper::toEntity)
         )
     }
 
-    override fun toDomain(entity: CompliantEntity) = entity.run {
-        Compliant(
+    override fun toDomain(entity: ComplaintEntity) = entity.run {
+        Complaint(
             id,
             local,
             description,
             files.map(base64Mapper::toDomain),
+            statuses.map(statusMapper::toDomain) as ArrayList,
             created,
             updated,
-            statuses.map(statusMapper::toDomain) as ArrayList
         )
     }
 }

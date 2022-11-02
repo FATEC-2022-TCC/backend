@@ -7,13 +7,14 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
+import java.time.Instant
 import java.util.*
 
 @Repository
 interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
     @Query("SELECT c FROM ContentEntity c WHERE c.until >= :date")
     fun findProjectionUntilDate(
-        @Param("date") date: Date,
+        @Param("date") instant: Instant,
         sort: Sort
     ): List<ContentEntityProjection>
 

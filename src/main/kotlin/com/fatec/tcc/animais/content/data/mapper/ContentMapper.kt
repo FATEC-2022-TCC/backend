@@ -14,7 +14,6 @@ class ContentMapper : Mapper<ContentEntity, Content> {
             background,
             title,
             description,
-            created,
             until
         )
     }
@@ -26,8 +25,9 @@ class ContentMapper : Mapper<ContentEntity, Content> {
             background,
             title,
             description,
+            until,
             created,
-            until
+            updated
         )
     }
 }

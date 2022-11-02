@@ -1,6 +1,6 @@
 package com.fatec.tcc.animais.animal.domain.model
 
-import java.util.*
+import java.time.Instant
 
 data class Animal(
     val id: Long = -1,
@@ -11,6 +11,6 @@ data class Animal(
     val age: String,
     val size: String,
     val about: String,
-    val created: Date,
-    val updated: Date
+    val created: Instant,
+    val updated: Instant
 )

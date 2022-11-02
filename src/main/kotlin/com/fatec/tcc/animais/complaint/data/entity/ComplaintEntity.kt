@@ -1,13 +1,13 @@
-package com.fatec.tcc.animais.compliant.data.entity
+package com.fatec.tcc.animais.complaint.data.entity
 
+import com.fatec.tcc.animais.base.BaseEntity
 import com.fatec.tcc.animais.base64.data.entity.Base64Entity
 import com.fatec.tcc.animais.status.data.entity.StatusEntity
-import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "compliants")
-class CompliantEntity(
+@Table(name = "complaints")
+class ComplaintEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
@@ -19,15 +19,13 @@ class CompliantEntity(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "compliant_id")
+    @JoinColumn(name = "complaint_id")
     val files: List<Base64Entity>,
-    val created: Date,
-    val updated: Date,
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "compliant_id")
+    @JoinColumn(name = "complaint_id")
     val statuses: List<StatusEntity>
-)
+) : BaseEntity()

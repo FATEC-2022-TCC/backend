@@ -15,9 +15,7 @@ class StatusMapper(
             id,
             code,
             description,
-            files.map(base64Mapper::toEntity),
-            created,
-            updated
+            files.map(base64Mapper::toEntity)
         )
     }
 

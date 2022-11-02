@@ -1,8 +1,8 @@
-package com.fatec.tcc.animais.compliant.domain.model
+package com.fatec.tcc.animais.complaint.domain.model
 
 import java.util.*
 
-data class CompliantProjection(
+data class ComplaintProjection(
     val id: Long,
     val local: String,
     val description: String,

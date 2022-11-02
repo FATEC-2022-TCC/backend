@@ -1,6 +1,6 @@
-package com.fatec.tcc.animais.compliant.domain.constant
+package com.fatec.tcc.animais.complaint.domain.constant
 
-object CompliantStatusesMachine {
+object ComplaintStatusesMachine {
     private val rules = hashMapOf(
         1 to 2,
         2 to 3
