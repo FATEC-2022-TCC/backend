@@ -31,11 +31,10 @@ class AdminCompliantController(
     @GetMapping("/projection")
     fun project(
         @RequestParam(defaultValue = "") text: String,
-        @RequestParam(defaultValue = "false") closed: Boolean,
         @RequestParam(defaultValue = "1") page: Int
     ) = searchCompliantProjectionUseCase(
         CompliantProjectionRepositoryData(
-            text, closed
+            text
         ),
         page - 1
     )

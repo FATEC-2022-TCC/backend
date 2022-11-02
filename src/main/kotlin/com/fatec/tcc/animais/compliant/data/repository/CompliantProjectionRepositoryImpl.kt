@@ -15,5 +15,5 @@ class CompliantProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<CompliantProjection, CompliantEntityProjection, CompliantEntityRepository, CompliantProjectionRepositoryData>(
     repository = compliantEntityRepository,
     projectionMapper = compliantProjectionMapper,
-    searchableMapper = { data, pageable -> searchProjection(data.text, data.closed, pageable) }
+    searchableMapper = { data, pageable -> searchProjection(data.text, pageable) }
 )

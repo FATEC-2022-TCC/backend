@@ -4,23 +4,23 @@ import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.base64.data.mapper.Base64Mapper
 import com.fatec.tcc.animais.compliant.data.entity.CompliantEntity
 import com.fatec.tcc.animais.compliant.domain.model.Compliant
+import com.fatec.tcc.animais.status.data.mapper.StatusMapper
 import org.springframework.stereotype.Component
 
 @Component
 class CompliantMapper(
-    private val base64Mapper: Base64Mapper
+    private val base64Mapper: Base64Mapper,
+    private val statusMapper: StatusMapper
 ) : Mapper<CompliantEntity, Compliant> {
     override fun toEntity(domain: Compliant) = domain.run {
         CompliantEntity(
             id,
             local,
             description,
-            created,
             files.map(base64Mapper::toEntity),
-            resolution,
-            resolutionFiles.map(base64Mapper::toEntity),
-            closed,
-            updated
+            created,
+            updated,
+            statuses.map(statusMapper::toEntity)
         )
     }
 
@@ -29,12 +29,10 @@ class CompliantMapper(
             id,
             local,
             description,
-            created,
             files.map(base64Mapper::toDomain),
-            resolution,
-            resolutionFiles.map(base64Mapper::toDomain),
-            closed,
-            updated
+            created,
+            updated,
+            statuses.map(statusMapper::toDomain) as ArrayList
         )
     }
 }

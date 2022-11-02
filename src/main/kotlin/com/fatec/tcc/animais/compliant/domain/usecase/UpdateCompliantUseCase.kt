@@ -16,13 +16,8 @@ class UpdateCompliantUseCase(
 ) {
     operator fun invoke(request: UpdateCompliantRequest) = repository
         .find(request.id)
-        ?.run {
-            copy(
-                resolution = request.resolution,
-                resolutionFiles = request.resolutionFiles.map(::Base64),
-                closed = request.closed,
-                updated = Date.from(Instant.now())
-            )
+        ?.apply {
+            statuses.add(request.status)
         }
         ?.run(repository::update)
         ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)

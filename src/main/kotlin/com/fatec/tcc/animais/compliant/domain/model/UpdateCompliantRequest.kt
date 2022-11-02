@@ -1,8 +1,8 @@
 package com.fatec.tcc.animais.compliant.domain.model
 
+import com.fatec.tcc.animais.status.domain.model.Status
+
 class UpdateCompliantRequest(
     val id: Long,
-    val resolution: String,
-    val resolutionFiles: List<String>,
-    val closed: Boolean
+    val status: Status
 )

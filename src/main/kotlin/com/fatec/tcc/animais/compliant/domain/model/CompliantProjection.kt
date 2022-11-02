@@ -6,6 +6,5 @@ data class CompliantProjection(
     val id: Long,
     val local: String,
     val description: String,
-    val created: Date,
-    val closed: Boolean
+    val created: Date
 )

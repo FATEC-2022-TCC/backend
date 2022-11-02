@@ -7,5 +7,4 @@ interface CompliantEntityProjection {
     val local: String
     val description: String
     val created: Date
-    val closed: Boolean
 }

@@ -9,14 +9,9 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CompliantEntityRepository : JpaRepository<CompliantEntity, Long> {
-    @Query(
-        "SELECT c FROM CompliantEntity c WHERE " +
-                "c.closed = :closed AND " +
-                "(c.local LIKE %:text% OR c.description LIKE %:text% OR c.resolution LIKE %:text%)"
-    )
+    @Query("SELECT c FROM CompliantEntity c WHERE c.local LIKE %:text% OR c.description LIKE %:text%")
     fun searchProjection(
         @Param("text") text: String,
-        @Param("closed") closed: Boolean,
         page: Pageable
     ): Page<CompliantEntityProjection>
 }

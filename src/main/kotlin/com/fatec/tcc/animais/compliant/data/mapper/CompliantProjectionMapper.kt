@@ -12,8 +12,7 @@ class CompliantProjectionMapper : ProjectionMapper<CompliantEntityProjection, Co
             id,
             local,
             description,
-            created,
-            closed
+            created
         )
     }
 }
