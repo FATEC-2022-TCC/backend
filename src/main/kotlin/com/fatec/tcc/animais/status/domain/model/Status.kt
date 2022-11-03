@@ -7,9 +7,15 @@ data class Status(
     val id: Long = -1,
     val code: Int,
     val description: String,
-    val files: ArrayList<Base64> = arrayListOf(),
+    val files: List<Base64> = emptyList(),
     val created: Instant? = null,
     val createdBy: String? = null,
     val updated: Instant? = null,
     val updatedBy: String? = null
-)
+) {
+    constructor(
+        code: Int,
+        description: String,
+        files: List<Base64> = emptyList()
+    ) : this(-1, code, description, files)
+}

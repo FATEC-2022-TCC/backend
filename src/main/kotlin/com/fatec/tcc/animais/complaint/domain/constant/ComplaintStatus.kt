@@ -1,6 +1,6 @@
 package com.fatec.tcc.animais.complaint.domain.constant
 
-enum class ComplaintStatuses(
+enum class ComplaintStatus(
     val code: Int,
     val description: String
 ) {
