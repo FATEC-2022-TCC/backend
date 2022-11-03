@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException
 class GetComplaintUseCase(
     private val repository: BaseRepository<Complaint>
 ) {
-    operator fun invoke(id: Long) =
-        repository.find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+    operator fun invoke(
+        id: Long
+    ) = repository.find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 }

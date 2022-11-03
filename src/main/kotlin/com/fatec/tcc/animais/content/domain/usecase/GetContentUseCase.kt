@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException
 class GetContentUseCase(
     private val repository: BaseRepository<Content>
 ) {
-    operator fun invoke(id: Long) = repository
-        .find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+    operator fun invoke(
+        id: Long
+    ) = repository.find(id) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 }

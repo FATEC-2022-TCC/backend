@@ -12,11 +12,12 @@ import org.springframework.stereotype.Component
 class AddCompliantStatusUseCase(
     private val repository: BaseRepository<Complaint>
 ) {
-    operator fun invoke(request: UpdateComplaintRequest) = repository
-        .find(request.id) notFoundOrElse {
-            request.status.run {
-                Status(code, description, files.map(::Base64))
-            }.also(statuses::add)
-            run(repository::update)
-        }
+    operator fun invoke(
+        request: UpdateComplaintRequest
+    ) = repository.find(request.id) notFoundOrElse {
+        request.status.run {
+            Status(code, description, files.map(::Base64))
+        }.also(statuses::add)
+        run(repository::update)
+    }
 }
