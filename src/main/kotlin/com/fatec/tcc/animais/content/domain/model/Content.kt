@@ -9,6 +9,8 @@ data class Content(
     val title: String,
     val description: String,
     val until: Instant,
-    val created: Instant,
-    val updated: Instant
+    val created: Instant? = null,
+    val createdBy: String? = null,
+    val updated: Instant? = null,
+    val updatedBy: String? = null
 )

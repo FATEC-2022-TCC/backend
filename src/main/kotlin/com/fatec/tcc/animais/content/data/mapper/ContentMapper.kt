@@ -27,7 +27,9 @@ class ContentMapper : Mapper<ContentEntity, Content> {
             description,
             until,
             created,
-            updated
+            createdBy,
+            updated,
+            updatedBy
         )
     }
 }

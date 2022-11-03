@@ -8,6 +8,8 @@ data class Status(
     val code: Int,
     val description: String,
     val files: ArrayList<Base64> = arrayListOf(),
-    val created: Instant = Instant.now(),
-    val updated: Instant = Instant.now()
+    val created: Instant? = null,
+    val createdBy: String? = null,
+    val updated: Instant? = null,
+    val updatedBy: String? = null
 )

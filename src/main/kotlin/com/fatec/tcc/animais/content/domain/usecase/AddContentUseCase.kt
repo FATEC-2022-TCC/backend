@@ -18,9 +18,7 @@ class AddContentUseCase(
                 background,
                 title,
                 description,
-                until,
-                Instant.now(),
-                Instant.now()
+                until
             )
         }
     )

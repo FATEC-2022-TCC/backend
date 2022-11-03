@@ -26,7 +26,9 @@ class StatusMapper(
             description,
             files.map(base64Mapper::toDomain) as ArrayList,
             created,
-            updated
+            createdBy,
+            updated,
+            updatedBy
         )
     }
 }

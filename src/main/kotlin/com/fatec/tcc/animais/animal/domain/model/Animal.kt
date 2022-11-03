@@ -11,6 +11,8 @@ data class Animal(
     val age: String,
     val size: String,
     val about: String,
-    val created: Instant,
-    val updated: Instant
+    val created: Instant? = null,
+    val createdBy: String? = null,
+    val updated: Instant? = null,
+    val updatedBy: String? = null
 )

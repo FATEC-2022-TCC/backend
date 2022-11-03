@@ -22,9 +22,7 @@ class UpdateContentUseCase(
                 request.background,
                 request.title,
                 request.description,
-                request.until,
-                Instant.now(),
-                Instant.now()
+                request.until
             )
         }
         ?.run(repository::update)

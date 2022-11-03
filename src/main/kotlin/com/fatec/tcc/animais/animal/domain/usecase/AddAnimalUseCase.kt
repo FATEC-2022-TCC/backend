@@ -28,9 +28,7 @@ class AddAnimalUseCase(
                 gender = request.gender,
                 age = request.age,
                 size = request.size,
-                about = request.about,
-                created = Instant.now(),
-                updated = Instant.now()
+                about = request.about
             ).run(animals::add)
         }
         ?.run(repository::update)

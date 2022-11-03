@@ -17,7 +17,11 @@ class Base64Mapper : Mapper<Base64Entity, Base64> {
     override fun toDomain(entity: Base64Entity) = entity.run {
         Base64(
             id,
-            data
+            data,
+            created,
+            createdBy,
+            updated,
+            updatedBy
         )
     }
 }

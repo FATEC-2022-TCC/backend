@@ -31,7 +31,9 @@ class AnimalMapper : Mapper<AnimalEntity, Animal> {
             size,
             about,
             created,
+            createdBy,
             updated,
+            updatedBy
         )
     }
 }

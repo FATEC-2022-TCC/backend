@@ -30,7 +30,9 @@ class ComplaintMapper(
             files.map(base64Mapper::toDomain),
             statuses.map(statusMapper::toDomain) as ArrayList,
             created,
+            createdBy,
             updated,
+            updatedBy
         )
     }
 }
