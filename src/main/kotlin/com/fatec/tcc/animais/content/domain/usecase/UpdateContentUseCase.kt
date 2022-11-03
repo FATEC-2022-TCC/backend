@@ -13,13 +13,12 @@ class UpdateContentUseCase(
     operator fun invoke(
         request: UpdateContentRequest
     ) = repository.find(request.id) notFoundOrElse {
-        Content(
-            request.id,
-            request.data,
-            request.background,
-            request.title,
-            request.description,
-            request.until
+        copy(
+            data = request.data,
+            background = request.background,
+            title = request.title,
+            description = request.description,
+            until = request.until
         ).run(repository::update)
     }
 }

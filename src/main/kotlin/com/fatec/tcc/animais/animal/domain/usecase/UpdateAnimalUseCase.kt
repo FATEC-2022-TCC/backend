@@ -13,17 +13,14 @@ class UpdateAnimalUseCase(
     operator fun invoke(
         request: UpdateAnimalRequest
     ) = repository.find(request.id) notFoundOrElse {
-        run {
-            copy(
-                picture = request.picture,
-                name = request.name,
-                specie = request.specie,
-                gender = request.gender,
-                age = request.age,
-                size = request.size,
-                about = request.about
-            )
-        }
-        run(repository::update)
+        copy(
+            picture = request.picture,
+            name = request.name,
+            specie = request.specie,
+            gender = request.gender,
+            age = request.age,
+            size = request.size,
+            about = request.about
+        ).run(repository::update)
     }
 }
