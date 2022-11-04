@@ -11,6 +11,9 @@ object ComplaintStatusStateMachine : StateMachine<ComplaintStatus> {
             ComplaintStatus.PAUSED,
             ComplaintStatus.RESOLVED
         ),
+        ComplaintStatus.PAUSED to setOf(
+            ComplaintStatus.RUNNING
+        )
     )
 
     override fun getAvailableStates(current: ComplaintStatus) =
