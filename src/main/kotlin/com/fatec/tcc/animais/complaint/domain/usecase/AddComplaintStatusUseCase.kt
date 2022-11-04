@@ -9,7 +9,7 @@ import com.fatec.tcc.animais.status.domain.model.Status
 import org.springframework.stereotype.Component
 
 @Component
-class AddCompliantStatusUseCase(
+class AddComplaintStatusUseCase(
     private val repository: BaseRepository<Complaint>
 ) {
     operator fun invoke(

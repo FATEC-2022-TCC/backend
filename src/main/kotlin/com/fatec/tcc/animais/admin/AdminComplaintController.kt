@@ -2,7 +2,7 @@ package com.fatec.tcc.animais.admin
 
 import com.fatec.tcc.animais.complaint.domain.model.UpdateComplaintRequest
 import com.fatec.tcc.animais.complaint.domain.repository.ComplaintProjectionRepositoryData
-import com.fatec.tcc.animais.complaint.domain.usecase.AddCompliantStatusUseCase
+import com.fatec.tcc.animais.complaint.domain.usecase.AddComplaintStatusUseCase
 import com.fatec.tcc.animais.complaint.domain.usecase.GetComplaintUseCase
 import com.fatec.tcc.animais.complaint.domain.usecase.SearchComplaintProjectionUseCase
 import com.fatec.tcc.animais.content.domain.usecase.*
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/admin/compliant")
 class AdminComplaintController(
     private val getComplaintUseCase: GetComplaintUseCase,
-    private val addCompliantStatusUseCase: AddCompliantStatusUseCase,
+    private val addComplaintStatusUseCase: AddComplaintStatusUseCase,
     private val searchComplaintProjectionUseCase: SearchComplaintProjectionUseCase
 ) {
     @GetMapping("/{id}")
@@ -26,7 +26,7 @@ class AdminComplaintController(
     @PostMapping("/status")
     fun put(
         @RequestBody request: UpdateComplaintRequest
-    ) = addCompliantStatusUseCase(request)
+    ) = addComplaintStatusUseCase(request)
 
     @GetMapping("/projection")
     fun project(
