@@ -16,6 +16,7 @@ object ComplaintStatusStateMachine : StateMachine<ComplaintStatus> {
     override fun getAvailableStates(current: ComplaintStatus) =
         states[current] ?: emptySet()
 
-    override fun isStateChangeAllowed(from: ComplaintStatus, to: ComplaintStatus) =
-        to in (states[from] ?: emptySet())
+    override fun isStateChangeAllowed(from: ComplaintStatus, to: ComplaintStatus): Boolean {
+        return to in (states[from] ?: return false)
+    }
 }
