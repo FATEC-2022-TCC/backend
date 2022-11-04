@@ -6,7 +6,8 @@ enum class ComplaintStatus(
 ) {
     CREATED(1, "A denúncia foi criada"),
     RUNNING(2, "A denúncia está sendo apurada"),
-    CLOSED(3, "A denúncia foi fechada");
+    PAUSED(3, "A denúncia está sendo apurada"),
+    RESOLVED(4, "A denúncia foi resolvida");
 
     operator fun get(index: Int) = values().let { if (index < 0 || index >= it.size) null else it[index] }
 }
