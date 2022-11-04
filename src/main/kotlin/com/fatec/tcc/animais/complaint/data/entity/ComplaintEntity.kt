@@ -27,5 +27,6 @@ class ComplaintEntity(
         orphanRemoval = true
     )
     @JoinColumn(name = "complaint_id")
-    val statuses: List<StatusEntity>
+    val statuses: List<StatusEntity>,
+    val currentStatusCode: Int
 ) : BaseEntity()

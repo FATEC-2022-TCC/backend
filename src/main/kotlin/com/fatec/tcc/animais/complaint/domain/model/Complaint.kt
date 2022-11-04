@@ -10,6 +10,7 @@ data class Complaint(
     val description: String,
     val files: List<Base64>,
     val statuses: ArrayList<Status>,
+    val currentStatusCode: Int,
     val created: Instant? = null,
     val createdBy: String? = null,
     val updated: Instant? = null,

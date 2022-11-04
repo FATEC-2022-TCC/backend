@@ -18,7 +18,8 @@ class ComplaintMapper(
             local,
             description,
             files.map(base64Mapper::toEntity),
-            statuses.map(statusMapper::toEntity)
+            statuses.map(statusMapper::toEntity),
+            currentStatusCode
         )
     }
 
@@ -29,6 +30,7 @@ class ComplaintMapper(
             description,
             files.map(base64Mapper::toDomain),
             statuses.map(statusMapper::toDomain) as ArrayList,
+            currentStatusCode,
             created,
             createdBy,
             updated,

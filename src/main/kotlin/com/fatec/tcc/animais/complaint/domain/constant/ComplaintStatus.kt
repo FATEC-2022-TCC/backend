@@ -6,8 +6,10 @@ enum class ComplaintStatus(
 ) {
     CREATED(1, "A denúncia foi criada"),
     RUNNING(2, "A denúncia está sendo apurada"),
-    PAUSED(3, "A denúncia está sendo apurada"),
+    PAUSED(3, "A denúncia está pausada"),
     RESOLVED(4, "A denúncia foi resolvida");
 
-    operator fun get(index: Int) = values().let { if (index < 0 || index >= it.size) null else it[index] }
+    companion object {
+        operator fun get(index: Int) = values().let { if (index < 0 || index >= it.size) null else it[index] }
+    }
 }

@@ -1,8 +1,11 @@
 package com.fatec.tcc.animais.complaint.domain.usecase
 
 import com.fatec.tcc.animais.base.BaseRepository
+import com.fatec.tcc.animais.base.courtCircuit
 import com.fatec.tcc.animais.base.notFoundOrElse
 import com.fatec.tcc.animais.base64.domain.model.Base64
+import com.fatec.tcc.animais.complaint.domain.constant.ComplaintStatus
+import com.fatec.tcc.animais.complaint.domain.constant.ComplaintStatusStateMachine
 import com.fatec.tcc.animais.complaint.domain.model.Complaint
 import com.fatec.tcc.animais.complaint.domain.model.UpdateComplaintRequest
 import com.fatec.tcc.animais.status.domain.model.Status
@@ -15,9 +18,14 @@ class AddComplaintStatusUseCase(
     operator fun invoke(
         request: UpdateComplaintRequest
     ) = repository.find(request.id) notFoundOrElse {
+        val currentStatus = ComplaintStatus[currentStatusCode].courtCircuit()
+        val desiredStatus = ComplaintStatus[request.status.code].courtCircuit()
+        ComplaintStatusStateMachine.isStateChangeAllowed(currentStatus, desiredStatus).courtCircuit()
         request.status.run {
             Status(code, description, files.map(::Base64))
         }.also(statuses::add)
-        run(repository::update)
+        copy(
+            currentStatusCode = request.status.code
+        ).run(repository::update)
     }
 }

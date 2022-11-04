@@ -23,7 +23,8 @@ class AddAnonymousComplaintUseCase(
                     ComplaintStatus.CREATED.code,
                     "A denúncia foi criada",
                 )
-            )
+            ),
+            ComplaintStatus.CREATED.code
         )
     }.run(repository::insert)
 }
