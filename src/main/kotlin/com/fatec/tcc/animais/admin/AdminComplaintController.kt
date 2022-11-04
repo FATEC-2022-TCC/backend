@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 @SecurityRequirement(name = "jwt")
-@RequestMapping("/admin/compliant")
+@RequestMapping("/admin/complaint")
 class AdminComplaintController(
     private val getComplaintUseCase: GetComplaintUseCase,
     private val addComplaintStatusUseCase: AddComplaintStatusUseCase,

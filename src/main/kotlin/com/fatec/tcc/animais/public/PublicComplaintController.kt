@@ -7,8 +7,8 @@ import java.util.*
 
 @CrossOrigin
 @RestController
-@RequestMapping("/public/compliant")
-class PublicCompliantController(
+@RequestMapping("/public/complaint")
+class PublicComplaintController(
     private val addAnonymousComplaintUseCase: AddAnonymousComplaintUseCase
 ) {
     @PostMapping
