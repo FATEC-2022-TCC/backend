@@ -21,7 +21,7 @@ class AddAnonymousComplaintUseCase(
             arrayListOf(
                 Status(
                     ComplaintStatusEnum.CREATED.code,
-                    "A denúncia foi criada",
+                    "A denúncia foi criada anonimamente",
                 )
             ),
             ComplaintStatusEnum.CREATED.code

@@ -24,7 +24,7 @@ class AdminComplaintController(
     ) = getComplaintUseCase(id)
 
     @PostMapping("/status")
-    fun put(
+    fun post(
         @RequestBody request: UpdateComplaintRequest
     ) = addComplaintStatusUseCase(request)
 
