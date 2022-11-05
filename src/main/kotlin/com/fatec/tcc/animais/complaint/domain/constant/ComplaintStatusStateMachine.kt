@@ -2,25 +2,28 @@ package com.fatec.tcc.animais.complaint.domain.constant
 
 import com.fatec.tcc.animais.base.StateMachine
 
-object ComplaintStatusStateMachine : StateMachine<ComplaintStatus> {
+object ComplaintStatusStateMachine : StateMachine<ComplaintStatusEnum> {
     private val states = hashMapOf(
-        ComplaintStatus.CREATED to setOf(
-            ComplaintStatus.RUNNING
+        ComplaintStatusEnum.CREATED to setOf(
+            ComplaintStatusEnum.RUNNING,
+            ComplaintStatusEnum.CANCEL
         ),
-        ComplaintStatus.RUNNING to setOf(
-            ComplaintStatus.PAUSED,
-            ComplaintStatus.RESOLVED
+        ComplaintStatusEnum.RUNNING to setOf(
+            ComplaintStatusEnum.PAUSED,
+            ComplaintStatusEnum.RESOLVED,
+            ComplaintStatusEnum.CANCEL
         ),
-        ComplaintStatus.PAUSED to setOf(
-            ComplaintStatus.RUNNING
+        ComplaintStatusEnum.PAUSED to setOf(
+            ComplaintStatusEnum.RUNNING,
+            ComplaintStatusEnum.CANCEL
         ),
-        ComplaintStatus.RESOLVED to emptySet()
+        ComplaintStatusEnum.RESOLVED to emptySet()
     )
 
-    override fun getAvailableStates(current: ComplaintStatus) =
+    override fun getAvailableStates(current: ComplaintStatusEnum) =
         states[current] ?: emptySet()
 
-    override fun isStateChangeAllowed(from: ComplaintStatus, to: ComplaintStatus): Boolean {
+    override fun isStateChangeAllowed(from: ComplaintStatusEnum, to: ComplaintStatusEnum): Boolean {
         return to in (states[from] ?: return false)
     }
 }
