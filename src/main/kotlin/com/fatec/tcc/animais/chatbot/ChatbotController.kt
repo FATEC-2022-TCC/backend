@@ -1,28 +1,32 @@
 package com.fatec.tcc.animais.chatbot
 
 import org.springframework.scheduling.annotation.Scheduled
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 
 @CrossOrigin
-@RestController("/public/chatbot")
+@RestController
+@RequestMapping("/public/chatbot")
 class ChatbotController {
 
     private val sessions = hashMapOf<String, Chatbot>()
     private val history = hashMapOf<String, Instant>()
 
     @PostMapping
-    fun onMessage(chatbotMessage: ChatbotMessage): String {
-        val (sessionId, message) = chatbotMessage
+    fun onMessage(
+        @RequestBody chatbotRequest: ChatbotRequest
+    ): ChatbotResponse {
+        val (sessionId, message) = chatbotRequest
         val chatbot = sessions[sessionId] ?: ChatbotImpl().also {
             sessions[sessionId] = it
             history[sessionId] = Instant.now()
         }
-        return chatbot(message)
+        return ChatbotResponse(
+            message = chatbot(message),
+            date = Instant.now()
+        )
     }
 
     @Scheduled(fixedRate = 1, timeUnit = TimeUnit.MINUTES)

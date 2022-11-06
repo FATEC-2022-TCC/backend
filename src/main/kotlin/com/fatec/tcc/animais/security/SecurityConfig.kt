@@ -48,10 +48,7 @@ class SecurityConfig(
                 )
             }
             .authorizeHttpRequests()
-            //swagger route
             .antMatchers("/swagger**/**", "/v3/api-docs**/**")
-            .permitAll()
-            .antMatchers("/ws/**")
             .permitAll()
             .antMatchers("/public/**")
             .permitAll()
