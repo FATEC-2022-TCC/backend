@@ -1,32 +1,32 @@
 {
   "description": "A command chatbot machine json example",
   "variables": {
-    "name": "unknown",
+    "name": "desconhecido",
     "bot": "Joselito"
   },
   "categories": [
     {
-      "pattern": "Can you remember my name ?",
-      "template": "Yes, I can"
+      "pattern": "Você pode lembrar meu nome ?",
+      "template": "Sim, eu posso!!!"
     },
     {
-      "pattern": "My name is *",
-      "template": "Nice name, {{ star:0 }}. I'll remember it.",
+      "pattern": "Meu nome é *",
+      "template": "Nome legal, {{ star:0 }}. Eu vou me lembrar dele.",
       "commands": [
         "{{ name={{ star:0 }} }}"
       ]
     },
     {
-      "pattern": "What is my name ?",
-      "template": "Your name is {{ name }}"
+      "pattern": "Qual é o meu nome ?",
+      "template": "Seu nome é {{ name }}"
     },
     {
-      "pattern": "What is your name ?",
-      "template": "My name is {{ bot }}"
+      "pattern": "Qual é o seu nome ?",
+      "template": "Meu nome é {{ bot }}"
     },
     {
-      "pattern": "Your name will be *",
-      "template": "Cool, {{ star:0 }} is a nice name. Thank you!!!",
+      "pattern": "Seu nome vai ser *",
+      "template": "Legal, {{ star:0 }} é um nome legal. Obrigado !!!",
       "commands": [
         "{{ bot={{ star:0 }} }}"
       ]
