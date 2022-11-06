@@ -17,7 +17,8 @@ object ComplaintStatusStateMachine : StateMachine<ComplaintStatusEnum> {
             ComplaintStatusEnum.RUNNING,
             ComplaintStatusEnum.CANCEL
         ),
-        ComplaintStatusEnum.RESOLVED to emptySet()
+        ComplaintStatusEnum.RESOLVED to emptySet(),
+        ComplaintStatusEnum.CANCEL to emptySet()
     )
 
     override fun getAvailableStates(current: ComplaintStatusEnum) =
