@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.7.3"
 	id("io.spring.dependency-management") version "1.0.12.RELEASE"
-	kotlin("jvm") version "1.7.10"
-	kotlin("plugin.spring") version "1.7.10"
-	kotlin("plugin.jpa") version "1.7.10"
+	kotlin("jvm") version "1.7.20"
+	kotlin("plugin.spring") version "1.7.20"
+	kotlin("plugin.jpa") version "1.7.20"
 }
 
 group = "com.fatec.tcc"
@@ -38,7 +38,7 @@ dependencies {
 	runtimeOnly("mysql:mysql-connector-java")
 
 	//swagger
-	implementation("org.springdoc:springdoc-openapi-ui:1.6.11")
+	implementation("org.springdoc:springdoc-openapi-ui:1.6.12")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
