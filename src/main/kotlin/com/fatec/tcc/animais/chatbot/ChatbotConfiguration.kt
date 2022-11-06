@@ -27,6 +27,6 @@ class ChatbotConfiguration {
         val data = files.map(::FileInputStream).use(parser::parse)
         val nodeManager = NodeManager.build(data)
 
-        override fun get() = nodeManager.fork().run(::ChatbotImpl)
+        override fun get() = nodeManager.get().run(::ChatbotImpl)
     }
 }
