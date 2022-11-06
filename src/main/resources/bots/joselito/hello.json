@@ -1,0 +1,18 @@
+{
+  "description": "Falas de cumprimentação",
+  "categories": [
+    {
+      "pattern": "{{ set:hello }}",
+      "template": "Olá. Meu nome é Joselito. Com o que posso ajudar?"
+    }
+  ],
+  "sets": {
+    "hello": [
+      "Olá",
+      "Oi",
+      "Bom dia",
+      "Boa tarde",
+      "Boa noite"
+    ]
+  }
+}

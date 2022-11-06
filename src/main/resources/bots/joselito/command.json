@@ -2,7 +2,7 @@
   "description": "A command chatbot machine json example",
   "variables": {
     "name": "unknown",
-    "bot": "Jarvis"
+    "bot": "Joselito"
   },
   "categories": [
     {

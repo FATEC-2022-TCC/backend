@@ -32,12 +32,12 @@ class ChatbotController(
         )
     }
 
-    @Scheduled(fixedRate = 1, timeUnit = TimeUnit.MINUTES)
+    @Scheduled(fixedRate = 15, timeUnit = TimeUnit.MINUTES)
     private fun onClean() {
         val toRemove = mutableSetOf<String>()
         val now = Instant.now()
         for ((key, instant) in history) {
-            val diff = instant.plus(1, ChronoUnit.MINUTES)
+            val diff = instant.plus(15, ChronoUnit.MINUTES)
             if (diff.isBefore(now)) toRemove += key
         }
         sessions -= toRemove
