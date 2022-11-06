@@ -1,0 +1,13 @@
+{
+  "description": "A simple chatbot machine json example",
+  "categories": [
+    {
+      "pattern": "Are you alive ?",
+      "template": "Probably not. Who are?"
+    },
+    {
+      "pattern": "What is the answer to life, universe and everything ?",
+      "template": "42"
+    }
+  ]
+}

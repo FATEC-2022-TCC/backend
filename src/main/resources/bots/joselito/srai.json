@@ -1,0 +1,13 @@
+{
+  "description": "A srai chatbot machine json example",
+  "categories": [
+    {
+      "pattern": "you're *",
+      "template": "{{ srai: Are you a {{ star:0 }} ?}}"
+    },
+    {
+      "pattern": "Can a * be a * ?",
+      "template": "Probably not. But a {{ star:1 }} could be a {{ star:0 }}"
+    }
+  ]
+}

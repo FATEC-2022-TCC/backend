@@ -1,0 +1,35 @@
+{
+  "description": "A command chatbot machine json example",
+  "variables": {
+    "name": "unknown",
+    "bot": "Jarvis"
+  },
+  "categories": [
+    {
+      "pattern": "Can you remember my name ?",
+      "template": "Yes, I can"
+    },
+    {
+      "pattern": "My name is *",
+      "template": "Nice name, {{ star:0 }}. I'll remember it.",
+      "commands": [
+        "{{ name={{ star:0 }} }}"
+      ]
+    },
+    {
+      "pattern": "What is my name ?",
+      "template": "Your name is {{ name }}"
+    },
+    {
+      "pattern": "What is your name ?",
+      "template": "My name is {{ bot }}"
+    },
+    {
+      "pattern": "Your name will be *",
+      "template": "Cool, {{ star:0 }} is a nice name. Thank you!!!",
+      "commands": [
+        "{{ bot={{ star:0 }} }}"
+      ]
+    }
+  ]
+}

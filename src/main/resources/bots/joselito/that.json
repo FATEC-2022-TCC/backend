@@ -1,0 +1,19 @@
+{
+  "description": "A that chatbot machine json example",
+  "categories": [
+    {
+      "pattern": "Knock knock",
+      "template": "Who is there?"
+    },
+    {
+      "pattern": "*",
+      "that": "Who is there?",
+      "template": "{{ star:0 }} who?"
+    },
+    {
+      "pattern": "*",
+      "that": "{{ that_star:0 }} who?",
+      "template": "Ha Ha Ha, very funny, {{ name }}"
+    }
+  ]
+}

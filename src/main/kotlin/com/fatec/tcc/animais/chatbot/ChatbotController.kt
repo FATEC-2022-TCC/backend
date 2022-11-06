@@ -5,11 +5,14 @@ import org.springframework.web.bind.annotation.*
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
+import java.util.function.Supplier
 
 @CrossOrigin
 @RestController
 @RequestMapping("/public/chatbot")
-class ChatbotController {
+class ChatbotController(
+    private val forkableChatbot: Supplier<Chatbot>
+) {
 
     private val sessions = hashMapOf<String, Chatbot>()
     private val history = hashMapOf<String, Instant>()
@@ -19,7 +22,7 @@ class ChatbotController {
         @RequestBody chatbotRequest: ChatbotRequest
     ): ChatbotResponse {
         val (sessionId, message) = chatbotRequest
-        val chatbot = sessions[sessionId] ?: ChatbotImpl().also {
+        val chatbot = sessions[sessionId] ?: forkableChatbot.get().also {
             sessions[sessionId] = it
             history[sessionId] = Instant.now()
         }

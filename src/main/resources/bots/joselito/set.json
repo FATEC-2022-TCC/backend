@@ -1,0 +1,20 @@
+{
+  "description": "A set chatbot machine json example",
+  "categories": [
+    {
+      "pattern": "Are you a {{ set:type }} ?",
+      "template": "No, I'm not a {{ pattern:3 }}"
+    },
+    {
+      "pattern": "Are you a * ?",
+      "template": "Probably yes. I'm certainly a {{ star:0 }}"
+    }
+  ],
+  "sets": {
+    "type": [
+      "god",
+      "human",
+      "extra-terrestrial"
+    ]
+  }
+}
