@@ -1,9 +1,0 @@
-{
-  "description": "A wild chatbot machine json example",
-  "categories": [
-    {
-      "pattern": "Um * pode ser um * ?",
-      "template": "Provavelmente não. Mas um {{ star:1 }} pode ser um {{ star:0 }}"
-    }
-  ]
-}

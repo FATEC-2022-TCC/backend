@@ -2,18 +2,17 @@
   "description": "A set chatbot machine json example",
   "categories": [
     {
-      "pattern": "Você é um {{ set:type }} ?",
+      "pattern": "voce e um {{ set:type }} ?",
       "template": "Não. Eu não sou um {{ pattern:3 }}"
     },
     {
-      "pattern": "Você é um * ?",
+      "pattern": "voce e um * ?",
       "template": "Provavelmente sim. Com certeza eu sou um {{ star:0 }}"
     }
   ],
   "sets": {
     "type": [
       "deus",
-      "Deus",
       "humano",
       "extra-terreste"
     ]

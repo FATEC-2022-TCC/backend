@@ -2,8 +2,8 @@
   "description": "A srai chatbot machine json example",
   "categories": [
     {
-      "pattern": "você é um *",
-      "template": "{{ srai: Você é um {{ star:0 }} ?}}"
+      "pattern": "voce e um *",
+      "template": "{{ srai: voce e um {{ star:0 }} ?}}"
     }
   ]
 }

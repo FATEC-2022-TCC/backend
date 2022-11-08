@@ -2,6 +2,7 @@ package com.fatec.tcc.animais.chatbot
 
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.web.bind.annotation.*
+import java.text.Normalizer
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
@@ -16,6 +17,7 @@ class ChatbotController(
 
     private val sessions = hashMapOf<String, Chatbot>()
     private val history = hashMapOf<String, Instant>()
+    private val regex = "\\p{InCombiningDiacriticalMarks}+".toRegex()
 
     @PostMapping
     fun onMessage(
@@ -26,8 +28,11 @@ class ChatbotController(
             sessions[sessionId] = it
             history[sessionId] = Instant.now()
         }
+        val normalized = Normalizer
+            .normalize(message.lowercase(), Normalizer.Form.NFD)
+            .replace(regex, "")
         return ChatbotResponse(
-            message = chatbot(message),
+            message = chatbot(normalized),
             date = Instant.now()
         )
     }

@@ -1,18 +1,39 @@
 {
-  "description": "Falas de cumprimentação",
+  "description": "A ",
   "categories": [
     {
       "pattern": "{{ set:hello }}",
       "template": "Olá. Meu nome é Joselito. Com o que posso ajudar?"
+    },
+    {
+      "pattern": "{{ set:morning }}",
+      "template": "Bom dia!. Meu nome é Joselito. Com o que posso ajudar?"
+    },
+    {
+      "pattern": "{{ set:afternoon }}",
+      "template": "Boa tarde!. Meu nome é Joselito. Com o que posso ajudar?"
+    },
+    {
+      "pattern": "{{ set:evening }}",
+      "template": "Boa noite!. Meu nome é Joselito. Com o que posso ajudar?"
     }
   ],
   "sets": {
     "hello": [
-      "Olá",
-      "Oi",
-      "Bom dia",
-      "Boa tarde",
-      "Boa noite"
+      "ola",
+      "oi"
+    ],
+    "morning": [
+      "dia",
+      "bom dia"
+    ],
+    "afternoon": [
+      "tarde",
+      "boa tarde"
+    ],
+    "evening": [
+      "noite",
+      "boa noite"
     ]
   }
 }

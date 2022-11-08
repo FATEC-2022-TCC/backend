@@ -1,0 +1,9 @@
+{
+  "description": "A fallback knowledge file",
+  "categories": [
+    {
+      "pattern": "*",
+      "template": "Hmm, eu não entendi bem a frase. Você pode escrever algo mais preciso?"
+    }
+  ]
+}

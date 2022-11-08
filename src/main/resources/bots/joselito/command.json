@@ -6,26 +6,26 @@
   },
   "categories": [
     {
-      "pattern": "Você pode lembrar meu nome ?",
+      "pattern": "voce pode lembrar meu nome ?",
       "template": "Sim, eu posso!!!"
     },
     {
-      "pattern": "Meu nome é *",
+      "pattern": "meu nome e *",
       "template": "Nome legal, {{ star:0 }}. Eu vou me lembrar dele.",
       "commands": [
         "{{ name={{ star:0 }} }}"
       ]
     },
     {
-      "pattern": "Qual é o meu nome ?",
+      "pattern": "qual e o meu nome ?",
       "template": "Seu nome é {{ name }}"
     },
     {
-      "pattern": "Qual é o seu nome ?",
+      "pattern": "qual e o seu nome ?",
       "template": "Meu nome é {{ bot }}"
     },
     {
-      "pattern": "Seu nome vai ser *",
+      "pattern": "seu nome vai ser *",
       "template": "Legal, {{ star:0 }} é um nome legal. Obrigado !!!",
       "commands": [
         "{{ bot={{ star:0 }} }}"

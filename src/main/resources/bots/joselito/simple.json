@@ -2,11 +2,15 @@
   "description": "A simple chatbot machine json example",
   "categories": [
     {
-      "pattern": "Você está vivo ?",
+      "pattern": "voce esta vivo ?",
       "template": "Provavelmente não. Quem está?"
     },
     {
-      "pattern": "Qual é a resposta pra vida, o universo e tudo mais ?",
+      "pattern": "voce esta vivo",
+      "template": "Isso é uma afirmação?"
+    },
+    {
+      "pattern": "qual a resposta para a vida, o universo e tudo mais ?",
       "template": "42"
     }
   ]
