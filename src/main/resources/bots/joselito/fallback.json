@@ -4,6 +4,14 @@
     {
       "pattern": "*",
       "template": "Hmm, eu não entendi bem a frase. Você pode escrever algo mais preciso?"
+    },
+    {
+      "pattern": "* ?",
+      "template": "Não entendi bem a pergunta. Você pode escrever algo mais preciso?"
+    },
+    {
+      "pattern": "cachorro",
+      "template": "Você quer saber algo sobre cachorros? Vocẽ pode visitar a pagina XPTO"
     }
   ]
 }
