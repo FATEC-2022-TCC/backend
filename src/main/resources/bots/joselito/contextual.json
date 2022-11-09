@@ -1,0 +1,23 @@
+{
+  "description": "A that chatbot machine json example",
+  "categories": [
+    {
+      "pattern": "toc toc",
+      "template": "quem esta ai ?"
+    },
+    {
+      "pattern": "*",
+      "template": "{{ star:0 }} quem ?",
+      "context": {
+        "template": "quem esta ai ?"
+      }
+    },
+    {
+      "pattern": "*",
+      "template": "Ha Ha Ha, muito engraçado, {{ name }}",
+      "context": {
+        "template": "{{ star:0 }} quem ?"
+      }
+    }
+  ]
+}
