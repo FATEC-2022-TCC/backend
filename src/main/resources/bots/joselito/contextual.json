@@ -1,5 +1,5 @@
 {
-  "description": "A that chatbot machine json example",
+  "description": "A contextual chatbot machine json example",
   "categories": [
     {
       "pattern": "toc toc",
@@ -13,8 +13,15 @@
       }
     },
     {
+      "pattern": "nao sei",
+      "template": "Não sabe? Devo eu saber?",
+      "context": {
+        "template": "quem esta ai ?"
+      }
+    },
+    {
       "pattern": "*",
-      "template": "Ha Ha Ha, muito engraçado, {{ name }}",
+      "template": "Ha Ha Ha, muito engraçado. {{ star:0 }}!!! Sacou? Sacou?",
       "context": {
         "template": "{{ star:0 }} quem ?"
       }
