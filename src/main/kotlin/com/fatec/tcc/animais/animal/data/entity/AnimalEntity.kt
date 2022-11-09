@@ -7,7 +7,7 @@ import javax.persistence.*
 @Table(name = "animals")
 class AnimalEntity(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     @Lob
     val picture: String,

@@ -7,7 +7,7 @@ import javax.persistence.*
 @Table(name = "base64")
 class Base64Entity(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     @Lob
     val data: String,
