@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
+import com.fatec.tcc.animais.base.notNullOrThrow
 import com.fatec.tcc.animais.user.domain.model.SignInRequest
 import com.fatec.tcc.animais.user.domain.model.SignInResponse
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
@@ -18,7 +19,7 @@ class SignInUseCase(
 ) {
     operator fun invoke(request: SignInRequest): SignInResponse {
         val (username, password) = request
-        val user = repository.findByUsername(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        val user = repository.findByUsername(username).notNullOrThrow()
         val match = passwordEncoder.matches(password, user.password)
         if (!match) throw ResponseStatusException(HttpStatus.NOT_FOUND)
         val userDetails = User.builder().apply {

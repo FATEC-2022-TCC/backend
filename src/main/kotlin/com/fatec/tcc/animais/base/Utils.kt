@@ -6,7 +6,7 @@ import org.springframework.web.server.ResponseStatusException
 inline infix fun <T : Any, A> T?.notFoundOrElse(block: T.() -> A) =
     block(this ?: throw ResponseStatusException(HttpStatus.NOT_FOUND))
 
-fun <T> T?.notNullOrThrow(status: HttpStatus = HttpStatus.BAD_REQUEST) =
+fun <T> T?.notNullOrThrow(status: HttpStatus = HttpStatus.NOT_FOUND) =
     this ?: throw ResponseStatusException(status)
 
 fun Boolean.trueOrThrow(status: HttpStatus = HttpStatus.BAD_REQUEST) {
