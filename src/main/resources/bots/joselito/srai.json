@@ -3,7 +3,7 @@
   "categories": [
     {
       "pattern": "voce e um *",
-      "template": "{{ srai: voce e um {{ star:0 }} ?}}"
+      "template": "{{ srai(voce e um {{ star:0 }} ?) }}"
     }
   ]
 }

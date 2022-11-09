@@ -7,7 +7,7 @@
     },
     {
       "pattern": "* ?",
-      "template": "Não entendi bem a pergunta. Você pode escrever algo mais preciso?"
+      "template": "Hmm, eu não entendi bem a pergunta. Você pode escrever algo mais preciso?"
     },
     {
       "pattern": "cachorro",
