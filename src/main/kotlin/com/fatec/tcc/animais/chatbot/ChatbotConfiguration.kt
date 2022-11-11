@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
 import org.springframework.util.ResourceUtils
 import parser.Parser
-import parser.json.Knowledge
 import parser.json.JSONParseImpl
+import parser.json.Knowledge
 import java.io.FileInputStream
 import java.util.function.Supplier
 
