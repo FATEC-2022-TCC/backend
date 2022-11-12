@@ -30,10 +30,12 @@ class AdminComplaintController(
 
     @GetMapping("/projection")
     fun project(
+        @RequestParam(defaultValue = "0") currentStatusCode: Int,
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int
     ) = searchComplaintProjectionUseCase(
         ComplaintProjectionRepositoryData(
+            currentStatusCode,
             text
         ),
         page - 1

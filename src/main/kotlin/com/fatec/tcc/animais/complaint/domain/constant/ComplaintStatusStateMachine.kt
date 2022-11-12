@@ -21,6 +21,8 @@ object ComplaintStatusStateMachine : StateMachine<ComplaintStatusEnum> {
         ComplaintStatusEnum.CANCEL to emptySet()
     )
 
+    override fun getAllStates() = ComplaintStatusEnum.values()
+
     override fun getAvailableStates(current: ComplaintStatusEnum) =
         states[current] ?: emptySet()
 
