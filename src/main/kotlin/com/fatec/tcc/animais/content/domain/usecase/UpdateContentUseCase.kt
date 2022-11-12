@@ -1,12 +1,12 @@
 package com.fatec.tcc.animais.content.domain.usecase
 
 import com.fatec.tcc.animais.base.BaseRepository
+import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notFoundOrElse
 import com.fatec.tcc.animais.content.domain.model.Content
 import com.fatec.tcc.animais.content.domain.model.UpdateContentRequest
-import org.springframework.stereotype.Component
 
-@Component
+@UseCase
 class UpdateContentUseCase(
     private val repository: BaseRepository<Content>
 ) {

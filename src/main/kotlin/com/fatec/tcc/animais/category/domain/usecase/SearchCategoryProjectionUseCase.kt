@@ -1,21 +1,22 @@
-package com.fatec.tcc.animais.content.domain.usecase
+package com.fatec.tcc.animais.category.domain.usecase
 
 import com.fatec.tcc.animais.base.SearchableRepository
 import com.fatec.tcc.animais.base.UseCase
-import com.fatec.tcc.animais.content.domain.model.ContentProjection
+import com.fatec.tcc.animais.category.domain.model.CategoryProjection
 import org.springframework.beans.factory.annotation.Value
 
 @UseCase
-class SearchContentProjectionUseCase(
-    private val repository: SearchableRepository<ContentProjection, String>,
+class SearchCategoryProjectionUseCase(
+    private val repository: SearchableRepository<CategoryProjection, String>,
     @Value("\${custom.pagination.counter}")
     private val paginationCounter: Int
 ) {
     operator fun invoke(
-        data: String,
-        page: Int,
+        text: String,
+        page:
+        Int
     ) = repository.search(
-        data,
+        text,
         page,
         paginationCounter
     )

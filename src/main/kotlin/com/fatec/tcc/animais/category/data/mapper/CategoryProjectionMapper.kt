@@ -10,6 +10,7 @@ class CategoryProjectionMapper : ProjectionMapper<CategoryEntityProjection, Cate
     override fun toDomain(entity: CategoryEntityProjection) = entity.run {
         CategoryProjection(
             id,
+            name,
             description
         )
     }

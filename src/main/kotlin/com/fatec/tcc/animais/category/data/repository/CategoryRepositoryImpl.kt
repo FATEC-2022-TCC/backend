@@ -8,7 +8,7 @@ import com.fatec.tcc.animais.category.domain.model.Category
 import org.springframework.stereotype.Repository
 
 @Repository
-class CategoryRepositoryImpl(
+internal class CategoryRepositoryImpl(
     repository: CategoryEntityRepository,
     repositoryMapper: CategoryMapper,
 ) : DefaultRepository<Category, CategoryEntity>(

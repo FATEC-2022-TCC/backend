@@ -9,16 +9,15 @@ import com.fatec.tcc.animais.content.domain.repository.ContentProjectionReposito
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Repository
 import java.time.Instant
-import java.util.*
 
 @Repository
-class ContentProjectionRepositoryImpl(
+internal class ContentProjectionRepositoryImpl(
     private val contentEntityRepository: ContentEntityRepository,
     private val contentProjectionMapper: ContentProjectionMapper
 ) : DefaultSearchableRepository<ContentProjection, ContentEntityProjection, ContentEntityRepository, String>(
     repository = contentEntityRepository,
     projectionMapper = contentProjectionMapper,
-    searchableMapper = { data, pageable -> searchProjection(data, pageable) }
+    searchableMapper = { text, pageable -> searchProjection(text, pageable) }
 ), ContentProjectionRepository {
     override fun until(instant: Instant) = contentEntityRepository
         .findProjectionUntilDate(instant, Sort.by("until").descending())

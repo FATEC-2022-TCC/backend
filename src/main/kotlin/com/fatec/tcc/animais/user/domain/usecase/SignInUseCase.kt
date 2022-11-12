@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.user.domain.usecase
 
+import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notNullOrThrow
 import com.fatec.tcc.animais.user.domain.model.SignInRequest
 import com.fatec.tcc.animais.user.domain.model.SignInResponse
@@ -8,10 +9,9 @@ import org.springframework.http.HttpStatus
 import org.springframework.security.core.authority.AuthorityUtils.createAuthorityList
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.stereotype.Component
 import org.springframework.web.server.ResponseStatusException
 
-@Component
+@UseCase
 class SignInUseCase(
     private val repository: UserRepository,
     private val passwordEncoder: PasswordEncoder,

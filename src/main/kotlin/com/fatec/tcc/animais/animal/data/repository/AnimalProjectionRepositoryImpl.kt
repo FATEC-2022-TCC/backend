@@ -9,7 +9,7 @@ import com.fatec.tcc.animais.base.DefaultSearchableRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class AnimalProjectionRepositoryImpl(
+internal class AnimalProjectionRepositoryImpl(
     repository: AnimalEntityRepository,
     projectionMapper: AnimalProjectionMapper
 ) : DefaultSearchableRepository<AnimalProjection, AnimalEntityProjection, AnimalEntityRepository, AnimalProjectionRepositoryData>(

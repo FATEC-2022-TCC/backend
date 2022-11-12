@@ -18,9 +18,9 @@ interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
         sort: Sort
     ): List<ContentEntityProjection>
 
-    @Query("SELECT c FROM ContentEntity c WHERE c.title LIKE %:search% OR c.description LIKE %:search% OR c.data LIKE %:search%")
+    @Query("SELECT c FROM ContentEntity c WHERE c.title LIKE %:text% OR c.description LIKE %:text% OR c.data LIKE %:text%")
     fun searchProjection(
-        @Param("search") search: String,
+        @Param("text") text: String,
         page: Pageable
     ): Page<ContentEntityProjection>
 }

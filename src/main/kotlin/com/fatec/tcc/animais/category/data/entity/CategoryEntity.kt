@@ -10,6 +10,8 @@ class CategoryEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     @Lob
+    val name: String,
+    @Lob
     val description: String,
     @OneToMany(
         fetch = FetchType.LAZY,

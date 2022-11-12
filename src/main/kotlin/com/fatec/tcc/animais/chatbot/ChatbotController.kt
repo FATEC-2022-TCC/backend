@@ -21,9 +21,9 @@ class ChatbotController(
 
     @PostMapping
     fun onMessage(
-        @RequestBody chatbotRequest: ChatbotRequest
+        @RequestBody request: ChatbotRequest
     ): ChatbotResponse {
-        val (sessionId, message) = chatbotRequest
+        val (sessionId, message) = request
         val chatbot = sessions[sessionId] ?: forkableChatbot.get().also {
             sessions[sessionId] = it
             history[sessionId] = Instant.now()

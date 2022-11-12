@@ -9,7 +9,7 @@ import com.fatec.tcc.animais.complaint.domain.repository.ComplaintProjectionRepo
 import org.springframework.stereotype.Repository
 
 @Repository
-class ComplaintProjectionRepositoryImpl(
+internal class ComplaintProjectionRepositoryImpl(
     complaintEntityRepository: ComplaintEntityRepository,
     complaintProjectionMapper: ComplaintProjectionMapper
 ) : DefaultSearchableRepository<ComplaintProjection, ComplaintEntityProjection, ComplaintEntityRepository, ComplaintProjectionRepositoryData>(

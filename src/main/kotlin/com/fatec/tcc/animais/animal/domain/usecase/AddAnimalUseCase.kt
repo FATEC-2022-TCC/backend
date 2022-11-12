@@ -3,12 +3,12 @@ package com.fatec.tcc.animais.animal.domain.usecase
 import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.base.BaseRepository
+import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notFoundOrElse
 import com.fatec.tcc.animais.security.CurrentUser
 import com.fatec.tcc.animais.user.domain.model.User
-import org.springframework.stereotype.Component
 
-@Component
+@UseCase
 class AddAnimalUseCase(
     private val repository: BaseRepository<User>
 ) {

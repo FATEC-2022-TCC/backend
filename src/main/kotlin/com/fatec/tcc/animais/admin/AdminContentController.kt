@@ -15,7 +15,7 @@ class AdminContentController(
     private val getPaginatedContentUseCase: GetPaginatedContentUseCase,
     private val getContentUseCase: GetContentUseCase,
     private val updateContentUseCase: UpdateContentUseCase,
-    private val removeContentUseCase: RemoveContentUseCase,
+    private val deleteContentUseCase: DeleteContentUseCase,
     private val searchContentProjectionUseCase: SearchContentProjectionUseCase,
 ) {
     @PostMapping
@@ -40,7 +40,7 @@ class AdminContentController(
     @DeleteMapping("/{id}")
     fun delete(
         @PathVariable id: Long
-    ) = removeContentUseCase(id)
+    ) = deleteContentUseCase(id)
 
     @GetMapping("/projection")
     fun project(
