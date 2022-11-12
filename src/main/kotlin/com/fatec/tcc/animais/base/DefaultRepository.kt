@@ -4,8 +4,8 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
 
-abstract class DefaultRepository<Domain : Any, Entity : Any, Repository : JpaRepository<Entity, Long>>(
-    private val repository: Repository,
+abstract class DefaultRepository<Domain : Any, Entity : Any>(
+    private val repository: JpaRepository<Entity, Long>,
     private val repositoryMapper: Mapper<Entity, Domain>
 ) : BaseRepository<Domain>, PageableRepository<Domain> {
     override fun all() = repository

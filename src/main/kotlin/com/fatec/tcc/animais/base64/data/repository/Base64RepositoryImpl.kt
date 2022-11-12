@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository
 
 @Repository
 internal class Base64RepositoryImpl(
-    base64EntityRepository: Base64EntityRepository,
-    base64Mapper: Base64Mapper
-) : DefaultRepository<Base64, Base64Entity, Base64EntityRepository>(
-    repository = base64EntityRepository,
-    repositoryMapper = base64Mapper
+    repository: Base64EntityRepository,
+    repositoryMapper: Base64Mapper
+) : DefaultRepository<Base64, Base64Entity>(
+    repository,
+    repositoryMapper
 )

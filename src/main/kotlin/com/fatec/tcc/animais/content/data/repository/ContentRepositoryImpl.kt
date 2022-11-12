@@ -8,10 +8,10 @@ import com.fatec.tcc.animais.content.domain.model.Content
 import org.springframework.stereotype.Repository
 
 @Repository
-class ContentRepositoryImpl(
-    contentEntityRepository: ContentEntityRepository,
-    contentMapper: ContentMapper,
-) : DefaultRepository<Content, ContentEntity, ContentEntityRepository>(
-    repository = contentEntityRepository,
-    repositoryMapper = contentMapper
+internal class ContentRepositoryImpl(
+    repository: ContentEntityRepository,
+    repositoryMapper: ContentMapper,
+) : DefaultRepository<Content, ContentEntity>(
+    repository,
+    repositoryMapper
 )

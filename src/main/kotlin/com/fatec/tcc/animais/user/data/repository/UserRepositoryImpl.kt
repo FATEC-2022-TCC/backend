@@ -9,14 +9,14 @@ import com.fatec.tcc.animais.user.domain.repository.UserRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-class UserRepositoryImpl(
-    private val userEntityRepository: UserEntityRepository,
-    private val userEntityRepositoryMapper: UserMapper
-) : DefaultRepository<User, UserEntity, UserEntityRepository>(
-    repository = userEntityRepository,
-    repositoryMapper = userEntityRepositoryMapper
+internal class UserRepositoryImpl(
+    private val repository: UserEntityRepository,
+    private val repositoryMapper: UserMapper
+) : DefaultRepository<User, UserEntity>(
+    repository,
+    repositoryMapper
 ), UserRepository {
-    override fun findByUsername(username: String) = userEntityRepository
+    override fun findByUsername(username: String) = repository
         .findByUsername(username)
-        ?.run(userEntityRepositoryMapper::toDomain)
+        ?.run(repositoryMapper::toDomain)
 }

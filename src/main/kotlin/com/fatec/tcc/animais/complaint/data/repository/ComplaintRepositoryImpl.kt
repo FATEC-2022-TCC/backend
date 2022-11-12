@@ -8,10 +8,10 @@ import com.fatec.tcc.animais.complaint.domain.model.Complaint
 import org.springframework.stereotype.Repository
 
 @Repository
-class ComplaintRepositoryImpl(
-    contentEntityRepository: ComplaintEntityRepository,
-    complaintMapper: ComplaintMapper
-) : DefaultRepository<Complaint, ComplaintEntity, ComplaintEntityRepository>(
-    repository = contentEntityRepository,
-    repositoryMapper = complaintMapper
+internal class ComplaintRepositoryImpl(
+    repository: ComplaintEntityRepository,
+    repositoryMapper: ComplaintMapper
+) : DefaultRepository<Complaint, ComplaintEntity>(
+    repository,
+    repositoryMapper
 )

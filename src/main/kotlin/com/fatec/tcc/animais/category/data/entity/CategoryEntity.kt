@@ -16,6 +16,13 @@ class CategoryEntity(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "category_id")
-    val files: List<Base64Entity>
+    @JoinColumn(name = "category_image_id")
+    val images: List<Base64Entity>,
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "category_file_id")
+    val files: List<Base64Entity>,
 )

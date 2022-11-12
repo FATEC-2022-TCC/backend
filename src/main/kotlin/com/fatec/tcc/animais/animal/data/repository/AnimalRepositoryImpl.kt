@@ -8,10 +8,10 @@ import com.fatec.tcc.animais.base.DefaultRepository
 import org.springframework.stereotype.Service
 
 @Service
-class AnimalRepositoryImpl(
-    animalEntityRepository: AnimalEntityRepository,
-    animalMapper: AnimalMapper
-) : DefaultRepository<Animal, AnimalEntity, AnimalEntityRepository>(
-    repository = animalEntityRepository,
-    repositoryMapper = animalMapper
+internal class AnimalRepositoryImpl(
+    repository: AnimalEntityRepository,
+    repositoryMapper: AnimalMapper
+) : DefaultRepository<Animal, AnimalEntity>(
+    repository,
+    repositoryMapper
 )
