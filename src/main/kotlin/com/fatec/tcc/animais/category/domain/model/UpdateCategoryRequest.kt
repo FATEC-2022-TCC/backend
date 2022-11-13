@@ -4,6 +4,5 @@ data class UpdateCategoryRequest(
     val id: Long = -1,
     val name: String,
     val description: String,
-    val images: List<String>,
-    val files: List<String>,
+    val images: List<String>
 )

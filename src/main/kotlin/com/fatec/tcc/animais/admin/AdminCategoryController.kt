@@ -3,6 +3,7 @@ package com.fatec.tcc.animais.admin
 import com.fatec.tcc.animais.category.domain.model.AddCategoryRequest
 import com.fatec.tcc.animais.category.domain.model.UpdateCategoryRequest
 import com.fatec.tcc.animais.category.domain.usecase.AddCategoryUseCase
+import com.fatec.tcc.animais.category.domain.usecase.GetCategoryUseCase
 import com.fatec.tcc.animais.category.domain.usecase.SearchCategoryProjectionUseCase
 import com.fatec.tcc.animais.category.domain.usecase.UpdateCategoryUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/admin/category")
 class AdminCategoryController(
     private val addCategoryUseCase: AddCategoryUseCase,
+    private val getCategoryUseCase: GetCategoryUseCase,
     private val searchCategoryProjectionUseCase: SearchCategoryProjectionUseCase,
     private val updateCategoryUseCase: UpdateCategoryUseCase
 ) {
@@ -21,6 +23,11 @@ class AdminCategoryController(
     fun post(
         @RequestBody request: AddCategoryRequest
     ) = addCategoryUseCase(request)
+
+    @GetMapping("/{id}")
+    fun get(
+        @PathVariable id: Long
+    ) = getCategoryUseCase(id)
 
     @GetMapping("/projection")
     fun project(

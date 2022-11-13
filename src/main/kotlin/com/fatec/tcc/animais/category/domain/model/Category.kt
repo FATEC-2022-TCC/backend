@@ -6,9 +6,8 @@ data class Category(
     val id: Long,
     val name: String,
     val description: String,
-    val images: ArrayList<Base64>,
-    val files: ArrayList<Base64>,
+    val images: ArrayList<Base64>
 ) {
-    constructor(name: String, description: String) : this(-1, name, description, arrayListOf(), arrayListOf())
-    constructor(id: Long): this(id, "", "", arrayListOf(), arrayListOf())
+    constructor(name: String, description: String, images: ArrayList<Base64>) : this(-1, name, description, images)
+    constructor(id: Long): this(id, "", "", arrayListOf())
 }

@@ -16,8 +16,7 @@ class CategoryMapper(
             id,
             name,
             description,
-            images.map(base64Mapper::toEntity),
-            files.map(base64Mapper::toEntity)
+            images.map(base64Mapper::toEntity)
         )
     }
 
@@ -26,8 +25,7 @@ class CategoryMapper(
             id,
             name,
             description,
-            images.map(base64Mapper::toDomain) as ArrayList,
-            files.map(base64Mapper::toDomain) as ArrayList
+            images.map(base64Mapper::toDomain) as ArrayList
         )
     }
 }

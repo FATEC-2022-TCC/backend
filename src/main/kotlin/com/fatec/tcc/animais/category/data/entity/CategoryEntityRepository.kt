@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface CategoryEntityRepository : JpaRepository<CategoryEntity, Long> {
 
-    @Query("SELECT c FROM CategoryEntity c WHERE c.description LIKE %:text% OR c.name LIKE %:text%")
+    @Query("SELECT c FROM CategoryEntity c WHERE c.description LIKE %:text% OR c.name LIKE %:text% ORDER BY c.name")
     fun searchProjection(
         @Param("text") text: String,
         page: Pageable

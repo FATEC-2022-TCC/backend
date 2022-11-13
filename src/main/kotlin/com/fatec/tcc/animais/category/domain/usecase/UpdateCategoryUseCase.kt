@@ -18,7 +18,6 @@ class UpdateCategoryUseCase(
             name = request.name,
             description = request.description,
             images = request.images.map(::Base64) as ArrayList,
-            files = request.files.map(::Base64) as ArrayList
         ).run(repository::update)
     }
 }
