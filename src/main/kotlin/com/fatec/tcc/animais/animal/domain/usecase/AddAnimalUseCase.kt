@@ -5,6 +5,7 @@ import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notFoundOrElse
+import com.fatec.tcc.animais.category.domain.model.Category
 import com.fatec.tcc.animais.security.CurrentUser
 import com.fatec.tcc.animais.user.domain.model.User
 
@@ -19,7 +20,7 @@ class AddAnimalUseCase(
         Animal(
             picture = request.picture,
             name = request.name,
-            specie = request.specie,
+            category = Category(request.categoryId),
             gender = request.gender,
             age = request.age,
             size = request.size,

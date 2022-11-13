@@ -11,8 +11,7 @@ class AnimalProjectionMapper : ProjectionMapper<AnimalEntityProjection, AnimalPr
         AnimalProjection(
             id,
             picture,
-            name,
-            specie
+            name
         )
     }
 }

@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.animal.data.entity
 
 import com.fatec.tcc.animais.base.BaseEntity
+import com.fatec.tcc.animais.category.data.entity.CategoryEntity
 import javax.persistence.*
 
 @Entity
@@ -12,7 +13,9 @@ class AnimalEntity(
     @Lob
     val picture: String,
     val name: String,
-    val specie: String,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    val category: CategoryEntity,
     val gender: String,
     val age: String,
     val size: String,

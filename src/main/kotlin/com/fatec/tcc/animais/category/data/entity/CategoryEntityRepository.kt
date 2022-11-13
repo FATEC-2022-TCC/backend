@@ -15,4 +15,7 @@ interface CategoryEntityRepository : JpaRepository<CategoryEntity, Long> {
         @Param("text") text: String,
         page: Pageable
     ): Page<CategoryEntityProjection>
+
+    @Query("SELECT c FROM CategoryEntity c")
+    fun findAllProjection(): List<CategoryEntityProjection>
 }

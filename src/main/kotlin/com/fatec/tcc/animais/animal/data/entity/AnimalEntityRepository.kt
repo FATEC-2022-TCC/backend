@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AnimalEntityRepository : JpaRepository<AnimalEntity, Long> {
     @Query(
-        "SELECT a.id AS id, a.picture AS picture, a.name AS name, a.specie AS specie " +
+        "SELECT a.id AS id, a.picture AS picture, a.name AS name " +
         "FROM UserEntity u JOIN u.animals a " +
         "WHERE u.id = :userId " +
         "AND a.name LIKE %:name%"

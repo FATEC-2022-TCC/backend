@@ -3,16 +3,19 @@ package com.fatec.tcc.animais.animal.data.mapper
 import com.fatec.tcc.animais.animal.data.entity.AnimalEntity
 import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.base.Mapper
+import com.fatec.tcc.animais.category.data.mapper.CategoryMapper
 import org.springframework.stereotype.Component
 
 @Component
-class AnimalMapper : Mapper<AnimalEntity, Animal> {
+class AnimalMapper(
+    private val categoryMapper: CategoryMapper
+) : Mapper<AnimalEntity, Animal> {
     override fun toEntity(domain: Animal) = domain.run {
         AnimalEntity(
             id,
             picture,
             name,
-            specie,
+            categoryMapper.toEntity(category),
             gender,
             age,
             size,
@@ -25,7 +28,7 @@ class AnimalMapper : Mapper<AnimalEntity, Animal> {
             id,
             picture,
             name,
-            specie,
+            categoryMapper.toDomain(category),
             gender,
             age,
             size,

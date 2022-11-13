@@ -4,5 +4,4 @@ interface AnimalEntityProjection {
     val id: Long
     val picture: String
     val name: String
-    val specie: String
 }

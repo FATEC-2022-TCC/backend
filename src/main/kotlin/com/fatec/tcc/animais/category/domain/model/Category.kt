@@ -10,4 +10,5 @@ data class Category(
     val files: ArrayList<Base64>,
 ) {
     constructor(name: String, description: String) : this(-1, name, description, arrayListOf(), arrayListOf())
+    constructor(id: Long): this(id, "", "", arrayListOf(), arrayListOf())
 }

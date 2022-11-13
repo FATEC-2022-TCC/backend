@@ -5,6 +5,7 @@ import com.fatec.tcc.animais.animal.domain.model.UpdateAnimalRequest
 import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notFoundOrElse
+import com.fatec.tcc.animais.category.domain.model.Category
 
 @UseCase
 class UpdateAnimalUseCase(
@@ -16,7 +17,7 @@ class UpdateAnimalUseCase(
         copy(
             picture = request.picture,
             name = request.name,
-            specie = request.specie,
+            category = Category(request.categoryId),
             gender = request.gender,
             age = request.age,
             size = request.size,
