@@ -13,8 +13,4 @@ enum class ComplaintStatusEnum(
     CANCEL(4, "A denúncia foi cancelada");
 
     fun toStateDescription() = StateDescription(code, description)
-
-    companion object {
-        operator fun get(index: Int) = values().let { if (index < 0 || index >= it.size) null else it[index] }
-    }
 }

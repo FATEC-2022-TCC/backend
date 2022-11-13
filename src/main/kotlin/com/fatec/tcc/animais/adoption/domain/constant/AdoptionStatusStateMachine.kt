@@ -31,4 +31,6 @@ object AdoptionStatusStateMachine : StateMachine<AdoptionStatusEnum> {
     override fun isStateChangeAllowed(from: AdoptionStatusEnum, to: AdoptionStatusEnum): Boolean {
         return to in (states[from] ?: return false)
     }
+
+    operator fun get(index: Int) = AdoptionStatusEnum.values().let { if (index < 0 || index >= it.size) null else it[index] }
 }

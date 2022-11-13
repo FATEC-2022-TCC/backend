@@ -2,7 +2,6 @@ package com.fatec.tcc.animais.complaint.domain.usecase
 
 import com.fatec.tcc.animais.base.*
 import com.fatec.tcc.animais.base64.domain.model.Base64
-import com.fatec.tcc.animais.complaint.domain.constant.ComplaintStatusEnum
 import com.fatec.tcc.animais.complaint.domain.constant.ComplaintStatusStateMachine
 import com.fatec.tcc.animais.complaint.domain.model.Complaint
 import com.fatec.tcc.animais.complaint.domain.model.UpdateComplaintRequest
@@ -15,8 +14,8 @@ class AddComplaintStatusUseCase(
     operator fun invoke(
         request: UpdateComplaintRequest
     ) = repository.find(request.id) notFoundOrElse {
-        val currentStatus = ComplaintStatusEnum[currentStatusCode].notNullOrThrow()
-        val desiredStatus = ComplaintStatusEnum[request.status.code].notNullOrThrow()
+        val currentStatus = ComplaintStatusStateMachine[currentStatusCode].notNullOrThrow()
+        val desiredStatus = ComplaintStatusStateMachine[request.status.code].notNullOrThrow()
         ComplaintStatusStateMachine.isStateChangeAllowed(currentStatus, desiredStatus).trueOrThrow()
         request.status.run {
             Status(code, description, files.map(::Base64))

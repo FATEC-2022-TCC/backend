@@ -1,11 +1,11 @@
 package com.fatec.tcc.animais.complaint.domain.usecase
 
+import com.fatec.tcc.animais.base.SearchProjectionAndStatusesResponse
 import com.fatec.tcc.animais.base.SearchableRepository
 import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.complaint.domain.constant.ComplaintStatusEnum
 import com.fatec.tcc.animais.complaint.domain.constant.ComplaintStatusStateMachine
 import com.fatec.tcc.animais.complaint.domain.model.ComplaintProjection
-import com.fatec.tcc.animais.complaint.domain.model.SearchComplaintProjectionResponse
 import com.fatec.tcc.animais.complaint.domain.repository.ComplaintProjectionRepositoryData
 import org.springframework.beans.factory.annotation.Value
 
@@ -18,7 +18,7 @@ class SearchComplaintProjectionUseCase(
     operator fun invoke(
         data: ComplaintProjectionRepositoryData,
         page: Int
-    ) = SearchComplaintProjectionResponse(
+    ) = SearchProjectionAndStatusesResponse(
         page = repository.search(
             data,
             page,

@@ -29,4 +29,6 @@ object ComplaintStatusStateMachine : StateMachine<ComplaintStatusEnum> {
     override fun isStateChangeAllowed(from: ComplaintStatusEnum, to: ComplaintStatusEnum): Boolean {
         return to in (states[from] ?: return false)
     }
+
+    operator fun get(index: Int) = ComplaintStatusEnum.values().let { if (index < 0 || index >= it.size) null else it[index] }
 }
