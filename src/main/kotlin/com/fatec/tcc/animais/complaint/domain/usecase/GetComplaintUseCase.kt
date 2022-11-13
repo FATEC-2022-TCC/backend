@@ -21,7 +21,7 @@ class GetComplaintUseCase(
             complaint = this,
             allowedStatus = ComplaintStatusStateMachine
                 .getAvailableStates(currentStatus)
-                .map(ComplaintStatusEnum::toComplaintStatus)
+                .map(ComplaintStatusEnum::toStateDescription)
         )
     }
 }

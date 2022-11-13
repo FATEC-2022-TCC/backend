@@ -24,6 +24,6 @@ class SearchComplaintProjectionUseCase(
             page,
             paginationCounter
         ),
-        statuses = ComplaintStatusStateMachine.getAllStates().map(ComplaintStatusEnum::toComplaintStatus)
+        statuses = ComplaintStatusStateMachine.getAllStates().map(ComplaintStatusEnum::toStateDescription)
     )
 }

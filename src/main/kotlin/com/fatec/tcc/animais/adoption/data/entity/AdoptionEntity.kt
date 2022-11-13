@@ -12,13 +12,17 @@ class AdoptionEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     val name: String,
+    @Lob
+    val description: String,
+    @Lob
+    val picture: String,
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
     @JoinColumn(name = "adoption_id")
-    val files: List<Base64Entity>,
+    val images: List<Base64Entity>,
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
