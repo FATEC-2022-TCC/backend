@@ -19,6 +19,8 @@ class AddAdoptionUseCase(
             -1,
             name,
             description,
+            gender,
+            size,
             picture,
             images.map(::Base64) as ArrayList,
             arrayListOf(

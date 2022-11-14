@@ -7,6 +7,8 @@ data class Adoption(
     val id: Long,
     val name: String,
     val description: String,
+    val gender: String,
+    val size: String,
     val picture: String,
     val images: ArrayList<Base64>,
     val statuses: ArrayList<Status>,

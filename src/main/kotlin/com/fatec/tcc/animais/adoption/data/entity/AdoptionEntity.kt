@@ -14,6 +14,8 @@ class AdoptionEntity(
     val name: String,
     @Lob
     val description: String,
+    val gender: String,
+    val size: String,
     @Lob
     val picture: String,
     @OneToMany(

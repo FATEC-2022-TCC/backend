@@ -9,10 +9,17 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
-    @Query("SELECT a FROM AdoptionEntity a WHERE (a.name LIKE %:text% OR a.description LIKE %:text%) AND a.currentStatusCode = :currentStatusCode")
+    @Query(
+        "SELECT a FROM AdoptionEntity a WHERE " +
+        "(a.name LIKE %:text% OR a.description LIKE %:text%) " +
+        "AND a.gender LIKE %:gender% AND a.size LIKE %:size% " +
+        "AND a.currentStatusCode IN :statuses"
+    )
     fun searchProjection(
-        @Param("currentStatusCode") currentStatusCode: Int,
-        @Param("text") text: String,
+        text: String,
+        gender: String,
+        size: String,
+        statuses: List<Int>,
         page: Pageable
     ): Page<AdoptionEntityProjection>
 

@@ -39,11 +39,15 @@ class AdminAdoptionController(
     fun project(
         @RequestParam(defaultValue = "0") currentStatusCode: Int,
         @RequestParam(defaultValue = "") text: String,
+        @RequestParam(defaultValue = "") gender: String,
+        @RequestParam(defaultValue = "") size: String,
         @RequestParam(defaultValue = "1") page: Int,
     ) = searchAdoptionProjectionUseCase(
         AdoptionProjectionRepositoryData(
             currentStatusCode,
-            text
+            text,
+            gender,
+            size
         ),
         page - 1
     )
