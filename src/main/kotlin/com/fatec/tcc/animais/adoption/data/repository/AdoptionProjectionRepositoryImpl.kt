@@ -15,5 +15,5 @@ internal class AdoptionProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<AdoptionProjection, AdoptionEntityProjection, AdoptionEntityRepository, AdoptionProjectionRepositoryData>(
     repository,
     projectionMapper,
-    searchableMapper = { data, page -> searchProjection(data.text, page) }
+    searchableMapper = { data, page -> searchProjection(data.currentStatusCode, data.text, page) }
 )

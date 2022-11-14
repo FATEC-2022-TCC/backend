@@ -12,7 +12,9 @@ import com.fatec.tcc.animais.status.domain.model.Status
 class AddAdoptionUseCase(
     private val repository: BaseRepository<Adoption>
 ) {
-    operator fun invoke(request: NewAdoptionRequest) = request.run {
+    operator fun invoke(
+        request: NewAdoptionRequest
+    ) = request.run {
         Adoption(
             -1,
             name,
@@ -28,5 +30,5 @@ class AddAdoptionUseCase(
             AdoptionStatusEnum.CREATED.code,
             arrayListOf()
         )
-    }
+    }.run(repository::insert)
 }

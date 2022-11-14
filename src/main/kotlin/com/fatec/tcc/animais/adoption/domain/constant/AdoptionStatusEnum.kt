@@ -6,10 +6,10 @@ enum class AdoptionStatusEnum(
     val code: Int,
     val description: String
 ) {
-    CREATED(0, "O animal foi inserido no sistema, mas ainda não"),
-    INVISIBLE(1, "O animal não aparecerá aos usuários"),
-    VISIBLE(2, "O animal aparecerá aos usuários"),
-    ADOPTED(3, "A denúncia foi resolvida"),
+    CREATED(0, "O animal foi inserido no sistema, mas não está visível aos usuários"),
+    INVISIBLE(1, "O animal não está visível aos usuários"),
+    VISIBLE(2, "O animal está visível aos usuários"),
+    ADOPTED(3, "O animal foi adotado"),
     IMPOSSIBLE(4, "Por algum motivo o animal não pode mais ser adotado");
 
     fun toStateDescription() = StateDescription(code, description)
