@@ -10,7 +10,7 @@ enum class AdoptionStatusEnum(
     INVISIBLE(1, "O animal não está visível aos usuários"),
     VISIBLE(2, "O animal está visível aos usuários"),
     ADOPTED(3, "O animal foi adotado"),
-    IMPOSSIBLE(4, "Por algum motivo o animal não pode mais ser adotado");
+    IMPOSSIBLE(4, "O animal não pode mais ser adotado");
 
     fun toStateDescription() = StateDescription(code, description)
 }

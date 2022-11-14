@@ -23,6 +23,5 @@ class AddAdoptionStatusUseCase(
         copy(
             currentStatusCode = request.status.code
         ).run(repository::update)
-        Unit
     }
 }

@@ -7,7 +7,8 @@ object AdoptionStatusStateMachine : StateMachine<AdoptionStatusEnum> {
         AdoptionStatusEnum.CREATED to setOf(
             AdoptionStatusEnum.VISIBLE,
             AdoptionStatusEnum.INVISIBLE,
-            AdoptionStatusEnum.ADOPTED
+            AdoptionStatusEnum.ADOPTED,
+            AdoptionStatusEnum.IMPOSSIBLE
         ),
         AdoptionStatusEnum.VISIBLE to setOf(
             AdoptionStatusEnum.INVISIBLE,

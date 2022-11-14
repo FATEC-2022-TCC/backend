@@ -5,6 +5,7 @@ import com.fatec.tcc.animais.adoption.domain.model.NewAdoptionRequest
 import com.fatec.tcc.animais.adoption.domain.model.UpdateAdoptionRequest
 import com.fatec.tcc.animais.adoption.domain.usecase.AddAdoptionStatusUseCase
 import com.fatec.tcc.animais.adoption.domain.usecase.AddAdoptionUseCase
+import com.fatec.tcc.animais.adoption.domain.usecase.GetAdoptionUseCase
 import com.fatec.tcc.animais.adoption.domain.usecase.SearchAdoptionProjectionUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*
 class AdminAdoptionController(
     private val addAdoptionUseCase: AddAdoptionUseCase,
     private val addAdoptionStatusUseCase: AddAdoptionStatusUseCase,
+    private val getAdoptionUseCase: GetAdoptionUseCase,
     private val searchAdoptionProjectionUseCase: SearchAdoptionProjectionUseCase
 ) {
     @PostMapping
@@ -27,6 +29,11 @@ class AdminAdoptionController(
     fun status(
         @RequestBody request: UpdateAdoptionRequest
     ) = addAdoptionStatusUseCase(request)
+
+    @GetMapping("/{id}")
+    fun get(
+        @PathVariable id: Long
+    ) = getAdoptionUseCase(id)
 
     @GetMapping("/projection")
     fun project(
