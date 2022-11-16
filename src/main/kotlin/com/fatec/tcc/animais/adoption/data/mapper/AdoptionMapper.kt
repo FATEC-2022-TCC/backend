@@ -39,7 +39,8 @@ class AdoptionMapper(
             images.map(base64Mapper::toDomain) as ArrayList,
             statuses.map(statusMapper::toDomain) as ArrayList,
             currentStatusCode,
-            requests.map(adoptionRequestMapper::toDomain) as ArrayList
+            requests.map(adoptionRequestMapper::toDomain) as ArrayList,
+            created
         )
     }
 }

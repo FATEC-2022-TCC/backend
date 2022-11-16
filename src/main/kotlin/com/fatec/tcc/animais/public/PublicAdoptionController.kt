@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.public
 
+import com.fatec.tcc.animais.adoption.domain.usecase.GetPublicAdoptionUseCase
 import com.fatec.tcc.animais.adoption.domain.usecase.SearchPublicAdoptionProjectionUseCase
 import org.springframework.web.bind.annotation.*
 
@@ -7,10 +8,11 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/public/adoption")
 class PublicAdoptionController(
-    private val searchPublicAdoptionProjectionUseCase: SearchPublicAdoptionProjectionUseCase
+    private val searchPublicAdoptionProjectionUseCase: SearchPublicAdoptionProjectionUseCase,
+    private val getPublicAdoptionUseCase: GetPublicAdoptionUseCase
 ) {
-    @GetMapping
-    fun get(
+    @GetMapping("/projection")
+    fun project(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "") gender: String,
         @RequestParam(defaultValue = "") size: String,
@@ -21,4 +23,9 @@ class PublicAdoptionController(
         size,
         page - 1
     )
+
+    @GetMapping("/{id}")
+    fun get(
+        @PathVariable id: Long
+    ) = getPublicAdoptionUseCase(id)
 }
