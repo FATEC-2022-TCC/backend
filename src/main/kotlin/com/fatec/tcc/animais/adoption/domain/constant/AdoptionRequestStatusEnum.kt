@@ -3,8 +3,8 @@ package com.fatec.tcc.animais.adoption.domain.constant
 import com.fatec.tcc.animais.base.StateDescription
 
 enum class AdoptionRequestStatusEnum(
-    private val code: Int,
-    private val description: String
+    val code: Int,
+    val description: String
 ) {
     REQUESTED(0, "A adoção foi requisitada"),
     ENQUEUED(1, "A adoção foi agendada"),

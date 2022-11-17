@@ -5,10 +5,10 @@ import com.fatec.tcc.animais.adoption.domain.model.AdoptionProjection
 import com.fatec.tcc.animais.adoption.domain.model.AdoptionProjectionRepositoryData
 import com.fatec.tcc.animais.base.SearchProjectionAndStatusesResponse
 import com.fatec.tcc.animais.base.SearchableRepository
+import com.fatec.tcc.animais.base.UseCase
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.stereotype.Component
 
-@Component
+@UseCase
 class SearchAdoptionProjectionUseCase(
     private val repository: SearchableRepository<AdoptionProjection, AdoptionProjectionRepositoryData>,
     @Value("\${custom.pagination.counter}")
