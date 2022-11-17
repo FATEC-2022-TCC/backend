@@ -9,10 +9,14 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface AdoptionRequestEntityRepository : JpaRepository<AdoptionRequestEntity, Long> {
-    @Query("SELECT r FROM AdoptionEntity a JOIN a.requests r WHERE a.id = :id AND r.createdBy LIKE %:text%")
+    @Query(
+        "SELECT r.id AS id, r.currentStatusCode AS currentStatusCode, r.createdBy AS createdBy " +
+        "FROM AdoptionEntity a JOIN a.requests r WHERE (a.id = :id AND r.currentStatusCode = :currentStatusCode) AND r.createdBy LIKE %:text%"
+    )
     fun searchAdoptionProjectionByAdoptionId(
         @Param("id") id: Long,
         @Param("text") text: String,
+        @Param("currentStatusCode") currentStatusCode: Int,
         page: Pageable
     ): Page<AdoptionRequestEntityProjection>
 

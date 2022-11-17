@@ -23,7 +23,14 @@ internal class AdoptionRequestProjectionRepositoryImpl(
 (
     repository,
     repositoryMapper,
-    searchableMapper = { data, page -> searchAdoptionProjectionByAdoptionId(data.id, data.text, page) }
+    searchableMapper = { data, page ->
+        searchAdoptionProjectionByAdoptionId(
+            data.id,
+            data.text,
+            data.currentStatusCode,
+            page
+        )
+    }
 ), AdoptionRequestProjectionRepository {
     override fun getByCreatedBy(createdBy: String) = repository
         .getByCreatedBy(createdBy)

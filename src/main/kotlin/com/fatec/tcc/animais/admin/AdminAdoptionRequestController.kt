@@ -19,13 +19,15 @@ class AdminAdoptionRequestController(
 
     @GetMapping("/projection")
     fun project(
-        @RequestParam id: Long,
+        @RequestParam(defaultValue = "0") id: Long,
         @RequestParam(defaultValue = "") text: String,
+        @RequestParam(defaultValue = "0") currentStatusCode: Int,
         @RequestParam(defaultValue = "1") page: Int
     ) = searchAdoptionRequestProjectionUseCase(
         AdoptionRequestProjectionRepositoryData(
             id,
-            text
+            text,
+            currentStatusCode
         ),
         page - 1
     )
