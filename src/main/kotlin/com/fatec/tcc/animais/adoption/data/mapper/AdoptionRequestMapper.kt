@@ -22,7 +22,8 @@ class AdoptionRequestMapper(
         AdoptionRequest(
             id,
             statuses.map(statusMapper::toDomain) as ArrayList,
-            currentStatusCode
+            currentStatusCode,
+            createdBy
         )
     }
 }

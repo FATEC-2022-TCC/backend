@@ -6,4 +6,5 @@ data class AdoptionRequest(
     val id: Long,
     val statuses: ArrayList<Status>,
     val currentStatusCode: Int,
+    val createdBy: String? = null
 )

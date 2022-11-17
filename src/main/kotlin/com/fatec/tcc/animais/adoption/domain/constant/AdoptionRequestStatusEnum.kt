@@ -8,8 +8,9 @@ enum class AdoptionRequestStatusEnum(
 ) {
     REQUESTED(0, "A adoção foi requisitada"),
     ENQUEUED(1, "A adoção foi agendada"),
-    ADOPTED(2, "A adoção foi concluída"),
-    CANCELED(3, "A adoção foi cancelada");
+    PAUSED(2, "A adoção foi pausada"),
+    ADOPTED(3, "A adoção foi concluída"),
+    CANCELED(4, "A adoção foi cancelada");
 
     fun toStateDescription() = StateDescription(code, description)
 
