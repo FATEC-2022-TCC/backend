@@ -12,4 +12,10 @@ interface AdoptionProjectionRepository {
         page: Int,
         counter: Int,
     ): Page<AdoptionProjection>
+
+    fun projectAllByCreatedByRequest(
+        createdBy: String,
+        page: Int,
+        size: Int
+    ): Page<AdoptionProjection>
 }

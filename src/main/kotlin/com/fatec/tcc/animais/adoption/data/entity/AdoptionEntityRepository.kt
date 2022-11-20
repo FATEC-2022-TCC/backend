@@ -4,7 +4,6 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
-import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -23,8 +22,26 @@ interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
         page: Pageable
     ): Page<AdoptionEntityProjection>
 
-    @Query("SELECT a FROM AdoptionEntity a")
-    fun projection(
+    @Query(
+        "SELECT ae.id AS id, ae.name AS name, ae.description AS description, ae.picture AS picture " +
+        "FROM AdoptionEntity ae " +
+        "JOIN ae.requests r " +
+        "WHERE r.createdBy = :createdBy"
+    )
+    fun projectAllByCreatedByRequest(
+        createdBy: String,
         page: Pageable
     ): Page<AdoptionEntityProjection>
+
+    @Query(
+        "SELECT ae " +
+        "FROM AdoptionEntity ae " +
+        "JOIN ae.requests r " +
+        "WHERE r.createdBy = :createdBy " +
+        "AND ae.id = :id"
+    )
+    fun findByCreatedByAndId(
+        id: Long,
+        createdBy: String
+    ): AdoptionEntity?
 }

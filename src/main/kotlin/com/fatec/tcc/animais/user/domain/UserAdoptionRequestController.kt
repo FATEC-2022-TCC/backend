@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*
 class UserAdoptionRequestController(
     private val addUserAdoptionRequestUseCase: AddUserAdoptionRequestUseCase
 ) {
-    @GetMapping
-    fun post(
+    @GetMapping("/create")
+    fun create(
         @RequestParam(defaultValue = "0") id: Long,
         authentication: Authentication
     ) = addUserAdoptionRequestUseCase(

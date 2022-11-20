@@ -24,7 +24,7 @@ interface AdoptionRequestEntityRepository : JpaRepository<AdoptionRequestEntity,
         "SELECT r.id AS id, r.currentStatusCode AS currentStatusCode, r.createdBy AS createdBy " +
         "FROM AdoptionEntity ae JOIN ae.requests r WHERE r.createdBy = :createdBy AND ae.id = :adoptionId"
     )
-    fun getByAdoptionIdAndCreatedBy(
+    fun projectionByAdoptionIdAndCreatedBy(
         @Param("adoptionId") adoptionId: Long,
         @Param("createdBy") createdBy: String
     ): AdoptionRequestEntityProjection?
