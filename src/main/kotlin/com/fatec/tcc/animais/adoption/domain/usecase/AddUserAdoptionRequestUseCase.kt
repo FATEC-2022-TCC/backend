@@ -19,7 +19,7 @@ class AddUserAdoptionRequestUseCase(
         id: Long,
         currentUser: CurrentUser
     ) {
-        if (adoptionRequestProjectionRepository.getByCreatedBy(currentUser.username) != null) return
+        if (adoptionRequestProjectionRepository.getByAdoptionIdAndCreatedBy(id, currentUser.username) != null) return
         val adoption = repository.find(id).notNullOrThrow()
         adoption.requests.add(
             AdoptionRequest(

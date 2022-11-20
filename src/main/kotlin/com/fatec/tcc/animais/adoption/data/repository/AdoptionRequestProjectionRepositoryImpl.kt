@@ -32,7 +32,7 @@ internal class AdoptionRequestProjectionRepositoryImpl(
         )
     }
 ), AdoptionRequestProjectionRepository {
-    override fun getByCreatedBy(createdBy: String) = repository
-        .getByCreatedBy(createdBy)
+    override fun getByAdoptionIdAndCreatedBy(adoptionId: Long, createdBy: String) = repository
+        .getByAdoptionIdAndCreatedBy(adoptionId, createdBy)
         ?.run(repositoryMapper::toDomain)
 }
