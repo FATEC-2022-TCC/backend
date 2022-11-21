@@ -26,17 +26,19 @@ interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
         "SELECT ae.id AS id, ae.name AS name, ae.description AS description, ae.picture AS picture " +
         "FROM AdoptionEntity ae " +
         "JOIN ae.requests r " +
-        "WHERE r.createdBy = :createdBy"
+        "WHERE r.createdBy = :createdBy " +
+        "AND ae.name LIKE %:text%"
     )
     fun projectAllByCreatedByRequest(
         createdBy: String,
+        text: String,
         page: Pageable
     ): Page<AdoptionEntityProjection>
 
     @Query(
         "SELECT ae " +
         "FROM AdoptionEntity ae " +
-        "JOIN ae.requests r " +
+        "JOIN FETCH ae.requests r " +
         "WHERE r.createdBy = :createdBy " +
         "AND ae.id = :id"
     )

@@ -21,7 +21,7 @@ class ChatbotConfiguration {
     }
 
     @Bean
-    fun providesChatbotSupplier(): Supplier<Chatbot> = object : Supplier<Chatbot> {
+    fun providesChatbotSupplier() = object : Supplier<Chatbot> {
         val parser: Parser<Knowledge> = JSONParseImpl(Knowledge::class)
 
         val files = ResourceUtils.getFile("classpath:bots/joselito/").listFiles() ?: emptyArray()

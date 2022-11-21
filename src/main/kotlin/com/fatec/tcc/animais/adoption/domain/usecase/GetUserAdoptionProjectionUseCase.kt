@@ -12,10 +12,12 @@ class GetUserAdoptionProjectionUseCase(
     private val paginationCounter: Int
 ) {
     operator fun invoke(
+        text: String,
         page: Int,
         currentUser: CurrentUser
     ) = repository.projectAllByCreatedByRequest(
         currentUser.username,
+        text,
         page,
         paginationCounter
     )

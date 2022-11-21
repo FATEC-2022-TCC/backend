@@ -15,6 +15,7 @@ interface AdoptionProjectionRepository {
 
     fun projectAllByCreatedByRequest(
         createdBy: String,
+        text: String,
         page: Int,
         size: Int
     ): Page<AdoptionProjection>

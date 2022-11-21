@@ -26,9 +26,11 @@ class UserAdoptionController(
 
     @GetMapping("/projection")
     fun project(
+        @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int,
         authentication: Authentication
     ) = getUserAdoptionProjectionUseCase(
+        text,
         page - 1,
         authentication.toCurrentUser()
     )

@@ -43,7 +43,7 @@ internal class AdoptionProjectionRepositoryImpl(
         PageRequest.of(page, counter)
     ).toPage(projectionMapper::toDomain)
 
-    override fun projectAllByCreatedByRequest(createdBy: String, page: Int, size: Int) = repository
-        .projectAllByCreatedByRequest(createdBy, PageRequest.of(page, size))
+    override fun projectAllByCreatedByRequest(createdBy: String, text: String, page: Int, size: Int) = repository
+        .projectAllByCreatedByRequest(createdBy, text, PageRequest.of(page, size))
         .toPage(projectionMapper::toDomain)
 }
