@@ -16,10 +16,10 @@ class SignUpUseCase(
     private val passwordEncoder: PasswordEncoder
 ) {
     operator fun invoke(signUpRequest: SignUpRequest): User {
-        val (name, username, email) = signUpRequest
+        val (name, username, email, password) = signUpRequest
         val existingUser = userRepository.findByUsername(username)
-        (existingUser != null).trueOrThrow()
-        val encoded = passwordEncoder.encode(signUpRequest.password)
+        (existingUser == null).trueOrThrow()
+        val encoded = passwordEncoder.encode(password)
         return userBaseRepository.insert(
             User(
                 name = name,
