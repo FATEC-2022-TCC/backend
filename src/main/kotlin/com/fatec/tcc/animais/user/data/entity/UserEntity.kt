@@ -16,6 +16,7 @@ class UserEntity(
     val password: String,
     val email: String,
     val authority: String,
+    val isActive: Boolean,
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],

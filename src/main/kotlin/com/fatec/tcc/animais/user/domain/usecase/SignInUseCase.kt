@@ -2,14 +2,13 @@ package com.fatec.tcc.animais.user.domain.usecase
 
 import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notNullOrThrow
+import com.fatec.tcc.animais.base.trueOrThrow
 import com.fatec.tcc.animais.user.domain.model.SignInRequest
 import com.fatec.tcc.animais.user.domain.model.SignInResponse
 import com.fatec.tcc.animais.user.domain.repository.UserRepository
-import org.springframework.http.HttpStatus
 import org.springframework.security.core.authority.AuthorityUtils.createAuthorityList
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.web.server.ResponseStatusException
 
 @UseCase
 class SignInUseCase(
@@ -20,8 +19,7 @@ class SignInUseCase(
     operator fun invoke(request: SignInRequest): SignInResponse {
         val (username, password) = request
         val user = repository.findByUsername(username).notNullOrThrow()
-        val match = passwordEncoder.matches(password, user.password)
-        if (!match) throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        (user.isActive && passwordEncoder.matches(password, user.password)).trueOrThrow()
         val userDetails = User.builder().apply {
             username(user.username)
             password(user.password)
