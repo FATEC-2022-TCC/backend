@@ -6,6 +6,7 @@ import com.fatec.tcc.animais.adoption.domain.model.NewAdoptionRequest
 import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base64.domain.model.Base64
+import com.fatec.tcc.animais.category.domain.model.Category
 import com.fatec.tcc.animais.status.domain.model.Status
 
 @UseCase
@@ -21,6 +22,7 @@ class AddAdoptionUseCase(
             description,
             gender,
             size,
+            Category(categoryId),
             picture,
             images.map(::Base64) as ArrayList,
             arrayListOf(

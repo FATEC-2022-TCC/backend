@@ -4,6 +4,7 @@ import com.fatec.tcc.animais.adoption.data.entity.AdoptionEntity
 import com.fatec.tcc.animais.adoption.domain.model.Adoption
 import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.base64.data.mapper.Base64Mapper
+import com.fatec.tcc.animais.category.data.mapper.CategoryMapper
 import com.fatec.tcc.animais.status.data.mapper.StatusMapper
 import org.springframework.stereotype.Component
 
@@ -12,6 +13,7 @@ class AdoptionMapper(
     private val base64Mapper: Base64Mapper,
     private val statusMapper: StatusMapper,
     private val adoptionRequestMapper: AdoptionRequestMapper,
+    private val categoryMapper: CategoryMapper
 ) : Mapper<AdoptionEntity, Adoption> {
     override fun toEntity(domain: Adoption) = domain.run {
         AdoptionEntity(
@@ -20,6 +22,7 @@ class AdoptionMapper(
             description,
             gender,
             size,
+            categoryMapper.toEntity(category),
             picture,
             images.map(base64Mapper::toEntity),
             statuses.map(statusMapper::toEntity),
@@ -35,6 +38,7 @@ class AdoptionMapper(
             description,
             gender,
             size,
+            categoryMapper.toDomain(category),
             picture,
             images.map(base64Mapper::toDomain) as ArrayList,
             statuses.map(statusMapper::toDomain) as ArrayList,

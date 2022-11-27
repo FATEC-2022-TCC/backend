@@ -5,6 +5,7 @@ data class NewAdoptionRequest(
     val description: String,
     val gender: String,
     val size: String,
+    val categoryId: Long,
     val picture: String,
     val images: List<String>
 )

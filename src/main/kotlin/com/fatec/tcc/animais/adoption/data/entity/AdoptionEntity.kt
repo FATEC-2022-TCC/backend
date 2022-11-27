@@ -2,6 +2,7 @@ package com.fatec.tcc.animais.adoption.data.entity
 
 import com.fatec.tcc.animais.base.BaseEntity
 import com.fatec.tcc.animais.base64.data.entity.Base64Entity
+import com.fatec.tcc.animais.category.data.entity.CategoryEntity
 import com.fatec.tcc.animais.status.data.entity.StatusEntity
 import javax.persistence.*
 
@@ -16,6 +17,9 @@ class AdoptionEntity(
     val description: String,
     val gender: String,
     val size: String,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    val category: CategoryEntity,
     @Lob
     val picture: String,
     @OneToMany(
