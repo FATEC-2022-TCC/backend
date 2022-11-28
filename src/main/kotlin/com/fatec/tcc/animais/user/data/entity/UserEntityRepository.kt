@@ -11,7 +11,8 @@ interface UserEntityRepository : JpaRepository<UserEntity, Long> {
     fun findByUsername(username: String): UserEntity?
 
     @Query(
-        "SELECT u.id AS id, u.username AS username FROM UserEntity u " +
+        "SELECT u.id AS id, u.name AS name, u.username AS username, u.isActive AS isActive " +
+        "FROM UserEntity u " +
         "WHERE u.isActive = :isActive " +
         "AND (u.name LIKE %:text% OR u.username LIKE %:text%)"
     )

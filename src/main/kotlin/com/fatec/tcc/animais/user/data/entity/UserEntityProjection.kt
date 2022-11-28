@@ -1,6 +1,12 @@
 package com.fatec.tcc.animais.user.data.entity
 
-class UserEntityProjection(
-    val id: Long,
+import org.springframework.beans.factory.annotation.Value
+
+interface UserEntityProjection {
+    val id: Long
+    val name: String
     val username: String
-)
+    //it's needed because of projection poor implementation isn't recognizing byte as boolean on query
+    @get:Value("#{target.isActive}")
+    val isActive: Boolean
+}
