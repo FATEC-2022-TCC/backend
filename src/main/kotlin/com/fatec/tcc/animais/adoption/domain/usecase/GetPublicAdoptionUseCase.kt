@@ -20,6 +20,7 @@ class GetPublicAdoptionUseCase(
             description,
             gender,
             size,
+            category,
             picture,
             images,
             created
