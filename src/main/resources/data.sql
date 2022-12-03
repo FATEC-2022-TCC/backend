@@ -42,10 +42,24 @@ VALUE (
 
 INSERT INTO users (name, username, password, email, authority, created, created_by, updated, updated_by, is_active)
 VALUE (
-    "test",
-    "test",
+    "test1",
+    "test1",
     "$2a$10$LI/suG/VrLPuBQDRVhfG7.ntbrTV7IC7A9iSOFwEJH/t7DZaOuBk.",
-    "test@test.com",
+    "test1@test.com",
+    "NORMAL",
+    NOW(),
+    "SYSTEM",
+    NOW(),
+    "SYSTEM",
+    1
+);
+
+INSERT INTO users (name, username, password, email, authority, created, created_by, updated, updated_by, is_active)
+VALUE (
+    "test2",
+    "test2",
+    "$2a$10$LI/suG/VrLPuBQDRVhfG7.ntbrTV7IC7A9iSOFwEJH/t7DZaOuBk.",
+    "test2@test.com",
     "NORMAL",
     NOW(),
     "SYSTEM",

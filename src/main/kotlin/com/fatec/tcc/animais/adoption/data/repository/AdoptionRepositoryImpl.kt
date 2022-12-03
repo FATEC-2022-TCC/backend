@@ -20,4 +20,8 @@ internal class AdoptionRepositoryImpl(
     override fun findByCreatedByAndId(id: Long, createdBy: String) = repository
         .findByCreatedByAndId(id, createdBy)
         ?.run(repositoryMapper::toDomain)
+
+    override fun findByAdoptionRequestId(id: Long) = repository
+        .findByAdoptionRequestId(id)
+        ?.run(repositoryMapper::toDomain)
 }

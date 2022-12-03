@@ -46,4 +46,14 @@ interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
         id: Long,
         createdBy: String
     ): AdoptionEntity?
+
+    @Query(
+        "SELECT ae " +
+        "FROM AdoptionEntity ae " +
+        "JOIN ae.requests r " +
+        "WHERE r.id = :id"
+    )
+    fun findByAdoptionRequestId(
+        id: Long
+    ): AdoptionEntity?
 }

@@ -7,4 +7,8 @@ interface AdoptionRepository {
         id: Long,
         createdBy: String
     ): Adoption?
+
+    fun findByAdoptionRequestId(
+        id: Long
+    ): Adoption?
 }
