@@ -15,14 +15,12 @@ class ComplaintEntity(
     @Lob
     val description: String,
     @OneToMany(
-        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
     @JoinColumn(name = "complaint_id")
-    val files: List<Base64Entity>,
+    val images: List<Base64Entity>,
     @OneToMany(
-        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )

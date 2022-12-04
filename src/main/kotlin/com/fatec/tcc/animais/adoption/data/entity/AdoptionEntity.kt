@@ -23,14 +23,12 @@ class AdoptionEntity(
     @Lob
     val picture: String,
     @OneToMany(
-        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
     @JoinColumn(name = "adoption_id")
     val images: List<Base64Entity>,
     @OneToMany(
-        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
@@ -38,7 +36,6 @@ class AdoptionEntity(
     val statuses: List<StatusEntity>,
     val currentStatusCode: Int,
     @OneToMany(
-        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )

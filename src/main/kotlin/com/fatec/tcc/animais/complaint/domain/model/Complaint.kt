@@ -8,7 +8,7 @@ data class Complaint(
     val id: Long = -1,
     val local: String,
     val description: String,
-    val files: List<Base64>,
+    val images: List<Base64>,
     val statuses: ArrayList<Status>,
     val currentStatusCode: Int,
     val created: Instant? = null,

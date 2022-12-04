@@ -17,7 +17,7 @@ class ComplaintMapper(
             id,
             local,
             description,
-            files.map(base64Mapper::toEntity),
+            images.map(base64Mapper::toEntity),
             statuses.map(statusMapper::toEntity),
             currentStatusCode
         )
@@ -28,7 +28,7 @@ class ComplaintMapper(
             id,
             local,
             description,
-            files.map(base64Mapper::toDomain),
+            images.map(base64Mapper::toDomain),
             statuses.map(statusMapper::toDomain) as ArrayList,
             currentStatusCode,
             created,

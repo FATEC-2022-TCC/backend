@@ -1,22 +1,24 @@
-package com.fatec.tcc.animais.status.data.entity
+package com.fatec.tcc.animais.reality.data.repository
 
 import com.fatec.tcc.animais.base.BaseEntity
 import com.fatec.tcc.animais.base64.data.entity.Base64Entity
 import javax.persistence.*
 
 @Entity
-@Table(name = "statuses")
-class StatusEntity(
+@Table(name = "realities")
+class RealityEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
-    val code: Int,
     @Lob
+    val data: String,
+    val scale: Float,
+    val title: String,
     val description: String,
     @OneToMany(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn(name = "status_id")
-    val images: List<Base64Entity>,
+    @JoinColumn(name = "reality_id")
+    val images: List<Base64Entity>
 ) : BaseEntity()

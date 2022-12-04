@@ -22,7 +22,7 @@ class AddAdoptionRequestStatusUseCase(
         AdoptionRequestStatusStateMachine.isStateChangeAllowed(currentStatus, desiredStatus).trueOrThrow()
 
         request.status.run {
-            Status(code, description, files.map(::Base64))
+            Status(code, description, images.map(::Base64))
         }.also(statuses::add)
         copy(
             currentStatusCode = request.status.code

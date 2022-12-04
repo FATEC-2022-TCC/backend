@@ -15,7 +15,7 @@ class StatusMapper(
             id,
             code,
             description,
-            files.map(base64Mapper::toEntity)
+            images.map(base64Mapper::toEntity)
         )
     }
 
@@ -24,7 +24,7 @@ class StatusMapper(
             id,
             code,
             description,
-            files.map(base64Mapper::toDomain) as ArrayList,
+            images.map(base64Mapper::toDomain) as ArrayList,
             created,
             createdBy,
             updated,

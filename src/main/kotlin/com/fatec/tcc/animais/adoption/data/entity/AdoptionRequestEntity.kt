@@ -11,7 +11,6 @@ class AdoptionRequestEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     @OneToMany(
-        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
