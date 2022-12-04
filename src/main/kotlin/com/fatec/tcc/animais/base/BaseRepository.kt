@@ -6,4 +6,5 @@ interface BaseRepository<T> {
     fun find(id: Long): T?
     fun update(type: T): T
     fun delete(id: Long)
+    fun delete(ids: List<Long>)
 }

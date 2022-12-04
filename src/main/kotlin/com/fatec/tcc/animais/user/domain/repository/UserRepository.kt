@@ -4,4 +4,5 @@ import com.fatec.tcc.animais.user.domain.model.User
 
 interface UserRepository {
     fun findByUsername(username: String): User?
+    fun findByIsValidated(isValidated: Boolean): List<User>
 }

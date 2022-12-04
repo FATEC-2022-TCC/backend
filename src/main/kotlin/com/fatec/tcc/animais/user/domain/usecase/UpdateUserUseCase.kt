@@ -17,7 +17,8 @@ class UpdateUserUseCase(
             name = request.name,
             email = request.email,
             authority = request.authority,
-            isActive = request.isActive
+            isActive = request.isActive,
+            isValidated = request.isValidated
         ).run(repository::update)
         Unit
     }

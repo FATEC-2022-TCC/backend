@@ -17,8 +17,9 @@ class UserEntity(
     val email: String,
     val authority: String,
     val isActive: Boolean,
+    val isValidated: Boolean,
     @OneToMany(
-        fetch = FetchType.LAZY,
+        fetch = FetchType.EAGER,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )

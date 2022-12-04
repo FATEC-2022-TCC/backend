@@ -4,5 +4,6 @@ data class UserProjection(
     val id: Long,
     val name: String,
     val username: String,
-    val isActive: Boolean
+    val isActive: Boolean,
+    val isValidated: Boolean
 )

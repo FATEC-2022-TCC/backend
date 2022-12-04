@@ -12,7 +12,8 @@ class UserProjectionMapper : ProjectionMapper<UserEntityProjection, UserProjecti
             id,
             name,
             username,
-            isActive
+            isActive,
+            isValidated
         )
     }
 }

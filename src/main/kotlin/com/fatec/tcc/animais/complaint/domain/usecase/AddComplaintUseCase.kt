@@ -9,7 +9,7 @@ import com.fatec.tcc.animais.complaint.domain.model.NewComplaintRequest
 import com.fatec.tcc.animais.status.domain.model.Status
 
 @UseCase
-class AddAnonymousComplaintUseCase(
+class AddComplaintUseCase(
     private val repository: BaseRepository<Complaint>
 ) {
     operator fun invoke(request: NewComplaintRequest) = request.run {
@@ -21,7 +21,7 @@ class AddAnonymousComplaintUseCase(
             arrayListOf(
                 Status(
                     ComplaintStatusEnum.CREATED.code,
-                    "A denúncia foi criada anonimamente",
+                    ComplaintStatusEnum.CREATED.description
                 )
             ),
             ComplaintStatusEnum.CREATED.code

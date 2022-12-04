@@ -24,9 +24,10 @@ class AdminUserController(
     fun project(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "true") isActive: Boolean,
+        @RequestParam(defaultValue = "true") isValidated: Boolean,
         @RequestParam(defaultValue = "1") page: Int,
     ) = getUserProjectionUseCase(
-        UserProjectionRepositoryData(text, isActive),
+        UserProjectionRepositoryData(text, isActive, isValidated),
         page - 1
     )
 

@@ -17,8 +17,7 @@ class SignUpUseCase(
 ) {
     operator fun invoke(signUpRequest: SignUpRequest): User {
         val (name, username, email, password) = signUpRequest
-        val existingUser = userRepository.findByUsername(username)
-        (existingUser == null).trueOrThrow()
+        (userRepository.findByUsername(username) == null).trueOrThrow()
         val encoded = passwordEncoder.encode(password)
         return userBaseRepository.insert(
             User(
@@ -27,7 +26,8 @@ class SignUpUseCase(
                 email = email,
                 password = encoded,
                 authority = "${Scope.NORMAL}",
-                isActive = true
+                isActive = false,
+                isValidated = false
             )
         )
     }

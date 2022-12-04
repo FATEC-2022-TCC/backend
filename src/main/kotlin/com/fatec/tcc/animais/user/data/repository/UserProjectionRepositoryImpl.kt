@@ -14,5 +14,5 @@ internal class UserProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<UserProjection, UserEntityProjection, UserEntityRepository, UserProjectionRepositoryData>(
     repository,
     repositoryMapper,
-    { data, page -> search(data.isActive, data.text, page) }
+    { data, page -> search(data.text, data.isActive, data.isValidated, page) }
 )

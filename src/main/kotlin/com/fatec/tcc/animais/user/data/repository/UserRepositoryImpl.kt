@@ -19,4 +19,8 @@ internal class UserRepositoryImpl(
     override fun findByUsername(username: String) = repository
         .findByUsername(username)
         ?.run(repositoryMapper::toDomain)
+
+    override fun findByIsValidated(isValidated: Boolean) = repository
+        .findByIsValidated(isValidated)
+        .map(repositoryMapper::toDomain)
 }

@@ -11,6 +11,7 @@ data class User(
     val email: String,
     val authority: String,
     val isActive: Boolean,
+    val isValidated: Boolean,
     val animals: ArrayList<Animal> = arrayListOf(),
     val created: Instant? = null,
     val createdBy: String? = null,

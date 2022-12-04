@@ -29,6 +29,9 @@ abstract class DefaultRepository<Domain : Any, Entity : Any>(
     override fun delete(id: Long) = repository
         .deleteById(id)
 
+    override fun delete(ids: List<Long>) = repository
+        .deleteAllById(ids)
+
     override fun all(page: Int, size: Int) = repository
         .findAll(PageRequest.of(page, size))
         .toPage(repositoryMapper::toDomain)

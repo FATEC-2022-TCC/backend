@@ -20,6 +20,7 @@ class UserMapper(
             email,
             authority,
             isActive,
+            isValidated,
             animals.map(animalMapper::toEntity)
         )
     }
@@ -33,6 +34,7 @@ class UserMapper(
             email,
             authority,
             isActive,
+            isValidated,
             animals.map(animalMapper::toDomain) as ArrayList<Animal>,
             created,
             createdBy,

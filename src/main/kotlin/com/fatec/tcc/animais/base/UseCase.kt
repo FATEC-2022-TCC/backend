@@ -4,7 +4,7 @@ import org.springframework.core.annotation.AliasFor
 import org.springframework.stereotype.Component
 
 /**
- * Indicates that an annotated class is a "UseCase", originally defined by
+ * Indicates that an annotated class is an "UseCase", originally defined by
  * "No one care" as "single method class, which denotes a business logical action"
  */
 
