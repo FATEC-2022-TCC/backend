@@ -2,7 +2,7 @@ package com.fatec.tcc.animais.reality.data.mapper
 
 import com.fatec.tcc.animais.base.Mapper
 import com.fatec.tcc.animais.base64.data.mapper.Base64Mapper
-import com.fatec.tcc.animais.reality.data.repository.RealityEntity
+import com.fatec.tcc.animais.reality.data.entity.RealityEntity
 import com.fatec.tcc.animais.reality.domain.model.Reality
 import org.springframework.stereotype.Component
 
@@ -17,6 +17,8 @@ class RealityMapper(
             scale,
             title,
             description,
+            background,
+            isVisible,
             images.map(base64Mapper::toEntity)
         )
     }
@@ -28,6 +30,8 @@ class RealityMapper(
             scale,
             title,
             description,
+            background,
+            isVisible,
             images.map(base64Mapper::toDomain) as ArrayList
         )
     }

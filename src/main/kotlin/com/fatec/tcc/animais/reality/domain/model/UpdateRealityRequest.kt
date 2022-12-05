@@ -1,8 +1,6 @@
 package com.fatec.tcc.animais.reality.domain.model
 
-import com.fatec.tcc.animais.base64.domain.model.Base64
-
-data class Reality(
+data class UpdateRealityRequest(
     val id: Long,
     val data: String,
     val scale: Float,
@@ -10,5 +8,5 @@ data class Reality(
     val description: String,
     val background: String,
     val isVisible: Boolean,
-    val images: ArrayList<Base64>
+    val images: List<String>
 )

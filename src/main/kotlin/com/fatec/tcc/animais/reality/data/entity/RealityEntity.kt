@@ -1,4 +1,4 @@
-package com.fatec.tcc.animais.reality.data.repository
+package com.fatec.tcc.animais.reality.data.entity
 
 import com.fatec.tcc.animais.base.BaseEntity
 import com.fatec.tcc.animais.base64.data.entity.Base64Entity
@@ -15,6 +15,8 @@ class RealityEntity(
     val scale: Float,
     val title: String,
     val description: String,
+    val background: String,
+    val isVisible: Boolean,
     @OneToMany(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
