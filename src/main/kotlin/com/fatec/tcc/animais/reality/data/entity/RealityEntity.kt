@@ -15,6 +15,7 @@ class RealityEntity(
     val scale: Float,
     val title: String,
     val description: String,
+    @Lob
     val background: String,
     val isVisible: Boolean,
     @OneToMany(
