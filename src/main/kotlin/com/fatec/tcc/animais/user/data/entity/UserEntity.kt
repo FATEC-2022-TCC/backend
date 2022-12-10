@@ -14,10 +14,12 @@ class UserEntity(
     @Column(unique = true)
     val username: String,
     val password: String,
-    val email: String,
     val authority: String,
     val isActive: Boolean,
     val isValidated: Boolean,
+    @OneToOne
+    @JoinColumn(name = "private_info")
+    val privateInfo: PrivateInfoEntity,
     @OneToMany(
         fetch = FetchType.EAGER,
         cascade = [CascadeType.ALL],

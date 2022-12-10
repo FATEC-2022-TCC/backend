@@ -6,5 +6,6 @@ data class UpdateUserRequest(
     val email: String,
     val authority: String,
     val isActive: Boolean,
-    val isValidated: Boolean
+    val isValidated: Boolean,
+    val privateInfo: UpdateUserPrivateInfoRequest
 )
