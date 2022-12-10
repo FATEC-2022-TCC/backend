@@ -17,7 +17,10 @@ class UserEntity(
     val authority: String,
     val isActive: Boolean,
     val isValidated: Boolean,
-    @OneToOne
+    @OneToOne(
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
     @JoinColumn(name = "private_info_id")
     val privateInfo: PrivateInfoEntity,
     @OneToMany(
