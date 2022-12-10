@@ -24,7 +24,7 @@ class AddAnimalUseCase(
             gender = request.gender,
             age = request.age,
             size = request.size,
-            about = request.about
+            description = request.description
         ).run(animals::add)
         run(repository::update)
     }

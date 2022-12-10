@@ -13,26 +13,26 @@ class AnimalMapper(
     override fun toEntity(domain: Animal) = domain.run {
         AnimalEntity(
             id,
-            picture,
             name,
-            categoryMapper.toEntity(category),
+            description,
             gender,
-            age,
             size,
-            about
+            age,
+            categoryMapper.toEntity(category),
+            picture
         )
     }
 
     override fun toDomain(entity: AnimalEntity) = entity.run {
         Animal(
             id,
-            picture,
             name,
-            categoryMapper.toDomain(category),
+            description,
             gender,
-            age,
             size,
-            about,
+            age,
+            categoryMapper.toDomain(category),
+            picture,
             created,
             createdBy,
             updated,

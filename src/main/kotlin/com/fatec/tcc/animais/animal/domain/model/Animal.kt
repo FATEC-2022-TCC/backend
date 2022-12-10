@@ -5,13 +5,13 @@ import java.time.Instant
 
 data class Animal(
     val id: Long = -1,
-    val picture: String,
     val name: String,
-    val category: Category,
+    val description: String,
     val gender: String,
-    val age: String,
     val size: String,
-    val about: String,
+    val age: String,
+    val category: Category,
+    val picture: String,
     val created: Instant? = null,
     val createdBy: String? = null,
     val updated: Instant? = null,

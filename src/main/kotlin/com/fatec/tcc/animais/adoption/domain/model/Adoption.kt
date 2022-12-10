@@ -11,6 +11,7 @@ data class Adoption(
     val description: String,
     val gender: String,
     val size: String,
+    val age: String,
     val category: Category,
     val picture: String,
     val images: ArrayList<Base64>,

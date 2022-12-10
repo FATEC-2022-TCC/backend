@@ -7,5 +7,5 @@ data class NewAnimalRequest(
     val gender: String,
     val age: String,
     val size: String,
-    val about: String
+    val description: String
 )

@@ -10,15 +10,15 @@ class AnimalEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
-    @Lob
-    val picture: String,
     val name: String,
+    @Lob
+    val description: String,
+    val gender: String,
+    val size: String,
+    val age: String,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     val category: CategoryEntity,
-    val gender: String,
-    val age: String,
-    val size: String,
     @Lob
-    val about: String
+    val picture: String,
 ) : BaseEntity()

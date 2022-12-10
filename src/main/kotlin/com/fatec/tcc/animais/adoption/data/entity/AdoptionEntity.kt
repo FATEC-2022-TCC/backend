@@ -17,6 +17,7 @@ class AdoptionEntity(
     val description: String,
     val gender: String,
     val size: String,
+    val age: String,
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     val category: CategoryEntity,

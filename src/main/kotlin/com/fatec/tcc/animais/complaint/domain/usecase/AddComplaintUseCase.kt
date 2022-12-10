@@ -17,7 +17,7 @@ class AddComplaintUseCase(
             -1,
             local,
             description,
-            files.map(::Base64),
+            images.map(::Base64),
             arrayListOf(
                 Status(
                     ComplaintStatusEnum.CREATED.code,

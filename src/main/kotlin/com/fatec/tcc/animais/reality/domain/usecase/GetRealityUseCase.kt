@@ -9,5 +9,7 @@ import com.fatec.tcc.animais.reality.domain.model.Reality
 class GetRealityUseCase(
     private val repository: BaseRepository<Reality>
 ) {
-    operator fun invoke(id: Long) = repository.find(id).notNullOrThrow()
+    operator fun invoke(
+        id: Long
+    ) = repository.find(id).notNullOrThrow()
 }
