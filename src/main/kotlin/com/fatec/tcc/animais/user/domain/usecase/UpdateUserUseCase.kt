@@ -17,7 +17,17 @@ class UpdateUserUseCase(
             name = request.name,
             authority = request.authority,
             isActive = request.isActive,
-            isValidated = request.isValidated
+            isValidated = request.isValidated,
+            privateInfo = privateInfo.run {
+                val (email, telephony, identification, address, picture) = request.privateInfo
+                copy(
+                    email = email,
+                    telephony = telephony,
+                    identification = identification,
+                    address = address,
+                    picture = picture
+                )
+            }
         ).run(repository::update)
     }
 }

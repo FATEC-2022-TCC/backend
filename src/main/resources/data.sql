@@ -1,15 +1,18 @@
-INSERT INTO users (name, username, password, email, authority, created, created_by, updated, updated_by, is_active, is_validated)
+INSERT INTO private_info (email, telephony, identification, address, picture)
+VALUE ("", "", "", "", "");
+
+INSERT INTO users (name, username, password, authority, created, created_by, updated, updated_by, is_active, is_validated, private_info_id)
 VALUES
 (
     "SYSTEM",
     "SYSTEM",
     "$2a$10$YFn5pXKY/ktIlIkCQ2OpmehUMriXHjdoJ12GWDyjKGT6cpa4Dhv4y",
-    "system@system.com",
     "ADMIN",
     NOW(),
     "SYSTEM",
     NOW(),
     "SYSTEM",
+    1,
     1,
     1
 ),
@@ -17,38 +20,38 @@ VALUES
     "anonymousUser",
     "anonymousUser",
     "$2a$10$YFn5pXKY/ktIlIkCQ2OpmehUMriXHjdoJ12GWDyjKGT6cpa4Dhv4y",
-    "anonymousUser@anonymousUser.com",
     "",
     NOW(),
     "SYSTEM",
     NOW(),
     "SYSTEM",
     1,
+    1,
     1
 ),
 (
     "admin",
     "admin",
     "$2a$10$YFn5pXKY/ktIlIkCQ2OpmehUMriXHjdoJ12GWDyjKGT6cpa4Dhv4y",
-    "admin@admin.com",
     "ADMIN",
     NOW(),
     "SYSTEM",
     NOW(),
     "SYSTEM",
     1,
+    1,
     1
 ),
 (
     "test1",
     "test1",
     "$2a$10$LI/suG/VrLPuBQDRVhfG7.ntbrTV7IC7A9iSOFwEJH/t7DZaOuBk.",
-    "test1@test.com",
     "NORMAL",
     NOW(),
     "SYSTEM",
     NOW(),
     "SYSTEM",
+    1,
     1,
     1
 ),
@@ -56,12 +59,12 @@ VALUES
     "test2",
     "test2",
     "$2a$10$LI/suG/VrLPuBQDRVhfG7.ntbrTV7IC7A9iSOFwEJH/t7DZaOuBk.",
-    "test2@test.com",
     "NORMAL",
     NOW(),
     "SYSTEM",
     NOW(),
     "SYSTEM",
+    1,
     1,
     1
 );

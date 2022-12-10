@@ -18,7 +18,7 @@ class UserEntity(
     val isActive: Boolean,
     val isValidated: Boolean,
     @OneToOne
-    @JoinColumn(name = "private_info")
+    @JoinColumn(name = "private_info_id")
     val privateInfo: PrivateInfoEntity,
     @OneToMany(
         fetch = FetchType.EAGER,

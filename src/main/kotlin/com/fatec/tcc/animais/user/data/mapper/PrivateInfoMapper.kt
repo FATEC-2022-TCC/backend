@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component
 class PrivateInfoMapper : Mapper<PrivateInfoEntity, PrivateInfo> {
     override fun toEntity(domain: PrivateInfo) = domain.run {
         PrivateInfoEntity(
+            id,
             email,
             telephony,
             identification,
@@ -19,6 +20,7 @@ class PrivateInfoMapper : Mapper<PrivateInfoEntity, PrivateInfo> {
 
     override fun toDomain(entity: PrivateInfoEntity) = entity.run {
         PrivateInfo(
+            id,
             email,
             telephony,
             identification,

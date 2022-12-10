@@ -1,12 +1,13 @@
 package com.fatec.tcc.animais.user.data.entity
 
-import javax.persistence.Entity
-import javax.persistence.Lob
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "private_info")
 class PrivateInfoEntity(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long,
     val email: String,
     val telephony: String,
     val identification: String,
