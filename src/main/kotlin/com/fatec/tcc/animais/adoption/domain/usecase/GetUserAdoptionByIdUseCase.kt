@@ -12,5 +12,7 @@ class GetUserAdoptionByIdUseCase(
     operator fun invoke(
         id: Long,
         currentUser: CurrentUser
-    ) = adoptionRepository.findByCreatedByAndId(id, currentUser.username).notNullOrThrow()
+    ) = adoptionRepository.findByCreatedByAndId(
+        id, currentUser.username
+    ).notNullOrThrow()
 }

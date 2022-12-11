@@ -16,7 +16,7 @@ class DeleteAnimalUseCase(
     operator fun invoke(
         currentUser: CurrentUser,
         id: Long
-    ) = animalRepository.findByUserAndAnimalId(
+    ) = animalRepository.findByUserIdAndAnimalId(
         currentUser.id,
         id
     ) notFoundOrUnit(extractAnd(Animal::id, repository::delete))

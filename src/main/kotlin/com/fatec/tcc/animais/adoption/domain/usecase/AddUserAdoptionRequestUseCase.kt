@@ -6,6 +6,7 @@ import com.fatec.tcc.animais.adoption.domain.model.AdoptionRequest
 import com.fatec.tcc.animais.adoption.domain.repository.AdoptionRequestProjectionRepository
 import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.base.UseCase
+import com.fatec.tcc.animais.base.notFoundOrUnit
 import com.fatec.tcc.animais.base.notNullOrThrow
 import com.fatec.tcc.animais.security.CurrentUser
 import com.fatec.tcc.animais.status.domain.model.Status
@@ -20,19 +21,20 @@ class AddUserAdoptionRequestUseCase(
         currentUser: CurrentUser
     ) {
         if (adoptionRequestProjectionRepository.getByAdoptionIdAndCreatedBy(id, currentUser.username) != null) return
-        val adoption = repository.find(id).notNullOrThrow()
-        adoption.requests.add(
-            AdoptionRequest(
-                -1,
-                arrayListOf(
-                    Status(
-                        AdoptionRequestStatusEnum.REQUESTED.code,
-                        AdoptionRequestStatusEnum.REQUESTED.description
-                    )
-                ),
-                AdoptionRequestStatusEnum.REQUESTED.code
+        repository.find(id) notFoundOrUnit {
+            requests.add(
+                AdoptionRequest(
+                    -1,
+                    arrayListOf(
+                        Status(
+                            AdoptionRequestStatusEnum.REQUESTED.code,
+                            AdoptionRequestStatusEnum.REQUESTED.description
+                        )
+                    ),
+                    AdoptionRequestStatusEnum.REQUESTED.code
+                )
             )
-        )
-        repository.update(adoption)
+            run(repository::update)
+        }
     }
 }

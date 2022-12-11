@@ -12,7 +12,7 @@ class GetAnimalUseCase(
     operator fun invoke(
         currentUser: CurrentUser,
         id: Long
-    ) = repository.findByUserAndAnimalId(
+    ) = repository.findByUserIdAndAnimalId(
         currentUser.id,
         id
     ).notNullOrThrow()
