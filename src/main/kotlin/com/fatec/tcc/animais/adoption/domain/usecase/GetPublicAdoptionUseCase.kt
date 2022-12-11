@@ -12,7 +12,9 @@ import com.fatec.tcc.animais.base.trueOrThrow
 class GetPublicAdoptionUseCase(
     private val repository: BaseRepository<Adoption>
 ) {
-    operator fun invoke(id: Long) = repository.find(id) notFoundOrElse {
+    operator fun invoke(
+        id: Long
+    ) = repository.find(id) notFoundOrElse {
         (currentStatusCode == AdoptionStatusEnum.VISIBLE.code).trueOrThrow()
         PublicAdoption(
             id,
@@ -23,6 +25,7 @@ class GetPublicAdoptionUseCase(
             category,
             picture,
             images,
+            age,
             created
         )
     }

@@ -13,5 +13,6 @@ data class PublicAdoption(
     val category: Category,
     val picture: String,
     val images: ArrayList<Base64>,
+    val age: String,
     val created: Instant? = null
 )

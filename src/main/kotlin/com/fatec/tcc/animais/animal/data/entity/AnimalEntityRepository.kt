@@ -4,7 +4,6 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
-import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -15,9 +14,18 @@ interface AnimalEntityRepository : JpaRepository<AnimalEntity, Long> {
         "WHERE u.id = :userId " +
         "AND a.name LIKE %:name%"
     )
-    fun findByName(
-        @Param("name") name: String,
-        @Param("userId") userId: Long,
+    fun findByNameAndUserId(
+        name: String,
+        userId: Long,
         page: Pageable
     ): Page<AnimalEntityProjection>
+
+    @Query(
+        "SELECT a FROM UserEntity u JOIN u.animals a " +
+        "WHERE a.id = :animalId AND u.id = :userId"
+    )
+    fun findByUserIdAndAnimalId(
+        userId: Long,
+        animalId: Long,
+    ): AnimalEntity?
 }

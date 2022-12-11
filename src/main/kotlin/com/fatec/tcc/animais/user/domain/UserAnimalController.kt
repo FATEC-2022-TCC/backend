@@ -2,6 +2,7 @@ package com.fatec.tcc.animais.user.domain
 
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.animal.domain.model.UpdateAnimalRequest
+import com.fatec.tcc.animais.animal.domain.repository.AnimalProjectionRepositoryData
 import com.fatec.tcc.animais.animal.domain.usecase.*
 import com.fatec.tcc.animais.security.currentUser
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
@@ -30,8 +31,9 @@ class UserAnimalController(
 
     @GetMapping("/{id}")
     fun get(
+        authentication: Authentication,
         @PathVariable id: Long
-    ) = getAnimalUseCase(id)
+    ) = getAnimalUseCase(authentication.currentUser, id)
 
     @GetMapping("/projection")
     fun projection(
@@ -39,18 +41,28 @@ class UserAnimalController(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int
     ) = getAnimalProjectionUseCase(
-        authentication.currentUser,
-        text,
+        AnimalProjectionRepositoryData(
+            authentication.currentUser.id,
+            text
+        ),
         page - 1
     )
 
     @PutMapping
     fun put(
+        authentication: Authentication,
         @RequestBody request: UpdateAnimalRequest
-    ) = updateAnimalUseCase(request)
+    ) = updateAnimalUseCase(
+        authentication.currentUser,
+        request
+    )
 
     @DeleteMapping("/{id}")
     fun delete(
+        authentication: Authentication,
         @PathVariable id: Long
-    ) = deleteAnimalUseCase(id)
+    ) = deleteAnimalUseCase(
+        authentication.currentUser,
+        id
+    )
 }
