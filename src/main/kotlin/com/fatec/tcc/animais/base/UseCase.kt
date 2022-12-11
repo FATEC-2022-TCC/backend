@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component
 
 /**
  * Indicates that an annotated class is an "UseCase", originally defined by
- * "No one care" as "single method class, which denotes a business logical action"
+ * "No one care" as "single method class, which denotes a business logical action".
+ * Such classes are considered as candidates for auto-detection
+ * when using annotation-based configuration and classpath scanning.
  */
 
 @Target(AnnotationTarget.CLASS)

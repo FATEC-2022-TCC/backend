@@ -18,7 +18,10 @@ class UpdateAnimalUseCase(
     operator fun invoke(
         currentUser: CurrentUser,
         request: UpdateAnimalRequest
-    ) = animalRepository.findByUserAndAnimalId(currentUser.id, request.id) notFoundOrUnit {
+    ) = animalRepository.findByUserAndAnimalId(
+        currentUser.id,
+        request.id
+    ) notFoundOrUnit {
         copy(
             picture = request.picture,
             name = request.name,

@@ -11,6 +11,13 @@ inline infix fun <T : Any> T?.notFoundOrUnit(block: T.() -> Any) = notFoundOrEls
     Unit
 }
 
+inline fun <T, A> extractAnd(
+    crossinline block: T.() -> A,
+    crossinline consumer: A.() -> Unit
+): T.() -> Unit = {
+    consumer(block())
+}
+
 fun <T> T?.notNullOrThrow(status: HttpStatus = HttpStatus.NOT_FOUND) =
     this ?: throw ResponseStatusException(status)
 

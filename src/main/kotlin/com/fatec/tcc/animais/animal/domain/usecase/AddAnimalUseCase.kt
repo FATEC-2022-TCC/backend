@@ -4,7 +4,6 @@ import com.fatec.tcc.animais.animal.domain.model.Animal
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.base.UseCase
-import com.fatec.tcc.animais.base.notFoundOrElse
 import com.fatec.tcc.animais.base.notFoundOrUnit
 import com.fatec.tcc.animais.category.domain.model.Category
 import com.fatec.tcc.animais.security.CurrentUser
@@ -17,7 +16,9 @@ class AddAnimalUseCase(
     operator fun invoke(
         currentUser: CurrentUser,
         request: NewAnimalRequest
-    ) = repository.find(currentUser.id) notFoundOrUnit {
+    ) = repository.find(
+        currentUser.id
+    ) notFoundOrUnit {
         Animal(
             picture = request.picture,
             name = request.name,
