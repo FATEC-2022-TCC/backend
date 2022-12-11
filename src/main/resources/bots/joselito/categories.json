@@ -1,0 +1,63 @@
+{
+  "description": "Categorie knowledges",
+  "categories": [
+    {
+      "pattern": "{{ set:adoption }}",
+      "template": "Você pode ver as adoções disponíveis na página de adoção.\n<a href=\"/home/adoption\">Clique em mim!!!</a>"
+    },
+    {
+      "pattern": "{{ set:qualifier }} {{ set:adoption }}",
+      "template": "Você pode ver as adoções disponíveis na página de adoção.\n<a href=\"/home/adoption\">Clique em mim!!!</a>"
+    },
+    {
+      "pattern": "{{ set:blog }}",
+      "template": "Você pode olhar o nosso blog e encontrar o que procura.\n<a href=\"/home/blog\">Clique em mim!!!</a>"
+    },
+    {
+      "pattern": "{{ set:signin }}",
+      "template": "Você pode fazer o login aqui:.\n<a href=\"/signin\">Clique em mim!!!</a>"
+    },
+    {
+      "pattern": "{{ set:qualifier }} {{ set:signup }}",
+      "template": "Você pode fazer o cadastro aqui:.\n<a href=\"/signup\">Clique em mim!!!</a>"
+    },
+    {
+      "pattern": "{{ set:signup }}",
+      "template": "Você pode fazer o cadastro aqui:.\n<a href=\"/signup\">Clique em mim!!!</a>"
+    },
+    {
+      "pattern": "{{ set:complaint }}",
+      "template": "Você precisa de uma conta para poder fazer uma denúncia. Caso o tenha \n<a href=\"/home/complaint\">clique aqui.</a>"
+    }
+  ],
+  "sets": {
+    "qualifier": [
+      "como",
+      "onde"
+    ],
+    "adoption": [
+      "adotar",
+      "adocao"
+    ],
+    "blog": [
+      "postagem",
+      "post",
+      "informacao",
+      "conteudo",
+      "blog"
+    ],
+    "signin": [
+      "login",
+      "sessao"
+    ],
+    "signup": [
+      "cadastro",
+      "me cadastrar"
+    ],
+    "complaint": [
+      "denuncia",
+      "acidente",
+      "maus tratos"
+    ]
+  }
+}

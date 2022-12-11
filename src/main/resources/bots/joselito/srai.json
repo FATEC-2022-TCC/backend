@@ -1,9 +1,0 @@
-{
-  "description": "A srai chatbot machine json example",
-  "categories": [
-    {
-      "pattern": "voce e um *",
-      "template": "{{ srai(voce e um {{ star:0 }} ?) }}"
-    }
-  ]
-}
