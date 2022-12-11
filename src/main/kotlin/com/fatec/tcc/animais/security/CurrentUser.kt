@@ -12,15 +12,16 @@ data class CurrentUser(
     val authorities: List<GrantedAuthority>
 )
 
-fun Authentication.toCurrentUser(): CurrentUser {
-    val jwt = credentials as? Jwt ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
-    val id = (jwt.claims?.get("jti") as? String)?.toLong() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
-    val username = name ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
-    val authorities = authorities.toList()
-    if (authorities.isEmpty()) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
-    return CurrentUser(
-        id,
-        username,
-        authorities
-    )
-}
+val Authentication.currentUser: CurrentUser
+    get() {
+        val jwt = credentials as? Jwt ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val id = (jwt.claims?.get("jti") as? String)?.toLong() ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val username = name ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val authorities = authorities.toList()
+        if (authorities.isEmpty()) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        return CurrentUser(
+            id,
+            username,
+            authorities
+        )
+    }

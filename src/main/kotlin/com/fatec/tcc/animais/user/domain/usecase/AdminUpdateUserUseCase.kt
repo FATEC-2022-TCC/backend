@@ -3,21 +3,21 @@ package com.fatec.tcc.animais.user.domain.usecase
 import com.fatec.tcc.animais.base.BaseRepository
 import com.fatec.tcc.animais.base.UseCase
 import com.fatec.tcc.animais.base.notFoundOrUnit
-import com.fatec.tcc.animais.user.domain.model.UpdateUserRequest
+import com.fatec.tcc.animais.user.domain.model.AdminUpdateUserRequest
 import com.fatec.tcc.animais.user.domain.model.User
 
 @UseCase
-class UpdateUserUseCase(
+class AdminUpdateUserUseCase(
     private val repository: BaseRepository<User>
 ) {
     operator fun invoke(
-        request: UpdateUserRequest
+        request: AdminUpdateUserRequest
     ) = repository.find(request.id) notFoundOrUnit {
         copy(
             name = request.name,
             authority = request.authority,
             isActive = request.isActive,
-            isValidated = request.isValidated,
+            isValidated = true,
             privateInfo = privateInfo.run {
                 val (email, telephony, identification, address, picture) = request.privateInfo
                 copy(

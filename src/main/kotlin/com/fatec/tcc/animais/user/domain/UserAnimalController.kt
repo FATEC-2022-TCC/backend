@@ -3,7 +3,7 @@ package com.fatec.tcc.animais.user.domain
 import com.fatec.tcc.animais.animal.domain.model.NewAnimalRequest
 import com.fatec.tcc.animais.animal.domain.model.UpdateAnimalRequest
 import com.fatec.tcc.animais.animal.domain.usecase.*
-import com.fatec.tcc.animais.security.toCurrentUser
+import com.fatec.tcc.animais.security.currentUser
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
@@ -24,7 +24,7 @@ class UserAnimalController(
         authentication: Authentication,
         @RequestBody request: NewAnimalRequest
     ) = addAnimalUseCase(
-        authentication.toCurrentUser(),
+        authentication.currentUser,
         request
     )
 
@@ -39,7 +39,7 @@ class UserAnimalController(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int
     ) = getAnimalProjectionUseCase(
-        authentication.toCurrentUser(),
+        authentication.currentUser,
         text,
         page - 1
     )

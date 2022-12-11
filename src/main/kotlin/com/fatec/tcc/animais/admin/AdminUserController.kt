@@ -1,12 +1,12 @@
 package com.fatec.tcc.animais.admin
 
 import com.fatec.tcc.animais.user.data.repository.UserProjectionRepositoryData
-import com.fatec.tcc.animais.user.domain.model.UpdateUserPasswordRequest
-import com.fatec.tcc.animais.user.domain.model.UpdateUserRequest
+import com.fatec.tcc.animais.user.domain.model.AdminUpdateUserPasswordRequest
+import com.fatec.tcc.animais.user.domain.model.AdminUpdateUserRequest
 import com.fatec.tcc.animais.user.domain.usecase.GetUserProjectionUseCase
 import com.fatec.tcc.animais.user.domain.usecase.GetUserUseCase
-import com.fatec.tcc.animais.user.domain.usecase.UpdateUserPasswordUseCase
-import com.fatec.tcc.animais.user.domain.usecase.UpdateUserUseCase
+import com.fatec.tcc.animais.user.domain.usecase.AdminUpdateUserPasswordUseCase
+import com.fatec.tcc.animais.user.domain.usecase.AdminUpdateUserUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.*
 class AdminUserController(
     private val getUserProjectionUseCase: GetUserProjectionUseCase,
     private val getUserUseCase: GetUserUseCase,
-    private val updateUserUseCase: UpdateUserUseCase,
-    private val updateUserPasswordUseCase: UpdateUserPasswordUseCase
+    private val adminUpdateUserUseCase: AdminUpdateUserUseCase,
+    private val adminUpdateUserPasswordUseCase: AdminUpdateUserPasswordUseCase
 ) {
     @GetMapping("/projection")
     fun project(
@@ -38,11 +38,11 @@ class AdminUserController(
 
     @PutMapping
     fun put(
-        @RequestBody request: UpdateUserRequest
-    ) = updateUserUseCase(request)
+        @RequestBody request: AdminUpdateUserRequest
+    ) = adminUpdateUserUseCase(request)
 
     @PutMapping("/password")
     fun password(
-        @RequestBody request: UpdateUserPasswordRequest
-    ) = updateUserPasswordUseCase(request)
+        @RequestBody request: AdminUpdateUserPasswordRequest
+    ) = adminUpdateUserPasswordUseCase(request)
 }

@@ -2,7 +2,7 @@ package com.fatec.tcc.animais.user.domain
 
 import com.fatec.tcc.animais.adoption.domain.usecase.GetUserAdoptionByIdUseCase
 import com.fatec.tcc.animais.adoption.domain.usecase.GetUserAdoptionProjectionUseCase
-import com.fatec.tcc.animais.security.toCurrentUser
+import com.fatec.tcc.animais.security.currentUser
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
@@ -21,7 +21,7 @@ class UserAdoptionController(
         authentication: Authentication
     ) = getUserAdoptionByIdUseCase(
         id,
-        authentication.toCurrentUser()
+        authentication.currentUser
     )
 
     @GetMapping("/projection")
@@ -32,6 +32,6 @@ class UserAdoptionController(
     ) = getUserAdoptionProjectionUseCase(
         text,
         page - 1,
-        authentication.toCurrentUser()
+        authentication.currentUser
     )
 }
