@@ -10,7 +10,9 @@ import com.fatec.tcc.animais.status.domain.model.Status
 class FinishANonSuccessfulAdoptionUseCase(
     private val repository: BaseRepository<Adoption>
 ) {
-    operator fun invoke(adoption: Adoption) {
+    operator fun invoke(
+        adoption: Adoption
+    ) {
         adoption.apply {
             val mappedRequests = requests.map {
                 if (it.currentStatusCode != AdoptionRequestStatusEnum.CANCELED.code) {

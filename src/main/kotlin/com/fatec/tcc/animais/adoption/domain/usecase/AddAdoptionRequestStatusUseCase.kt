@@ -11,11 +11,14 @@ import com.fatec.tcc.animais.status.domain.model.Status
 @UseCase
 class AddAdoptionRequestStatusUseCase(
     private val repository: BaseRepository<AdoptionRequest>,
-    private val finishASuccessfulAdoptionUseCase: FinishASuccessfulAdoptionUseCase
+    private val finishASuccessfulAdoptionUseCase: FinishASuccessfulAdoptionUseCase,
+    private val transferAnAdoptionToUserByAdoptionRequestUseCase: TransferAnAdoptionToUserByAdoptionRequestUseCase
 ) {
     operator fun invoke(
         request: UpdateAdoptionRequestRequest
-    ) = repository.find(request.id) notFoundOrElse {
+    ) = repository.find(
+        request.id
+    ) notFoundOrUnit {
         val currentStatus = AdoptionRequestStatusStateMachine[currentStatusCode].notNullOrThrow()
         val desiredStatus = AdoptionRequestStatusStateMachine[request.status.code].notNullOrThrow()
 
@@ -24,14 +27,14 @@ class AddAdoptionRequestStatusUseCase(
         request.status.run {
             Status(code, description, images.map(::Base64))
         }.also(statuses::add)
+
         copy(
             currentStatusCode = request.status.code
         ).run(repository::update)
 
         if (desiredStatus == AdoptionRequestStatusEnum.ADOPTED) {
             finishASuccessfulAdoptionUseCase(this)
+            transferAnAdoptionToUserByAdoptionRequestUseCase(this)
         }
-
-        Unit
     }
 }
