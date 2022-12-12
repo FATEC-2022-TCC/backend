@@ -15,8 +15,8 @@ interface ComplaintEntityRepository : JpaRepository<ComplaintEntity, Long> {
         "AND c.currentStatusCode = :currentStatusCode"
     )
     fun search(
-        @Param("currentStatusCode") currentStatusCode: Int,
-        @Param("text") text: String,
+        currentStatusCode: Int,
+        text: String,
         page: Pageable
     ): Page<ComplaintEntityProjection>
 }

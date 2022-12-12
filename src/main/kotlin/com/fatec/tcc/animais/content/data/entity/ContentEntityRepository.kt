@@ -12,7 +12,7 @@ import java.util.*
 
 @Repository
 interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
-    @Query("SELECT c FROM ContentEntity c WHERE c.until >= :date")
+    @Query("SELECT c FROM ContentEntity c WHERE c.until >= :instant")
     fun search(
         instant: Instant,
         sort: Sort

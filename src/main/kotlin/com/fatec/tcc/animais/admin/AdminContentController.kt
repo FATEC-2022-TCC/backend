@@ -46,5 +46,8 @@ class AdminContentController(
     fun project(
         @RequestParam(defaultValue = "") text: String,
         @RequestParam(defaultValue = "1") page: Int,
-    ) = searchContentProjectionUseCase(text, page - 1)
+    ) = searchContentProjectionUseCase(
+        text,
+        page - 1
+    )
 }
