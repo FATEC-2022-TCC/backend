@@ -15,7 +15,7 @@ internal class CategoryProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<CategoryProjection, CategoryEntityProjection, CategoryEntityRepository, String>(
     repository,
     projectionMapper,
-    searchableMapper = { text, page -> searchProjection(text, page) }
+    searchableMapper = { text, page -> search(text, page) }
 ), CategoryProjectionRepository {
     override fun all() = repository.findAllProjection().map(projectionMapper::toDomain)
 }

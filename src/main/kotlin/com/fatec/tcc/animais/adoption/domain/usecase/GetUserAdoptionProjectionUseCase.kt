@@ -15,7 +15,7 @@ class GetUserAdoptionProjectionUseCase(
         text: String,
         page: Int,
         currentUser: CurrentUser
-    ) = repository.projectAllByCreatedByRequest(
+    ) = repository.search(
         currentUser.username,
         text,
         page,

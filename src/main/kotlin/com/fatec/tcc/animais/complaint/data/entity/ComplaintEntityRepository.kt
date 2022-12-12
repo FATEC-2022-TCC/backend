@@ -9,8 +9,12 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ComplaintEntityRepository : JpaRepository<ComplaintEntity, Long> {
-    @Query("SELECT c FROM ComplaintEntity c WHERE (c.local LIKE %:text% OR c.description LIKE %:text%) AND c.currentStatusCode = :currentStatusCode")
-    fun searchProjection(
+    @Query(
+        "SELECT c FROM ComplaintEntity c " +
+        "WHERE (c.local LIKE %:text% OR c.description LIKE %:text%) " +
+        "AND c.currentStatusCode = :currentStatusCode"
+    )
+    fun search(
         @Param("currentStatusCode") currentStatusCode: Int,
         @Param("text") text: String,
         page: Pageable

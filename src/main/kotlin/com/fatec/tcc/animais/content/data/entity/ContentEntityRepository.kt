@@ -13,14 +13,19 @@ import java.util.*
 @Repository
 interface ContentEntityRepository : JpaRepository<ContentEntity, Long> {
     @Query("SELECT c FROM ContentEntity c WHERE c.until >= :date")
-    fun findProjectionUntilDate(
-        @Param("date") instant: Instant,
+    fun search(
+        instant: Instant,
         sort: Sort
     ): List<ContentEntityProjection>
 
-    @Query("SELECT c FROM ContentEntity c WHERE c.title LIKE %:text% OR c.description LIKE %:text% OR c.data LIKE %:text%")
-    fun searchProjection(
-        @Param("text") text: String,
+    @Query(
+        "SELECT c FROM ContentEntity c " +
+        "WHERE c.title LIKE %:text% " +
+        "OR c.description LIKE %:text% " +
+        "OR c.data LIKE %:text%"
+    )
+    fun search(
+        text: String,
         page: Pageable
     ): Page<ContentEntityProjection>
 }

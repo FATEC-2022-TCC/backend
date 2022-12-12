@@ -18,24 +18,24 @@ internal class AdoptionProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<AdoptionProjection, AdoptionEntityProjection, AdoptionEntityRepository, AdoptionProjectionRepositoryData>(
     repository,
     projectionMapper,
-    searchableMapper = { data, page ->
-        searchProjection(
-            data.text,
-            data.gender,
-            data.size,
-            arrayListOf(data.currentStatusCode),
+    searchableMapper = { (currentStatusCode, text, gender, size), page ->
+        search(
+            text,
+            gender,
+            size,
+            arrayListOf(currentStatusCode),
             page
         )
     }
 ), AdoptionProjectionRepository {
-    override fun searchProjection(
+    override fun search(
         text: String,
         gender: String,
         size: String,
         statuses: List<Int>,
         page: Int,
         counter: Int
-    ) = repository.searchProjection(
+    ) = repository.search(
         text,
         gender,
         size,
@@ -43,7 +43,7 @@ internal class AdoptionProjectionRepositoryImpl(
         PageRequest.of(page, counter)
     ).toPage(projectionMapper::toDomain)
 
-    override fun projectAllByCreatedByRequest(createdBy: String, text: String, page: Int, size: Int) = repository
-        .projectAllByCreatedByRequest(createdBy, text, PageRequest.of(page, size))
+    override fun search(createdBy: String, text: String, page: Int, size: Int) = repository
+        .search(createdBy, text, PageRequest.of(page, size))
         .toPage(projectionMapper::toDomain)
 }

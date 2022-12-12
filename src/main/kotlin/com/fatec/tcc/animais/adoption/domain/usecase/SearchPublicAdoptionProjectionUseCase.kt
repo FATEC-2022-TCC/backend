@@ -16,7 +16,7 @@ class SearchPublicAdoptionProjectionUseCase(
         gender: String,
         size: String,
         page: Int,
-    ) = repository.searchProjection(
+    ) = repository.search(
         text,
         gender,
         size,

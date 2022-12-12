@@ -14,7 +14,7 @@ interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
         "AND a.gender LIKE %:gender% AND a.size LIKE %:size% " +
         "AND a.currentStatusCode IN :statuses"
     )
-    fun searchProjection(
+    fun search(
         text: String,
         gender: String,
         size: String,
@@ -29,7 +29,7 @@ interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
         "WHERE r.createdBy = :createdBy " +
         "AND ae.name LIKE %:text%"
     )
-    fun projectAllByCreatedByRequest(
+    fun search(
         createdBy: String,
         text: String,
         page: Pageable

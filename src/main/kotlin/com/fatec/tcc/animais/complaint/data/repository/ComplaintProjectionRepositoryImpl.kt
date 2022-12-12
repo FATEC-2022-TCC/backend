@@ -15,5 +15,5 @@ internal class ComplaintProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<ComplaintProjection, ComplaintEntityProjection, ComplaintEntityRepository, ComplaintProjectionRepositoryData>(
     repository = complaintEntityRepository,
     projectionMapper = complaintProjectionMapper,
-    searchableMapper = { (currentStatusCode, text), pageable -> searchProjection(currentStatusCode, text, pageable) }
+    searchableMapper = { (currentStatusCode, text), pageable -> search(currentStatusCode, text, pageable) }
 )

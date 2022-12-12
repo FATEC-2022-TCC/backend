@@ -4,7 +4,7 @@ import com.fatec.tcc.animais.adoption.domain.model.AdoptionProjection
 import com.fatec.tcc.animais.base.Page
 
 interface AdoptionProjectionRepository {
-    fun searchProjection(
+    fun search(
         text: String,
         gender: String,
         size: String,
@@ -13,7 +13,7 @@ interface AdoptionProjectionRepository {
         counter: Int,
     ): Page<AdoptionProjection>
 
-    fun projectAllByCreatedByRequest(
+    fun search(
         createdBy: String,
         text: String,
         page: Int,

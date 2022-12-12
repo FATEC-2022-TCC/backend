@@ -17,9 +17,9 @@ internal class ContentProjectionRepositoryImpl(
 ) : DefaultSearchableRepository<ContentProjection, ContentEntityProjection, ContentEntityRepository, String>(
     repository = contentEntityRepository,
     projectionMapper = contentProjectionMapper,
-    searchableMapper = { text, pageable -> searchProjection(text, pageable) }
+    searchableMapper = { text, pageable -> search(text, pageable) }
 ), ContentProjectionRepository {
     override fun until(instant: Instant) = contentEntityRepository
-        .findProjectionUntilDate(instant, Sort.by("until").descending())
+        .search(instant, Sort.by("until").descending())
         .map(contentProjectionMapper::toDomain)
 }
