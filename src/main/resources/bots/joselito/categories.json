@@ -2,6 +2,10 @@
   "description": "Categorie knowledges",
   "categories": [
     {
+      "pattern": "",
+      "template": "Meu nome é Joselito.<br>Posso te ajudar com algumas de suas dúvidas.<br>Aqui estão alguns temas que posso responder: <br>Denúncia <br>Adoção"
+    },
+    {
       "pattern": "{{ set:adoption }}",
       "template": "Você pode ver as adoções disponíveis na página de adoção.\n<a href=\"/home/adoption\">Clique em mim!!!</a>"
     },
@@ -27,6 +31,10 @@
     },
     {
       "pattern": "{{ set:complaint }}",
+      "template": "Você precisa de uma conta para poder fazer uma denúncia. Caso o tenha \n<a href=\"/home/complaint\">clique aqui.</a>"
+    },
+    {
+      "pattern": "{{ set:qualifier }} {{ set:complaint }}",
       "template": "Você precisa de uma conta para poder fazer uma denúncia. Caso o tenha \n<a href=\"/home/complaint\">clique aqui.</a>"
     }
   ],
@@ -55,6 +63,7 @@
       "me cadastrar"
     ],
     "complaint": [
+      "denunciar",
       "denuncia",
       "acidente",
       "maus tratos"

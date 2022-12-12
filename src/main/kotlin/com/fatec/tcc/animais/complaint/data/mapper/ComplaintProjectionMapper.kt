@@ -12,7 +12,8 @@ class ComplaintProjectionMapper : ProjectionMapper<ComplaintEntityProjection, Co
             id,
             local,
             description,
-            created
+            created,
+            currentStatusCode
         )
     }
 }

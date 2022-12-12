@@ -7,4 +7,5 @@ interface ComplaintEntityProjection {
     val local: String
     val description: String
     val created: Date
+    val currentStatusCode: Int
 }
