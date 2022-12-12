@@ -1,5 +1,6 @@
 package com.fatec.tcc.animais.admin
 
+import com.fatec.tcc.animais.chart.usecase.GetAdoptionDataChartUseCase
 import com.fatec.tcc.animais.chart.usecase.GetComplaintDataChartUseCase
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -12,13 +13,12 @@ import org.springframework.web.bind.annotation.RestController
 @SecurityRequirement(name = "jwt")
 @RequestMapping("/admin/chart")
 class AdminChartController(
-    private val getComplaintDataChartUseCase: GetComplaintDataChartUseCase
+    private val getComplaintDataChartUseCase: GetComplaintDataChartUseCase,
+    private val getAdoptionDataChartUseCase: GetAdoptionDataChartUseCase
 ) {
     @GetMapping("/complaint")
     fun complaint() = getComplaintDataChartUseCase()
 
     @GetMapping("/adoption")
-    fun adoption() {
-
-    }
+    fun adoption() = getAdoptionDataChartUseCase()
 }

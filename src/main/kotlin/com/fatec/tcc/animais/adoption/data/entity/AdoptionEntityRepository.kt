@@ -56,4 +56,8 @@ interface AdoptionEntityRepository : JpaRepository<AdoptionEntity, Long> {
     fun findByAdoptionRequestId(
         id: Long
     ): AdoptionEntity?
+
+    fun findByCurrentStatusCode(
+        currentStatusCode: Int
+    ): List<AdoptionEntity>
 }

@@ -1,6 +1,7 @@
 package com.fatec.tcc.animais.base
 
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
 
@@ -33,6 +34,6 @@ abstract class DefaultRepository<Domain : Any, Entity : Any>(
         .deleteAllById(ids)
 
     override fun all(page: Int, size: Int) = repository
-        .findAll(PageRequest.of(page, size))
+        .findAll(PageRequest.of(page, size, Sort.Direction.DESC, "id"))
         .toPage(repositoryMapper::toDomain)
 }

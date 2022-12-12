@@ -11,4 +11,8 @@ interface AdoptionRepository {
     fun findByAdoptionRequestId(
         id: Long
     ): Adoption?
+
+    fun findByCurrentStatusCode(
+        currentStatusCode: Int,
+    ): List<Adoption>
 }

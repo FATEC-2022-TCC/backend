@@ -9,6 +9,7 @@ import com.fatec.tcc.animais.adoption.domain.repository.AdoptionProjectionReposi
 import com.fatec.tcc.animais.base.DefaultSearchableRepository
 import com.fatec.tcc.animais.base.toPage
 import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -40,10 +41,17 @@ internal class AdoptionProjectionRepositoryImpl(
         gender,
         size,
         statuses,
-        PageRequest.of(page, counter)
+        PageRequest.of(page, counter, Sort.Direction.DESC, "id")
     ).toPage(projectionMapper::toDomain)
 
-    override fun search(createdBy: String, text: String, page: Int, size: Int) = repository
-        .search(createdBy, text, PageRequest.of(page, size))
-        .toPage(projectionMapper::toDomain)
+    override fun search(
+        createdBy: String,
+        text: String,
+        page: Int,
+        size: Int
+    ) = repository.search(
+        createdBy,
+        text,
+        PageRequest.of(page, size, Sort.Direction.DESC, "id")
+    ).toPage(projectionMapper::toDomain)
 }

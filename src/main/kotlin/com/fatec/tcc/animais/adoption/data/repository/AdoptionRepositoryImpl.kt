@@ -17,11 +17,22 @@ internal class AdoptionRepositoryImpl(
     repository,
     repositoryMapper
 ), AdoptionRepository {
-    override fun findByCreatedByAndId(id: Long, createdBy: String) = repository
+    override fun findByCreatedByAndId(
+        id: Long,
+        createdBy: String
+    ) = repository
         .findByCreatedByAndId(id, createdBy)
         ?.run(repositoryMapper::toDomain)
 
-    override fun findByAdoptionRequestId(id: Long) = repository
+    override fun findByAdoptionRequestId(
+        id: Long
+    ) = repository
         .findByAdoptionRequestId(id)
         ?.run(repositoryMapper::toDomain)
+
+    override fun findByCurrentStatusCode(
+        currentStatusCode: Int
+    ) = repository
+        .findByCurrentStatusCode(currentStatusCode)
+        .map(repositoryMapper::toDomain)
 }
